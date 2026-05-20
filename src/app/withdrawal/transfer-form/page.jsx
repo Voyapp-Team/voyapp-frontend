@@ -1,5 +1,5 @@
-import TransferDetailsFormScreen from "@/src/features/withdrawal/screens/TransferDetailsFormScreen";    
+import BankDetailsFormScreen from "@/src/features/withdrawal/screens/BankDetailsFormScreen";    
 
 export default function TransferFormPage() {
-    return <TransferDetailsFormScreen />
+    return <BankDetailsFormScreen />
 }

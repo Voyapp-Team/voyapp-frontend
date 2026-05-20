@@ -5,7 +5,7 @@ import InputError from "../../onboarding/components/common/InputError";
 
 import { useState } from "react"
 
-export default function TransferDetailsForm() {
+export default function BankDetailsForm() {
     const [accountNumber, setAccountNumber] = useState("");
     const [bankName, setBankName] = useState("");
     const [saveDetails, setSaveDetails] = useState(false);
