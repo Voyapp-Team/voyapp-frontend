@@ -6,6 +6,10 @@ const variantClasses = {
     "border-transparent bg-[linear-gradient(180deg,var(--color-brand-primary-deep)_0%,var(--color-brand-accent)_100%)] text-white shadow-[0_4px_6px_rgba(0,107,92,0.1),0_10px_15px_rgba(0,107,92,0.1)] hover:brightness-[1.03]",
   secondary:
     "border-[var(--color-brand-border)] bg-white text-[var(--color-brand-primary)] shadow-[0_4px_6px_rgba(0,107,92,0.06),0_10px_15px_rgba(0,107,92,0.06)] hover:border-[var(--color-brand-accent)] hover:bg-[var(--color-brand-soft)]",
+
+  //added teh transparent variant for the go to dashboard button in the conversion successful modal
+  transparent:
+    "border-[var(--color-brand-border)] bg-transparent text-[var(--color-brand-primary-deep)] hover:bg-black/5 shadow-none",
 };
 
 export default function Button({
