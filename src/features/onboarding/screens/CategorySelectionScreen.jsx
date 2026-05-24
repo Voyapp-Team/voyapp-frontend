@@ -78,7 +78,7 @@ export const CategorySelectionScreen = () => {
                 <div
                   key={category.id}
                   onClick={() => setSelected(category.id)}
-                  className={`flex flex-col gap-2 cursor-pointer hover:shadow hover:shadow-black/10  text-black/80 font-bold text-sm sm:text-base p-4 rounded-xl ${selected === category.id ? "bg-white border border-(--color-brand-border) shadow shadow-black/10" : "bg-[#f4efef]"}`}
+                  className={`flex flex-col gap-2 cursor-pointer hover:shadow hover:shadow-black/10  text-black/80 font-bold text-sm sm:text-base p-4 rounded-xl ${selected === category.id ? "bg-white border border-(--color-brand-border) shadow shadow-black/10" : "bg-[#F6F3F2]"}`}
                 >
                   <Icon
                     className="w-9 h-9 "
@@ -93,7 +93,7 @@ export const CategorySelectionScreen = () => {
             })}
           </div>
           <Button
-            className="tracking-widest font-extralight cursor-pointer"
+            className="tracking-widest font-extralight cursor-pointer mt-2.5"
             onClick={() => router.push("/onboarding/username")}
             endIcon={<ArrowRightIcon className="h-4 w-4" />}
           >

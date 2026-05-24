@@ -7,6 +7,7 @@ import Button from '@/src/components/ui/Button';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
+  ShieldIcon,
 } from '@/src/components/ui/Icons';
 import ProgressSteps from '@/src/components/ui/ProgressSteps';
 
@@ -52,22 +53,27 @@ export const ProfileSetupScreen = () => {
               label={"First Name"}
               className={"text-black/79"}
               placeholder={"e.g Julian"}
-              inputClassName={`block bg-[#F6F3F2] py-2.5`}
+              inputClassName={`block bg-[#F6F3F2] py-3`}
             />
             <FormInput
               label={"Last Name"}
               className={"text-black/79 pt-1.5"}
               placeholder={"e.g Thorne"}
-              inputClassName={`block bg-[#F6F3F2] py-2.5`}
+              inputClassName={`block bg-[#F6F3F2] py-3`}
             />
           </div>
-          <div className="flex items-center gap-2 rounded-xl text-gray-600 text-sm bg-[#F6F3F2]  py-3 px-5 mb-3">
+          <div className="flex items-center gap-2 rounded-xl text-gray-500/60 text-sm bg-[#F3F3F3]  p-5 mb-3 border border-[#E2E2E2]">
             {/* icon */}
-            <div className="bg-green-400/30 w-10 h-10 rounded-full"></div>
+            {/* <div className="bg-green-400/30 w-10 h-10 rounded-full"></div> */}
+            <ShieldIcon
+              className="w-15 h-15"
+              rect={"#009b8625"}
+              fill={"#009b87"}
+            />
             {/* description */}
             <div>
-              <p className="font-semibold text-black/70">SECURE IDENTITY</p>
-              <p className="text-xs">
+              <p className="font-semibold text-black/50">SECURE IDENTITY</p>
+              <p className="text-sm">
                 Your legal name is required for regulatory compliance secure
                 banking
               </p>
