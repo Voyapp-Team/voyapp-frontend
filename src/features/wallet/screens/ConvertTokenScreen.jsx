@@ -35,6 +35,8 @@ export const ConvertTokenScreen = () => {
   const [loading, setLoading] = useState(false);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [displayError, setDisplayError] = useState(false);
 
   // Directions: true = USDT to Fiat | false = Fiat to USDT
   const [isTokenToFiat, setIsTokenToFiat] = useState(true);
@@ -106,17 +108,24 @@ export const ConvertTokenScreen = () => {
     // 1. Validate input
     const numericSourceAmount = Number(sourceAmount);
     if (isNaN(numericSourceAmount) || numericSourceAmount <= 0) {
-      alert("Please enter a valid amount greater than zero.");
+      setErrorMsg("Please enter a valid amount greater than zero.");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
+
       return;
     }
     if (isTokenToFiat && numericSourceAmount > tokenBalance) {
-      alert("Insufficient token balance.");
+      setErrorMsg("Insufficient token balance.");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
       return;
     }
     setLoading(true);
-    setModalOpen(false);
+    setModalOpen(true);
     setTimeout(() => {
-      setModalOpen(true);
+      setModalOpen(false);
 
       setLoading(false);
     }, 2000);
@@ -286,6 +295,12 @@ export const ConvertTokenScreen = () => {
               <p className="font-bold text-black/90">0.1% - $0.50</p>
             </div>
           </div>
+          {/* ErrorMsg */}
+          {errorMsg.length > 0 && (
+            <p className="flex gap-2 items-center text-sm text-red-500 font-semibold">
+              <DotIcon fill="#bd0202" /> {errorMsg}
+            </p>
+          )}
           {/* Convert Buttton */}
           <Button
             onClick={handleConvert}
