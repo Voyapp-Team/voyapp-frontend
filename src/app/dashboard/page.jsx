@@ -1,3 +1,5 @@
 import DashboardScreen from "@/src/features/dashboard/screens/DashboardScreen";
 
-export const WalletScreen = DashboardScreen;
+export default function DashboardPage() {
+  return <DashboardScreen />;
+}

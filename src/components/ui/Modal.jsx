@@ -15,18 +15,18 @@ export default function Modal({ children, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#000006c8]"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#000006c8] px-4"
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-lg shadow-lg p-6 max-w-md w-full"
+        className="relative w-full max-w-[500px] rounded-[32px] bg-white px-[59px] pb-[57px] pt-[78px] shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:rounded-[50px]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           aria-label="Close modal"
           onClick={onClose}
-          className="absolute flex items-center justify-center top-4 right-4 w-10 h-10 bg-[#F6F3F2] rounded-full cursor-pointer hover:bg-gray-200 transition"
+          className="absolute right-[33px] top-[25px] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-[#F6F3F2] transition hover:bg-gray-200"
         >
           <CancelIcon className="w-4 h-4" />
         </button>

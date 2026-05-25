@@ -1,107 +1,129 @@
 "use client";
+
 import { useState } from "react";
-import Button from "@/src/components/ui/Button";
-import { LockIcon, ArrowRightIcon, ArrowLeftIcon, AtIcon,FingerprintIcon } from "@/src/components/ui/Icons";
-import {VoyaMark} from "@/src/components/brand/VoyaLogo";
-import inputValidation from "../utils/inputValidation";
-import Modal from "@/src/components/ui/Modal";
-import OtpVerification from "./common/OtpVerification";
-import InputError from "@/src/features/onboarding/components/common/InputError";
 import { useRouter } from "next/navigation";
 
+import { VoyaMark } from "@/src/components/brand/VoyaLogo";
+import Button from "@/src/components/ui/Button";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  AtIcon,
+  FingerprintIcon,
+  LockIcon,
+} from "@/src/components/ui/Icons";
+import Modal from "@/src/components/ui/Modal";
+import InputError from "@/src/features/onboarding/components/common/InputError";
 
+import OtpVerification from "./common/OtpVerification";
+import inputValidation from "../utils/inputValidation";
 
-
-export default function LoginForm(){
+export default function LoginForm() {
   const [accountIdentifier, setAccountIdentifier] = useState("");
   const [inputError, setInputError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
-  
-  const handleSubmit = (e) => {
-    e.preventDefault();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setInputError("");
-    const validationResult = inputValidation({accountIdentifier});
-    if (Object.keys(validationResult).length > 0 ) {
+    const validationResult = inputValidation({ accountIdentifier });
+
+    if (Object.keys(validationResult).length > 0) {
       setInputError(validationResult.accountIdentifier);
       return;
     }
-    setShowModal(true);
 
+    setShowModal(true);
   };
 
   return (
-    <div className="relative min-h-screen flex md:h-full w-full md:max-w-132.5 flex-col md:rounded-[28px] bg-[#F8F8F8] px-8 py-9 ">
+    <div className="relative flex min-h-screen w-full flex-col bg-[#F8F8F8] px-8 py-[26px] sm:min-h-[698px] sm:max-w-[530px] sm:rounded-[50px] sm:px-[74px]">
       <button
         type="button"
         aria-label="Go back"
         onClick={() => router.push("/onboarding/username")}
-        className="absolute left-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/90 text-(--color-brand-primary-deep) shadow-sm backdrop-blur-sm transition hover:bg-white"
+        className="absolute left-8 top-[26px] inline-flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#006B5C] shadow-[0_12px_30px_rgba(0,0,0,0.08)] transition hover:-translate-x-0.5 hover:bg-[#F7FFFD] sm:left-11"
       >
-        <ArrowLeftIcon className="h-4 w-4" />
+        <ArrowLeftIcon className="h-5 w-5" />
       </button>
 
-      <div className="hidden md:flex w-34.75 h-34.75 rounded-[50%] bg-[#ffffff] m-auto  items-center justify-center shadow-[0_1px_4px_3px_rgba(0,0,0,0.03)]">
-          <VoyaMark className="w-24.75 h-[57.95px] m-auto" />
+      <div className="mx-auto mt-[38px] hidden h-[139px] w-[139px] items-center justify-center rounded-full bg-white shadow-[0_1px_4px_3px_rgba(0,0,0,0.03)] sm:flex">
+        <VoyaMark className="h-[58px] w-[99px]" />
       </div>
-      <div className=" mt-20 md:mt-6 flex flex-col  max-w-95.5 m-auto"> 
-      <h1 className=" font-montserrat   text-[#1C1B1B] text-[28px] font-extrabold leading-10 tracking-[-0.9px] md:text-center  mb-2">Welcome back</h1>
-      <p className=" font-montserrat text-[#3C4A46] text-[18px] font-medium leading-7 tracking-normal mb-7">Secure access to your wealth sanctuary.</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label 
-           htmlFor="accountIdentifier"
-           className="font-manrope text-[#006B5C] text-[12px] font-bold leading-4.5 tracking-[1.2px]  mb-1 block"
-           >
-            ACCOUNT IDENTIFIER
-           </label>
-           <div className="relative">
-                <input
-                    type="text"
-                    id="accountIdentifier"
-                    value={accountIdentifier}
-                    onChange={(e) => {  setAccountIdentifier(e.target.value); setInputError("")}}
-                    placeholder="Phone number or Email"
-                    className=" font-manrope block w-full rounded-lg border border-[#E1E1E1] bg-white pl-12 pr-4 py-4.25 text-sm text-[#2C2C2C] outline-none placeholder:text-[#C1C1C1] focus:border-(--color-brand-accent)  "
-                />
-                <AtIcon className="h-5 w-5 absolute left-5 top-[calc(50%-10px)] text-[#6c7a76]" />
-            </div>
-           <InputError message={inputError} />
-        </div>
-       
-        <Button
-          className="mt-10 font-plusJakartaSans cursor-pointer "
-          type="submit"
-          endIcon={<ArrowRightIcon className="h-4 w-4" />}
-        >
-          Continue
-        </Button>
-      </form>
-        <p className="font-manrope mt-6 text-center text-[16px] leading-6 tracking-normal text-[#3C4A46] font-medium">
-            Don't have an account?{" "}
-            <a href="/onboarding" className="font-semibold text-(--color-brand-primary-deep)">
-                Sign up
-            </a>
+
+      <div className="mx-auto mt-24 w-full max-w-[382px] sm:mt-7">
+        <h1 className="font-montserrat text-[28px] font-extrabold leading-10 text-[#1C1B1B] sm:text-center">
+          Welcome back
+        </h1>
+        <p className="mt-2 font-montserrat text-[18px] font-medium leading-7 text-[#3C4A46]">
+          Secure access to your wealth sanctuary.
         </p>
 
-        <div className="mt-14 md:hidden">
-            <p className="font-manrope text-[12px] text-center leading-4 tracking-[1.2px] text-[#6C7A76]">OR SECURE ENTRY WITH</p>
-            <FingerprintIcon className="h-18.5 w-16.75 m-auto mt-7 mb-5" /> 
-            <p className="font-manrope text-[12px] text-center leading-4 tracking-[1.2px] text-[#6C7A76]">TAP HERE</p>
+        <form className="mt-12" onSubmit={handleSubmit}>
+          <label
+            htmlFor="accountIdentifier"
+            className="mb-3 block font-manrope text-[12px] font-bold uppercase leading-4 tracking-[0.1em] text-[#006B5C]"
+          >
+            Account identifier
+          </label>
+          <div className="relative">
+            <input
+              type="text"
+              id="accountIdentifier"
+              value={accountIdentifier}
+              onChange={(event) => {
+                setAccountIdentifier(event.target.value);
+                setInputError("");
+              }}
+              placeholder="Phone number or Email"
+              className="block h-14 w-full rounded-xl border border-[#E1E1E1] bg-white pl-12 pr-4 font-manrope text-sm text-[#2C2C2C] outline-none placeholder:text-[#C1C1C1] focus:border-[var(--color-brand-accent)]"
+            />
+            <AtIcon className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[#6C7A76]" />
+          </div>
+          <InputError message={inputError} />
+
+          <Button
+            className="mt-12 h-[52px] rounded-xl font-plusJakartaSans text-[15px] font-bold"
+            type="submit"
+            endIcon={<ArrowRightIcon className="h-5 w-5" />}
+          >
+            Continue
+          </Button>
+        </form>
+
+        <p className="mt-6 text-center font-manrope text-[16px] font-medium leading-6 text-[#3C4A46]">
+          Don&apos;t have an account?{" "}
+          <a href="/onboarding" className="font-semibold text-[#006B5C]">
+            Sign up
+          </a>
+        </p>
+
+        <div className="mt-14 sm:hidden">
+          <p className="text-center font-manrope text-[12px] uppercase leading-4 tracking-[0.1em] text-[#6C7A76]">
+            Or secure entry with
+          </p>
+          <FingerprintIcon className="mx-auto mb-5 mt-7 h-[74px] w-[67px]" />
+          <p className="text-center font-manrope text-[12px] uppercase leading-4 tracking-[0.1em] text-[#6C7A76]">
+            Tap here
+          </p>
         </div>
 
-        <div className=" font-manrope mt-40 flex items-center justify-center gap-1.5 pt-2 text-[12px] font-medium leading-4 text-[#6C7A76] border-t border-[#E1E1E1]">
-            <LockIcon className="h-3.5 w-3.5" />
-            <span>Secured by Voya Vault Systems</span>
+        <div className="mt-16 flex items-center justify-center gap-1.5 border-t border-[#E1E1E1] pt-5 font-manrope text-[12px] font-medium leading-4 text-[#6C7A76] sm:mt-20">
+          <LockIcon className="h-3.5 w-3.5" />
+          <span>Secured by Voya Vault Systems</span>
         </div>
-        </div>
+      </div>
 
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-             <OtpVerification/>
-          </Modal>
-        )}
+      {showModal ? (
+        <Modal onClose={() => setShowModal(false)}>
+          <OtpVerification
+            className="mx-auto max-w-[382px]"
+            showSecurityFooter={false}
+            buttonLabel="Verify and Continue"
+          />
+        </Modal>
+      ) : null}
     </div>
   );
-};
-
+}
