@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-export default function OtpInput({ length = 6, onChange }) {
+export default function OtpInput({ length = 6, onChange , className}) {
   const [values, setValues] = useState(Array(length).fill(""));
   const inputs = useRef([]);
 
@@ -43,12 +43,11 @@ export default function OtpInput({ length = 6, onChange }) {
           inputMode="numeric"
           maxLength={1}
           value={val}
-          placeholder="•"
           onChange={(e) => handleChange(index, e)}
           onKeyDown={(e) => handleKeyDown(index, e)}
           onPaste={index === 0 ? handlePaste : undefined}
           aria-label={`Digit ${index + 1} of ${length}`}
-          className="h-16 w-full min-w-0 rounded-xl bg-[#f2f2f2] text-center text-base font-bold text-[#1a1a1a] outline-none transition-all duration-150 placeholder:text-[#c8c8c8] focus:bg-white focus:ring-2 focus:ring-[var(--color-brand-accent)] focus:shadow-[0_0_0_4px_rgba(0,194,168,0.12)]"
+          className={` w-full text-center text-base font-bold  outline-none transition-all duration-150 placeholder:text-[#c8c8c8]  focus:ring-2 focus:ring-[var(--color-brand-accent)] focus:shadow-[0_0_0_4px_rgba(0,194,168,0.12)] ${className || "bg-[#f2f2f2] text-[#1a1a1a] h-16 min-w-0 rounded-xl"} `}
         />
       ))}
     </div>

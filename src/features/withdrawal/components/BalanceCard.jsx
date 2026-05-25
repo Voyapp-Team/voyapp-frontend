@@ -5,7 +5,7 @@ import { formattedCurrency } from "../utils/formattedCurrency";
 
 export default function BalanceCard({ balance, onToggleBalanceVisibility, viewBalance }) {
   return (
-    <div className=" relative bg-gradient-to-r from-[#006B5C] to-[#00C2A8] w-full max-w-[584px] rounded-[24px] p-6 mb-4 shadow-[0_20px_25px_-5px_#006B5C33] ">
+    <div className=" relative bg-linear-to-r from-[#006B5C] to-[#00C2A8] w-full max-w-[584px] rounded-[24px] p-6 mb-4 shadow-[0_20px_25px_-5px_#006B5C33] ">
       <h2 className="text-[14px] font-medium font-manrope leadding-5 text-white">Available to withdraw</h2>
        <div>
             <div className="flex gap-10 max-w-[324px] md:justify-between items-start">

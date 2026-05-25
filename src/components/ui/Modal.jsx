@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { CancelIcon } from "./Icons";
 
-export default function Modal({ children, onClose }) {
+export default function Modal({ children, onClose, className, overlayClassName, buttonClassName }) {
 
   useEffect(() => {
     document.body.classList.add("overflow-hidden");
@@ -15,18 +15,18 @@ export default function Modal({ children, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#0000067c]"
+      className={`fixed inset-0 z-50 flex items-center justify-center  ${overlayClassName || "bg-[#0000067c]"} `}
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-lg shadow-lg p-6 max-w-md w-full"
+        className={`relative rounded-[50px] shadow-lg p-6 max-w-md w-full ${className || "bg-[#FFFFFF]"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
           type="button"
           aria-label="Close modal"
           onClick={onClose}
-          className="absolute flex items-center justify-center top-4 right-4 w-10 h-10 bg-[#F6F3F2] rounded-full cursor-pointer hover:bg-gray-200 transition"
+          className={`absolute flex items-center justify-center top-4 right-4 w-10 h-10 rounded-full cursor-pointer hover:bg-gray-200 transition ${buttonClassName || "bg-[#F6F3F2]"} `}
         >
           <CancelIcon className="w-4 h-4" />
         </button>

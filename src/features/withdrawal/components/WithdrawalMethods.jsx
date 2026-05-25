@@ -1,11 +1,14 @@
 "use client";
+import { formattedCurrency } from "../utils/formattedCurrency";
+import { useRouter } from "next/navigation";
 
 export default function WithdrawalMethods() {
+    const router = useRouter();
     const localMethods = [  
         {
             name: "Nigerian Bank",
             icon:"withdrawal/bank-icon.svg",
-            arivalTime: "Arrival: ~ 1min"
+            arivalTime: "Arrival: Instant"
         },
         {
             name: "M-Pesa",
@@ -18,24 +21,24 @@ export default function WithdrawalMethods() {
         {
             name: "USDC",
             icon:"withdrawal/usdc-icon.svg",
-            desc: "Solana/Polygon"
+            balance: 800
         },
         {
             name: "ETH",
             icon:"withdrawal/eth-icon.svg",
-            desc: "Ethereum Mainnet"
+            balance: 1200
         },
         ,
         {
             name: "USDT",
             icon:"withdrawal/usdt-icon.svg",
-            desc: "Solana/TRC-20"
+            balance: 500
         },
         ,
         {
             name: "BTC",
             icon:"withdrawal/btc-icon.svg",
-            desc: "Native SegWit"
+            balance: 30000
         },
     ];
   return (
@@ -43,7 +46,9 @@ export default function WithdrawalMethods() {
       <div className="w-full mt-6"> 
             <h2 className="text-[20px] leading-[28px] font-bold font-plusJakartaSans text-[#1C1B1B] mb-6">Cash Out to Local Money</h2>
            {localMethods.map((method) => (
-                <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer">
+                <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer"
+                onClick={() => router.push(`/withdrawal/bank`)}
+                >
                     <div className="flex items-center gap-4">
                         <div className="p-[16px] bg-[#F4F4F5] rounded-[16px] ">
                             <img src={method.icon} alt={method.name} className="" />
@@ -62,12 +67,14 @@ export default function WithdrawalMethods() {
       <div className="w-full mt-6"> 
             <h2 className="text-[20px] leading-[28px] font-bold font-plusJakartaSans text-[#1C1B1B] mb-6">Send to Crypto Wallet</h2>
            {cryptoMethods.map((method) => (
-                <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer">
+                <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer"
+                 onClick={() => router.push(`/withdrawal/${method.name.toLowerCase()}`)}
+                >
                     <div className="flex items-center gap-4">
                         <img src={method.icon} alt={method.name} className="" />
                         <div>
                             <h3 className="text-[16px] leading-[24px] font-bold font-manrope text-[#1C1B1B]">{method.name}</h3>
-                            <p className="text-[12px] leading-[16px]  font-normal font-manrope text-[#3C4A46]">{method.desc}</p>
+                            <p className="text-[12px] leading-[16px]  font-normal font-manrope text-[#3C4A46]">{formattedCurrency(method.balance, "en-US", "USD")}</p>
                         </div>
                         
                     </div>
