@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function OnboardingHeroPanel({ className = "" }) {
   return (
     <div
-      className={`relative min-h-[22rem] overflow-hidden rounded-[2rem] bg-[var(--color-surface-muted)] ${className}`.trim()}
+      className={`relative min-h-[22rem] overflow-hidden rounded-[2rem] bg-white ${className}`.trim()}
     >
       <Image
         src="/onboarding/signupSideIllustration.svg"

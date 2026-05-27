@@ -60,9 +60,7 @@ export const CategorySelectionScreen = () => {
               type="button"
               onClick={() => setSelected(category.id)}
               className={`flex min-h-[132px] flex-col items-start gap-5 rounded-2xl p-5 text-left font-manrope text-sm font-bold text-[#363434] transition hover:-translate-y-0.5 ${
-                isSelected
-                  ? "border-2 border-[#00C2A8]/40 bg-white shadow-[0_14px_30px_rgba(0,194,168,0.12)]"
-                  : "border-2 border-transparent bg-[#F6F3F2]"
+                isSelected ? "border-2 border-[#00C2A8]/40 bg-white" : "border-2 border-transparent bg-white"
               }`.trim()}
               aria-pressed={isSelected}
             >

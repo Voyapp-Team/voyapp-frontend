@@ -33,7 +33,7 @@ export default function OnboardingSplitShell({
     <button
       type="button"
       onClick={handleBack}
-      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#006B5C] shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition hover:-translate-x-0.5 hover:bg-[#F7FFFD]"
+      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#006B5C] transition hover:-translate-x-0.5 hover:bg-[#F7FFFD]"
       aria-label="Go back"
     >
       <ArrowLeftIcon className="h-5 w-5" />
@@ -43,12 +43,12 @@ export default function OnboardingSplitShell({
   return (
     <main className="flex min-h-screen items-center justify-center bg-white px-4 py-6 sm:px-6 lg:px-8">
       <section
-        className={`relative flex min-h-[calc(100vh-3rem)] w-full max-w-[958px] overflow-hidden rounded-[28px] border border-[#E1E1E1] bg-white shadow-[0_24px_80px_rgba(22,39,35,0.08)] lg:min-h-[685px] lg:rounded-[50px] ${shellClassName}`.trim()}
+        className={`relative flex min-h-[calc(100vh-3rem)] w-full max-w-[958px] overflow-hidden rounded-[28px] border border-[#E1E1E1] bg-white lg:min-h-[685px] lg:rounded-[50px] ${shellClassName}`.trim()}
       >
         <div className="absolute left-5 top-5 z-20 lg:hidden">{backButton}</div>
 
         <aside
-          className={`relative hidden w-[47.75%] shrink-0 overflow-hidden bg-[#D8EDE8] lg:block ${imageClassName}`.trim()}
+          className={`relative hidden w-[47.75%] shrink-0 overflow-hidden bg-white lg:block ${imageClassName}`.trim()}
         >
           <Image
             src={imgSrc}

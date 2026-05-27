@@ -1,45 +1,40 @@
 import Link from "next/link";
 
-import DashboardCard from "./DashboardCard";
-
 export default function QuickActions({ actions }) {
   return (
-    <DashboardCard className="p-5">
-      <div className="flex items-center justify-between gap-3">
-        <div>
-          <h2 className="text-lg font-extrabold text-[#1c1b1b]">
-            Quick actions
-          </h2>
-          <p className="mt-1 text-sm font-medium text-[#6c7a76]">
-            Move money without digging through menus.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        {actions.map((action) => {
-          const Icon = action.icon;
-          return (
-            <Link
-              key={action.label}
-              href={action.href}
-              className="group flex min-h-24 items-center gap-4 rounded-2xl border border-[#bbcac4]/20 bg-[#f8f8f8] p-4 transition hover:border-[var(--color-brand-border)] hover:bg-white"
+    <section
+      className="mx-auto grid w-full grid-cols-3 gap-x-[9px] gap-y-[25px] sm:max-w-[754px] sm:gap-x-4 sm:gap-y-[25px]"
+      id="crew"
+    >
+      {actions.map((action) => {
+        const Icon = action.icon;
+        return (
+          <Link
+            key={action.label}
+            href={action.href}
+            className={`group flex items-center rounded-[30px] border border-[#006b5c] bg-[#f8f8f8] px-3 transition hover:bg-white sm:px-6 ${
+              action.featured
+                ? "col-span-3 mx-auto min-h-[81px] w-[311px] sm:min-h-[104px] sm:w-full"
+                : "min-h-[76px] sm:min-h-[104px]"
+            }`}
+          >
+            <div
+              className={`flex items-center ${
+                action.featured
+                  ? "ml-[39px] gap-5 sm:ml-[31px] sm:gap-6"
+                  : "mx-auto flex-col gap-2"
+              }`}
             >
-              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#65fade]/20 text-[var(--color-brand-primary-deep)]">
-                <Icon className="h-5 w-5" />
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#f6f3f2] text-[#006b5c] group-hover:bg-[#e6f8f4] sm:h-14 sm:w-14">
+                <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
               </span>
-              <span className="min-w-0">
-                <span className="block text-sm font-extrabold text-[#1c1b1b]">
-                  {action.label}
-                </span>
-                <span className="mt-1 block text-sm font-medium text-[#6c7a76]">
-                  {action.description}
-                </span>
+              <span className="text-center text-[11px] font-extrabold uppercase leading-tight text-[#006b5c] sm:text-base">
+                {action.label}
               </span>
-            </Link>
-          );
-        })}
-      </div>
-    </DashboardCard>
+            </div>
+          </Link>
+        );
+      })}
+    </section>
   );
 }
