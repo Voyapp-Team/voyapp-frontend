@@ -7,12 +7,12 @@ export default function WithdrawalMethods() {
     const localMethods = [  
         {
             name: "Nigerian Bank",
-            icon:"withdrawal/bank-icon.svg",
+            icon:"/withdrawal/bank-icon.svg",
             arivalTime: "Arrival: Instant"
         },
         {
             name: "M-Pesa",
-            icon:"withdrawal/pesa-icon.svg",
+            icon:"/withdrawal/pesa-icon.svg",
             arivalTime: "Arrival: Instant"
         },
     ];
@@ -20,24 +20,24 @@ export default function WithdrawalMethods() {
     const cryptoMethods = [  
         {
             name: "USDC",
-            icon:"withdrawal/usdc-icon.svg",
+            icon:"/withdrawal/usdc-icon.svg",
             balance: 800
         },
         {
             name: "ETH",
-            icon:"withdrawal/eth-icon.svg",
+            icon:"/withdrawal/eth-icon.svg",
             balance: 1200
         },
         ,
         {
             name: "USDT",
-            icon:"withdrawal/usdt-icon.svg",
+            icon:"/withdrawal/usdt-icon.svg",
             balance: 500
         },
         ,
         {
             name: "BTC",
-            icon:"withdrawal/btc-icon.svg",
+            icon:"/withdrawal/btc-icon.svg",
             balance: 30000
         },
     ];
@@ -47,7 +47,7 @@ export default function WithdrawalMethods() {
             <h2 className="text-[20px] leading-[28px] font-bold font-plusJakartaSans text-[#1C1B1B] mb-6">Cash Out to Local Money</h2>
            {localMethods.map((method) => (
                 <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer"
-                onClick={() => router.push(`/withdrawal/bank`)}
+                onClick={() => router.push(`/dashboard/withdrawal/bank`)}
                 >
                     <div className="flex items-center gap-4">
                         <div className="p-[16px] bg-[#F4F4F5] rounded-[16px] ">
@@ -68,7 +68,7 @@ export default function WithdrawalMethods() {
             <h2 className="text-[20px] leading-[28px] font-bold font-plusJakartaSans text-[#1C1B1B] mb-6">Send to Crypto Wallet</h2>
            {cryptoMethods.map((method) => (
                 <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer"
-                 onClick={() => router.push(`/withdrawal/${method.name.toLowerCase()}`)}
+                 onClick={() => router.push(`/dashboard/withdrawal/${method.name.toLowerCase()}`)}
                 >
                     <div className="flex items-center gap-4">
                         <img src={method.icon} alt={method.name} className="" />

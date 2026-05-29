@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function DashboardSidebar({ items }) {
+export default function Sidebar({ items }) {
   return (
     <aside className="hidden w-[133px] shrink-0 lg:mt-[66px] lg:block">
       <nav className="ml-[43px] flex h-[342px] w-[50px] flex-col items-center justify-center gap-[25px] rounded-[25px] border border-[#e1e1e1] bg-white/40">

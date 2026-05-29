@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Button from "@/src/components/ui/Button";
 import { ArrowRightIcon, ClockIcon, LockIcon } from "@/src/components/ui/Icons";
 
-import OtpInput from "./OtpInput";
+import OtpInput from "../../../../components/ui/OtpInput";
 
 const RESEND_SECONDS = 24;
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { formattedCurrency } from "../../utils/formattedCurrency";
-import InputError from "@/src/features/onboarding/components/common/InputError";
+import InputError from "@/src/components/ui/InputError";
 
 export default function WithdrawalAmountInput({isCryto, cryptoBalance, crytoType, amount, setAmount, inputError}) {
    

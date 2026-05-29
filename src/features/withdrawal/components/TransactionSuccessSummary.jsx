@@ -29,7 +29,9 @@ export default function TransactionSuccessSummary({dateTime}) {
                 </div>
         
             </div> 
-            <Button>
+            <Button
+              onClick={() => window.location.href = "/dashboard"}
+            >
                 Back to Dashboard
             </Button>
             <div className="mt-4 rounded-xl p-[1px] bg-gradient-to-r from-[#006B5C] to-[#00C2A8] w-full max-w-[440px]">

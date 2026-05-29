@@ -13,7 +13,7 @@ function HeaderButton({ children, label }) {
   );
 }
 
-export default function DashboardTopBar() {
+export default function TopBar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#8e8e8e]/20 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-[78px] w-full max-w-[1280px] items-center justify-between px-[21px] lg:px-[29px]">

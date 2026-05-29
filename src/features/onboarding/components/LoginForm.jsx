@@ -13,7 +13,7 @@ import {
   LockIcon,
 } from "@/src/components/ui/Icons";
 import Modal from "@/src/components/ui/Modal";
-import InputError from "@/src/features/onboarding/components/common/InputError";
+import InputError from "@/src/components/ui/InputError";
 
 import OtpVerification from "./common/OtpVerification";
 import inputValidation from "../utils/inputValidation";

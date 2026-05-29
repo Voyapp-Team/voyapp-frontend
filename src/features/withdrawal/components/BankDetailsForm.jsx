@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/src/components/ui/Button";
 import withdrawalInputValidation from "../utils/withdrawalInputValidation";
-import InputError from "../../onboarding/components/common/InputError";
+import InputError from "../../../components/ui/InputError";
 import { ArrowRightIcon  } from "@/src/components/ui/Icons";
 
 import { useState } from "react"
@@ -51,7 +51,7 @@ export default function BankDetailsForm() {
             setInputError(prev => ({ ...prev, accountNumInputError: accountError.accountNumError, bankNameInputError: accountError.bankNameError }));
             return;
         }
-        router.push("/withdrawal/bank/amount");
+        router.push("/dashboard/withdrawal/bank/amount");
        
     };
 

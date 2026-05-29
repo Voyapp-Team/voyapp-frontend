@@ -28,7 +28,7 @@ export default function BankTransferDetailsScreen() {
             }
             const timer=  setTimeout(() => {
                 setIsModalOpen(false);
-                router.push("/withdrawal/success");
+                router.push("/success");
             }, 2000);
 
             return () => clearTimeout(timer);

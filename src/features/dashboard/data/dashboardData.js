@@ -27,8 +27,8 @@ export const balances = [
     detail: "≈  ₦1,914,772",
     tone: "primary",
     actions: [
-      { label: "Withdraw", href: "/wallet/wallet", variant: "solid" },
-      { label: "Add Money", href: "/wallet/wallet", variant: "ghost" },
+      { label: "Withdraw", href: "/dashboard/withdrawal", variant: "solid" },
+      { label: "Add Money", href: "/dashbord/wallet", variant: "ghost" },
     ],
   },
 ];

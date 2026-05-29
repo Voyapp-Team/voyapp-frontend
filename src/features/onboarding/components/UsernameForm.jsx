@@ -3,7 +3,7 @@
 import Button from "@/src/components/ui/Button";
 import { CheckedCircleIcon } from "@/src/components/ui/Icons";
 
-import InputError from "./common/InputError";
+import InputError from "../../../components/ui/InputError";
 
 export default function UsernameForm({
   username,

@@ -1,6 +1,6 @@
 "use client";
-import OtpInput from "@/src/features/onboarding/components/common/OtpInput";
-import InputError from "@/src/features/onboarding/components/common/InputError";
+import OtpInput from "@/src/components/ui/OtpInput";
+import InputError from "@/src/components/ui/InputError";
 
 export default function TransactionOtpVerification({setOtp, inputError}) {
     return (
