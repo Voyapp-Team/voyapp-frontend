@@ -68,7 +68,7 @@ const OtpVerification = ({
 
       <Button
         className="mt-12 h-[52px] rounded-xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={() => router.push("/onboarding/profileSetUp")}
+        onClick={() => router.push("/dashboard")}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
         disabled={otp.length > 0 && otp.length < 6}
       >
