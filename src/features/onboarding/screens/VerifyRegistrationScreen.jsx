@@ -2,8 +2,10 @@
 
 import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
 import OtpVerification from "../components/common/OtpVerification";
+import { useRouter } from "next/navigation";
 
 export default function VerifyRegistrationScreen() {
+  const router = useRouter();
   return (
     <OnboardingSplitShell
       imgSrc="/onboarding/verifySideIllustration.svg"
@@ -15,7 +17,9 @@ export default function VerifyRegistrationScreen() {
       contentClassName="mt-14 max-w-[382px]"
       backHref="/onboarding/contact"
     >
-      <OtpVerification />
+      <OtpVerification 
+       handleClick={() => router.push("/onboarding/profileSetUp")}
+      />
     </OnboardingSplitShell>
   );
 }

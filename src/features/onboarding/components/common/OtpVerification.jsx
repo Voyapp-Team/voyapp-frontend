@@ -15,6 +15,7 @@ const OtpVerification = ({
   className = "",
   showSecurityFooter = true,
   buttonLabel = "Verify and Continue",
+  handleClick,
 }) => {
   const router = useRouter();
   const [otp, setOtp] = useState("");
@@ -68,7 +69,7 @@ const OtpVerification = ({
 
       <Button
         className="mt-12 h-[52px] rounded-xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={() => router.push("/dashboard")}
+        onClick={handleClick}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
         disabled={otp.length > 0 && otp.length < 6}
       >
