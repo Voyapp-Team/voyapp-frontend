@@ -219,6 +219,7 @@ export const WalletScreen = () => {
                   <button
                     type="button"
                     className="cursor-pointer text-(--color-brand-primary) text-xs font-medium tracking-tighter shadow-(--color-brand-primary)"
+                    onClick={() => router.push(`/dashboard/wallet/convertToken`  )}
                   >
                     CONVERT
                   </button>
