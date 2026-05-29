@@ -1,95 +1,75 @@
 "use client";
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import Button from '@/src/components/ui/Button';
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-} from '@/src/components/ui/Icons';
-import ProgressSteps from '@/src/components/ui/ProgressSteps';
+import Button from "@/src/components/ui/Button";
+import { ArrowRightIcon, ShieldIcon } from "@/src/components/ui/Icons";
 
-import { FormInput } from '../components/common/FormInput';
+import { FormInput } from "../components/common/FormInput";
+import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
 
 export const ProfileSetupScreen = () => {
   const router = useRouter();
+
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#f5f5f7] p-4 sm:p-8">
-      <div className="relative flex w-full max-w-240 overflow-hidden rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.10)]">
-        {/* left image */}
-        <div className="relative hidden lg:block lg:w-[55%]">
-          <button
-            type="button"
-            aria-label="Go back"
-            onClick={() => router.back()}
-            className="absolute left-5 top-5 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/90 text-(--color-brand-primary-deep) shadow-sm backdrop-blur-sm transition hover:bg-white"
-          >
-            <ArrowLeftIcon className="h-4 w-4" />
-          </button>
-          <Image
-            src="/onboarding/profileSetupIllustration.svg"
-            alt="Happy user customizing their profile on a phone"
-            fill
-            unoptimized
-            priority
-            className="object-cover object-center"
-          />
-        </div>
-        {/* right profile form */}
-        <div className="flex flex-col w-full px-8 py-9 lg:w-[45%] gap-y-4  h-screen">
-          <ProgressSteps currentStep={2} totalSteps={5} />
-          <div className="flex flex-col gap-y-1 mt-3 mb-4">
-            <h1 className="font-bold text-2xl tracking-tight md:text-3xl text-[#1a1a1a]">
-              What &apos;s your name?
-            </h1>
-            <p className="text-base text-gray-600 whitesapce-wrap sm:w-[70%]">
-              We use this to personalize your experience.
-            </p>
-          </div>
-          <div className="flex flex-col gap-y-4">
-            <FormInput
-              label={"First Name"}
-              className={"text-black/79"}
-              placeholder={"e.g Julian"}
-              inputClassName={`block bg-[#F6F3F2] py-2.5`}
-            />
-            <FormInput
-              label={"Last Name"}
-              className={"text-black/79 pt-1.5"}
-              placeholder={"e.g Thorne"}
-              inputClassName={`block bg-[#F6F3F2] py-2.5`}
-            />
-          </div>
-          <div className="flex items-center gap-2 rounded-xl text-gray-600 text-sm bg-[#F6F3F2]  py-3 px-5 mb-3">
-            {/* icon */}
-            <div className="bg-green-400/30 w-10 h-10 rounded-full"></div>
-            {/* description */}
-            <div>
-              <p className="font-semibold text-black/70">SECURE IDENTITY</p>
-              <p className="text-xs">
-                Your legal name is required for regulatory compliance secure
-                banking
-              </p>
-            </div>
-          </div>
-          <Button
-            className="tracking-widest font-extralight cursor-pointer"
-            onClick={() => router.push("/onboarding/category")}
-            endIcon={<ArrowRightIcon className="h-4 w-4" />}
-          >
-            Continue
-          </Button>
-          <div className="flex text-center text-gray-500 px-9 sm:px-6 text-sm">
-            <p>
-              By Continuing, you agree to our{" "}
-              <span className="text-(--color-brand-primary-deep) font-bold">
-                Identity Verification Policy
-              </span>
-            </p>
-          </div>
+    <OnboardingSplitShell
+      imgSrc="/onboarding/profileSetupIllustration.svg"
+      imgAlt="Happy user customizing their profile on a phone"
+      currentStep={2}
+      totalSteps={5}
+      shellClassName="lg:min-h-[797px]"
+      progressClassName="lg:mt-[54px]"
+      contentClassName="mt-14 max-w-[382px]"
+      backHref="/onboarding/verify"
+    >
+      <div>
+        <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
+          What&apos;s your name?
+        </h1>
+        <p className="mt-4 font-manrope text-[15px] leading-6 text-[#3C4A46]">
+          We use this to personalize your experience.
+        </p>
+      </div>
+
+      <div className="mt-12 space-y-8">
+        <FormInput
+          label="First Name"
+          placeholder="e.g Julian"
+          labelClassName="font-plusJakartaSans text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
+          inputClassName="h-14 bg-[#F6F3F2] px-5 font-manrope text-[15px]"
+        />
+        <FormInput
+          label="Last Name"
+          placeholder="e.g Thorne"
+          labelClassName="font-plusJakartaSans text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
+          inputClassName="h-14 bg-[#F6F3F2] px-5 font-manrope text-[15px]"
+        />
+      </div>
+
+      <div className="mt-10 flex min-h-[125px] items-center gap-4 rounded-[24px] border border-[#E2E2E2] bg-[#F3F3F3]/50 p-6">
+        <ShieldIcon className="h-12 w-12 shrink-0" rect="#00C2A833" fill="#009B87" />
+        <div>
+          <p className="font-manrope text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#3C4A46]/70">
+            Secure identity
+          </p>
+          <p className="mt-1 font-manrope text-sm leading-5 text-[#3C4A46]/70">
+            Your legal name is required for regulatory compliance secure banking.
+          </p>
         </div>
       </div>
-    </main>
+
+      <Button
+        className="mt-6 h-14 rounded-2xl font-plusJakartaSans text-[15px] font-bold"
+        onClick={() => router.push("/onboarding/category")}
+        endIcon={<ArrowRightIcon className="h-5 w-5" />}
+      >
+        Continue
+      </Button>
+
+      <p className="mx-auto mt-6 max-w-[320px] text-center font-manrope text-sm leading-6 text-[#6F7A76]">
+        By continuing, you agree to our{" "}
+        <span className="font-bold text-[#006B5C]">Identity Verification Policy</span>
+      </p>
+    </OnboardingSplitShell>
   );
 };

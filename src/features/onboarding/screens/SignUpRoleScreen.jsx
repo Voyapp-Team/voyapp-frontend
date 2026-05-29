@@ -15,12 +15,12 @@ export default function SignUpRoleScreen() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-white px-6 py-10">
-      <section className="relative w-full max-w-[22rem] rounded-[2rem] border border-black/5 bg-[var(--color-surface-muted)] px-5 pb-10 pt-6 shadow-[0_8px_30px_rgba(31,41,55,0.08)] sm:px-10">
+      <section className="relative w-full max-w-[22rem] rounded-[2rem] border border-black/5 bg-white px-5 pb-10 pt-6 sm:px-10">
         <button
           type="button"
           aria-label="Go back"
           onClick={() => router.back()}
-          className="absolute left-5 top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-white text-[var(--color-brand-primary-deep)] shadow-sm transition hover:bg-[var(--color-brand-soft)]"
+          className="absolute left-5 top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-white text-[var(--color-brand-primary-deep)] transition hover:bg-[var(--color-brand-soft)]"
         >
           <ArrowLeftIcon className="h-4 w-4" />
         </button>

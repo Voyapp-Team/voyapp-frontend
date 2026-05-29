@@ -1,106 +1,118 @@
-"use client"    
+"use client";
 
 import Button from "@/src/components/ui/Button";
+import { CheckedCircleIcon } from "@/src/components/ui/Icons";
+
 import InputError from "./common/InputError";
 
-export default function UsernameForm({ username, setUsername, conditions, usernameRequirement, usernameSuggestions, onSubmit, usernameError,setUsernameError }) {
+export default function UsernameForm({
+  username,
+  setUsername,
+  conditions,
+  usernameRequirement,
+  usernameSuggestions,
+  onSubmit,
+  usernameError,
+  setUsernameError,
+}) {
+  return (
+    <form className="w-full" onSubmit={onSubmit}>
+      <div>
+        <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
+          Choose your <span className="block text-[#006B5C]">username</span>
+        </h1>
+        <p className="mt-4 max-w-[310px] font-manrope text-[15px] leading-6 text-[#3C4A46]">
+          This is how your friends and networks will find you on Voya.
+        </p>
+      </div>
 
-    return (
-        <form className="w-full max-w-104.75 mx-auto mt-10" onSubmit={onSubmit}>
-            
-            <h1 className="  text-[28px] font-monteserrat font-extrabold text-[#1C1B1B] mb-2 leading-[100%]">
-                Choose your <span className="text-[#006B5C] block">username</span>
-            </h1>
-            <div 
-               className="
-                absolute
-                left-0
-                top-20
-                h-50
-                w-37.5
-                rounded-full
-                bg-linear-to-r
-                from-[#65fadf7d]
-                via-[#65fadf38]
-                to-transparent
-                blur-3xl"
-            ></div>
-            <p className="w-76.5 text-[16px] font-m0nteserrat font-medium leading-6 text-[#3C4A46] mb-4">
-              This is how your friends and networks will find you on Voya.
-            </p>
-            <div className="mt-14">
-                <label htmlFor="username" className="mb-2 block text-[12px] font-bold font-manrope leading-4 tracking-[1.2px] text-[#3C4A46]">
-                    YOUR UNIQUE HANDLE
-                </label>
-                <div className=" relative mb-1 flex items-center">
-                    <input
-                        type="text"
-                        placeholder="alex_voya"
-                        value={username}
-                        onChange={(e) => {setUsername(e.target.value); setUsernameError("")}}
-                        className="font-manrope text-[18px] font-bold block w-full rounded-2xl border border-[#E1E1E1] bg-white pl-26 pr-4 py-4 text-sm text-[#2C2C2C] outline-none placeholder:text-[#DCD9D9] placeholder:font-manrope focus:border-(--color-brand-accent)"
-                    />
-                    <p className="absolute left-5 text-[#006B5C] font-bold text-[18px] font-manrope leading-7 ">voya.me/</p>
-                    {username && (
-                        <span className="absolute inline-flex justify-center items-center p-2 right-4 text-[10px] font-manrope font-semibold h-4 w-4 border-2 rounded-full" style={{color: conditions.characterCount && !usernameError ? "#006B5C" : "#BA1A1A", borderColor: conditions.characterCount && !usernameError ? "#006B5C" : "#BA1A1A"}}>
-                            {conditions.characterCount && !usernameError? "✓" : "✗"}  
-                        </span>
-                    )}
-                </div>     
-            </div>
-            <InputError message={usernameError} />
-            <div className="mt-10 mb-6">
-                <p className="font-manrope text-[13px] font-semibold leading-[19.5px] text-[#3C4A46B2] "> 
-                    SUGGESTED FOR YOU
-                </p>
-                <div className="">
-                {usernameSuggestions.map((suggestion, index) => (
-                    
-                        <div key={index} className="mt-2 w-full max-w-70.75 flex items-center justify-between rounded-lg border border-[#BBCAC41A] p-4 cursor-pointer" onClick={() => {setUsername(suggestion); setUsernameError("")}}>
-                            <p className="text-[14px] font-manrope font-medium text-[#2C2C2C]">
-                                {suggestion}
-                            </p>
-                            <button 
-                             type="button"
-                             variant="outline" 
-                             size="xs"
-                             className="h-3.5 w-3.5 flex items-center  text-[#41DDC2] justify-center">
-                                +
-                            </button>
-                        </div>
-
-                    
-
-                ))}
-                </div>
-            </div>
-
-            <div className="mt-4 mb-6 flex flex-wrap gap-2">
-                {usernameRequirement.map((req, index) => (
-                    <div key={index} className="mt-2 flex flex-wrap gap-2">
-                        <span className="inline-flex h-4 w-4 border border-[#3C4A4699] rounded-full  items-center  justify-center  p-2  pt-2.5 text-[10px] font-semibold text-[#6b6b6b] font-manrope    "
-                        style={{color: conditions[Object.keys(conditions)[index]] ? "#ffffff" : "", borderColor: conditions[Object.keys(conditions)[index]] ? "#006B5C" : "", backgroundColor: conditions[Object.keys(conditions)[index]] ? "#006B5C" : ""}}>
-                           {conditions[Object.keys(conditions)[index]] ? "✓" : ""}
-                        </span>
-                        <p className="text-[11px] font-manrope font-bold leading-[16.5px] tracking-[0.55px] text-[#3C4A4699]">
-                            {req}
-                        </p>
-                    </div>
-                ))}
-            </div>
-
-            <Button 
-              className="mt-6" 
-              disabled={!conditions.characterCount}
-              type="submit"
+      <div className="mt-14">
+        <label
+          htmlFor="username"
+          className="mb-3 block font-manrope text-[12px] font-bold uppercase leading-4 tracking-[0.1em] text-[#3C4A46]"
+        >
+          Your unique handle
+        </label>
+        <div className="relative mb-1 flex items-center">
+          <span className="pointer-events-none absolute left-5 font-manrope text-[18px] font-bold leading-7 text-[#006B5C]">
+            voya.me/
+          </span>
+          <input
+            type="text"
+            id="username"
+            placeholder="alex_voya"
+            value={username}
+            onChange={(event) => {
+              setUsername(event.target.value);
+              setUsernameError("");
+            }}
+            className="block h-16 w-full rounded-2xl border border-[#E1E1E1] bg-white pl-[104px] pr-12 font-manrope text-[18px] font-bold text-[#2C2C2C] outline-none placeholder:text-[#DCD9D9] focus:border-[var(--color-brand-accent)]"
+          />
+          {username ? (
+            <span
+              className={`absolute right-4 flex h-5 w-5 items-center justify-center rounded-full border-2 text-[10px] font-bold ${
+                conditions.characterCount && !usernameError
+                  ? "border-[#006B5C] bg-[#006B5C] text-white"
+                  : "border-[#BA1A1A] text-[#BA1A1A]"
+              }`.trim()}
             >
-                Done
-            </Button>
+              {conditions.characterCount && !usernameError ? "" : "!"}
+            </span>
+          ) : null}
+        </div>
+        <InputError message={usernameError} />
+      </div>
 
-            <p className="mt-10 font-manrope font-medium text-center leading-4  text-[12px] text-[#3C4A4666]">
-                   You can change this once every 30 days.       
-            </p>
+      <div className="mt-10">
+        <p className="font-manrope text-[13px] font-semibold uppercase leading-5 text-[#3C4A46]/70">
+          Suggested for you
+        </p>
+        <div className="mt-2 space-y-2">
+          {usernameSuggestions.map((suggestion) => (
+            <button
+              key={suggestion}
+              type="button"
+              className="flex h-[58px] w-full max-w-[284px] items-center justify-between rounded-xl border border-[#BBCAC4]/10 bg-white/50 px-4 font-manrope text-sm font-medium text-[#2C2C2C] transition hover:border-[#00C2A8]/30"
+              onClick={() => {
+                setUsername(suggestion);
+                setUsernameError("");
+              }}
+            >
+              <span>{suggestion}</span>
+              <span className="flex h-4 w-4 items-center justify-center text-lg leading-none text-[#41DDC2]">
+                +
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
 
-        </form>
-    );
-}   
+      <div className="mt-9 flex flex-wrap gap-x-4 gap-y-3">
+        {usernameRequirement.map((req, index) => {
+          const isMet = conditions[Object.keys(conditions)[index]];
+
+          return (
+            <div key={req} className="flex items-center gap-2">
+              {isMet ? (
+                <CheckedCircleIcon className="h-4 w-4" />
+              ) : (
+                <span className="h-4 w-4 rounded-full border border-[#3C4A46]/60" />
+              )}
+              <p className="font-manrope text-[11px] font-bold uppercase leading-4 tracking-[0.05em] text-[#3C4A46]/60">
+                {req}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      <Button className="mt-10 h-[52px] rounded-2xl font-plusJakartaSans text-[15px] font-bold" disabled={!conditions.characterCount} type="submit">
+        Done
+      </Button>
+
+      <p className="mt-10 text-center font-manrope text-[12px] font-medium leading-4 text-[#3C4A46]/40">
+        You can change this once every 30 days.
+      </p>
+    </form>
+  );
+}
