@@ -131,23 +131,7 @@ export const ConvertTokenScreen = () => {
     }, 2000);
   };
   return (
-    <main className="flex flex-col min-h-screen w-full bg-[#f5f5f7] items-center">
-      {/* Header */}
-      <div className="flex justify-between items-center p-3 w-full bg-[#ffff] border-b">
-        <div className="flex items-center gap-3 whitespace-nowrap">
-          <button onClick={() => router.back()}>
-            <ArrowLeftIcon className="w-5 h-5 text-black/90" />
-          </button>
-          <p className="text-(--color-brand-primary-deep) font-bold">
-            Convert Tokens
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <NotificationIcon className="w-5 h-5 text-black/90" />
-          <SettingIcon className="w-5 h-5 text-black/70" />
-        </div>
-      </div>
-
+    <div className="flex flex-col min-h-screen w-full bg-[#f5f5f7] items-center">
       {/* Main Content Card container */}
       <div className="w-full max-w-xl p-4 space-y-4">
         <div className="flex flex-col rounded-2xl bg-[#FFFF] border p-4 shadow-sm relative gap-3">
@@ -345,6 +329,6 @@ export const ConvertTokenScreen = () => {
           </div>
         </Modal>
       )}
-    </main>
+    </div>
   );
 };
