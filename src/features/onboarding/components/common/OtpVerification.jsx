@@ -1,31 +1,29 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from 'react';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { useRouter } from 'next/navigation';
+import Button from "@/src/components/ui/Button";
+import { ArrowRightIcon, ClockIcon, LockIcon } from "@/src/components/ui/Icons";
 
-import Button from '@/src/components/ui/Button';
-import {
-  ArrowRightIcon,
-  ClockIcon,
-  LockIcon,
-} from '@/src/components/ui/Icons';
-
-import OtpInput from './OtpInput';
+import OtpInput from "../../../../components/ui/OtpInput";
 
 const RESEND_SECONDS = 24;
 
-const OtpVerification = ({ maskedPhone = "+234 ••• ••• 4290", className }) => {
+const OtpVerification = ({
+  maskedPhone = "+234 *** *** 4290",
+  className = "",
+  showSecurityFooter = true,
+  buttonLabel = "Verify and Continue",
+}) => {
   const router = useRouter();
   const [otp, setOtp] = useState("");
   const [seconds, setSeconds] = useState(RESEND_SECONDS);
 
   useEffect(() => {
-    if (seconds <= 0) return;
-    const id = setInterval(() => setSeconds((s) => s - 1), 1000);
+    if (seconds <= 0) return undefined;
+
+    const id = setInterval(() => setSeconds((value) => value - 1), 1000);
     return () => clearInterval(id);
   }, [seconds]);
 
@@ -38,26 +36,23 @@ const OtpVerification = ({ maskedPhone = "+234 ••• ••• 4290", classN
   }
 
   return (
-    <div className={`w-full ${className}`}>
-      <div className="mt-7">
-        <h1 className="text-[1.75rem] font-extrabold leading-tight tracking-tight text-[#1a1a1a]">
-          Verify it&apos;s{" "}
-          <span className="text-[var(--color-brand-accent)]">you.</span>
+    <div className={`w-full ${className}`.trim()}>
+      <div>
+        <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
+          Verify it&apos;s <span className="text-[#00A991]">you.</span>
         </h1>
-        <p className="mt-2 text-[0.875rem] leading-relaxed text-[#6b6b6b]">
+        <p className="mt-4 font-manrope text-[15px] leading-6 text-[#3C4A46]">
           We&apos;ve sent a 6-digit verification code to
         </p>
-        <p className="text-[0.875rem] font-semibold text-[#1a1a1a]">
-          {maskedPhone}.
-        </p>
+        <p className="font-manrope text-[15px] font-semibold text-[#1C1B1B]">{maskedPhone}.</p>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-12">
         <OtpInput length={6} onChange={setOtp} />
       </div>
 
-      <div className="mt-6 flex flex-col items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-brand-soft)] px-3.5 py-1.5 text-sm font-semibold text-[var(--color-brand-primary-deep)]">
+      <div className="mt-10 flex flex-col items-center gap-3">
+        <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#B8EDDF]/30 px-4 font-manrope text-sm font-semibold text-[#006B5C]">
           <ClockIcon className="h-3.5 w-3.5" />
           {formatted}
         </span>
@@ -65,24 +60,27 @@ const OtpVerification = ({ maskedPhone = "+234 ••• ••• 4290", classN
           type="button"
           onClick={handleResend}
           disabled={seconds > 0}
-          className="text-sm font-medium text-[var(--color-brand-accent)] transition hover:text-[var(--color-brand-primary-deep)] disabled:cursor-default disabled:opacity-50"
+          className="font-manrope text-sm font-semibold text-[#00A991] transition hover:text-[#006B5C] disabled:cursor-default disabled:opacity-50"
         >
           Resend Code
         </button>
       </div>
 
       <Button
-        className="mt-6"
+        className="mt-12 h-[52px] rounded-xl font-plusJakartaSans text-[15px] font-bold"
         onClick={() => router.push("/onboarding/profileSetUp")}
-        endIcon={<ArrowRightIcon className="h-4 w-4" />}
+        endIcon={<ArrowRightIcon className="h-5 w-5" />}
+        disabled={otp.length > 0 && otp.length < 6}
       >
-        Verify and Continue
+        {buttonLabel}
       </Button>
 
-      <div className="mt-auto flex items-center justify-center gap-1.5 pt-10 text-xs text-[#c0c0c0]">
-        <LockIcon className="h-3.5 w-3.5" />
-        <span>Secured by Voya Vault Systems</span>
-      </div>
+      {showSecurityFooter ? (
+        <div className="mt-10 flex items-center justify-center gap-1.5 border-t border-[#E1E1E1] pt-5 font-manrope text-[12px] font-medium leading-4 text-[#6C7A76]">
+          <LockIcon className="h-3.5 w-3.5" />
+          <span>Secured by Voya Vault Systems</span>
+        </div>
+      ) : null}
     </div>
   );
 };

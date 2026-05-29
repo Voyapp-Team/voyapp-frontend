@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'; // 1. Import the library
 
 export const FormInput = ({
-  className,
+  className = "",
   label,
-  labelClassName,
+  labelClassName = "",
   placeholder,
-  inputClassName,
-  inputType,
+  inputClassName = "",
+  inputType = "text",
   inputValue,
   onChange,
 }) => {
@@ -23,7 +23,7 @@ export const FormInput = ({
         value={inputValue}
         onChange={onChange}
         placeholder={placeholder}
-        className={`w-full px-3 text-sm text-[#2c2c2c] outline-none placeholder:text-[#c1c1c1] rounded-xl ${inputClassName} `.trim()}
+        className={`w-full rounded-xl px-3 text-sm text-[#2c2c2c] outline-none placeholder:text-[#c1c1c1] ${inputClassName}`.trim()}
       />
     </label>
   );

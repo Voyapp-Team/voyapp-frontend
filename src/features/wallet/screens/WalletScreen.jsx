@@ -1,5 +1,8 @@
 "use client";
 
+import DashboardScreen from "@/src/features/dashboard/screens/DashboardScreen";
+
+
 import {
   useEffect,
   useState,
@@ -105,22 +108,10 @@ export const WalletScreen = () => {
   });
 
   return (
-    <main className="flex flex-col min-h-screen w-full items-center bg-[#f5f5f7]">
-      {/* header */}
-      <div className="flex justify-between items-center p-3 w-full bg-[#ffff] border-b">
-        <div className="flex items-center gap-3 whitespace-nowrap">
-          <button onClick={() => router.back()}>
-            <ArrowLeftIcon className="w-5 h-5 text-black/90" />
-          </button>
-          <p className="text-(--color-brand-primary-deep) font-bold">Wallet</p>
-        </div>
-        <div className="flex items-center gap-4">
-          <NotificationIcon className="w-5 h-5 text-black/90" />
-          <SettingIcon className="w-5 h-5 text-black/70" />
-        </div>
-      </div>
+    
+    <div className="mx-auto">
       {/* Main content container */}
-      <div className="w-full max-w-lg p-4 space-y-4">
+      <div className="w-full max-w-lg p-4 space-y-4 mx-auto">
         <div className="relative flex flex-col gap-3 rounded-xl bg-[#FFFF]">
           <WalletHeaderCard
             className={`flex flex-col gap-2.5 items-start h-44`}
@@ -165,13 +156,13 @@ export const WalletScreen = () => {
         </div>
       </div>
       {loading ? (
-        <div className="flex flex-col w-full max-w-3xl py-10 px-4 text-black/90 bg-white rounded-xl mt-9">
+        <div className="flex flex-col w-full max-w-3xl py-10 px-4 mx-auto text-black/90 bg-white rounded-xl mt-9">
           <h2 className="animate-pulse text-center font-bold">
             Loading Token......
           </h2>
         </div>
       ) : (
-        <div className="flex flex-col w-full max-w-3xl py-10 px-4 text-black/90 bg-white rounded-xl mt-9">
+        <div className="flex flex-col w-full max-w-3xl py-10 px-4 mx-auto text-black/90 bg-white rounded-xl mt-9">
           {coinBalance.map((coin) => (
             <div
               key={coin.id}
@@ -234,6 +225,7 @@ export const WalletScreen = () => {
                   <button
                     type="button"
                     className="cursor-pointer text-(--color-brand-primary) text-xs font-medium tracking-tighter"
+                    onClick={() => router.push(`/dashboard/withdrawal/${coin.name.toLowerCase()}`)}
                   >
                     SEND
                   </button>
@@ -243,6 +235,6 @@ export const WalletScreen = () => {
           ))}
         </div>
       )}
-    </main>
+    </div>
   );
 };
