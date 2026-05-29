@@ -121,6 +121,10 @@ export default function LoginForm() {
             className="mx-auto max-w-[382px]"
             showSecurityFooter={false}
             buttonLabel="Verify and Continue"
+            handleClick={() => {
+              setShowModal(false);
+              router.push("/dashboard");
+            }}
           />
         </Modal>
       ) : null}
