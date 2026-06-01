@@ -312,7 +312,7 @@ export const ConvertTokenScreen = () => {
       </div>
       {modalOpen && (
         <Modal onClose={() => setModalOpen(false)}>
-          <div className="flex flex-col items-center gap-4 p-6 bg">
+          <div className="flex flex-col items-center gap-4 p-6">
             <div className="flex gap-2 items-center text-black/70 font-bold tracking-wider text-lg">
               <CheckedCircleIcon className="w-5 h-5 font-bold" />{" "}
               <p>CONVERSION SUCCESSFUL</p>{" "}
