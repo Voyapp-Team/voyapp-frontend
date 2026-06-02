@@ -14,7 +14,7 @@ export default function WithdrawalMethodsScreen() {
  
 
   return (
-    <div className=" flex flex-col items-center w-full max-w-[700px] m-auto my-10 bg-white md:rounded-[50px]  px-4 py-8">
+    <div className=" flex flex-col items-center w-full max-w-[700px] border border-[#E1E1E1] m-auto my-10 bg-white rounded-[50px]  px-4 py-8">
         <BalanceCard 
           balance={1234.56}
           onToggleBalanceVisibility={toggleBalanceVisibility}

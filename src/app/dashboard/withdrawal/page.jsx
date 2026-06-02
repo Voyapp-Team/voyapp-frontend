@@ -2,7 +2,7 @@ import WithdrawalMethodsScreen from "@/src/features/withdrawal/screens/Withdrawa
 
 export default function WithdrawalPage() {
   return (
-    <div className="container mx-auto p-4">
+    <div className="w-full">
       <WithdrawalMethodsScreen />
     </div>
   );

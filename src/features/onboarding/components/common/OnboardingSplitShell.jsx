@@ -41,9 +41,9 @@ export default function OnboardingSplitShell({
   );
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-white px-4 py-6 sm:px-6 lg:px-8">
+    <main className="flex min-h-screen items-center justify-center bg-white   lg:px-8 lg:py-8">
       <section
-        className={`relative flex min-h-[calc(100vh-3rem)] w-full max-w-[958px] overflow-hidden rounded-[28px] border border-[#E1E1E1] bg-white lg:min-h-[685px] lg:rounded-[50px] ${shellClassName}`.trim()}
+        className={`relative flex min-h-[calc(100vh-3rem)] w-full max-w-[958px] overflow-hidden lg:rounded-[28px]  lg:border lg:border-[#E1E1E1] bg-white lg:min-h-[685px] lg:rounded-[50px] ${shellClassName}`.trim()}
       >
         <div className="absolute left-5 top-5 z-20 lg:hidden">{backButton}</div>
 
@@ -63,7 +63,7 @@ export default function OnboardingSplitShell({
         </aside>
 
         <div
-          className={`flex w-full flex-col bg-white px-6 py-8 sm:px-10 lg:flex-1 lg:px-[58px] lg:py-[38px] ${panelClassName}`.trim()}
+          className={`flex mt-12 md:mt-0 w-full flex-col bg-white px-6 py-8 sm:px-10 lg:flex-1 lg:px-[58px] lg:py-[38px] ${panelClassName}`.trim()}
         >
           <ProgressSteps
             currentStep={currentStep}

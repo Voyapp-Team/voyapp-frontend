@@ -53,7 +53,7 @@ export default function BankTransferDetailsScreen() {
 
 
     return (
-        <div className=" flex flex-col items-center w-full max-w-[448px] m-auto my-10 bg-white md:rounded-[50px]  px-[24px] pt-[98px] pb-[48px] m-auto">
+        <div className=" flex flex-col items-center w-full md:max-w-[448px] m-auto my-10 bg-white rounded-[50px]  px-[24px] pt-[98px] pb-[48px] m-auto">
             <WithdrawalAmountInput
               amount={amount}
               setAmount={setAmount}
