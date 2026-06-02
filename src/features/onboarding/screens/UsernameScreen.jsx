@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 import UsernameForm from "../components/UsernameForm";
@@ -16,7 +16,11 @@ export default function UsernameScreen() {
   const [username, setUsername] = useState("");
   const router = useRouter();
 
-  const usernameSuggestions = useMemo(() => generateUsernameSuggestions(fullName), [fullName]);
+  const [usernameSuggestions, setUsernameSuggestions] = useState([]);
+
+  useEffect(() => {
+    setUsernameSuggestions(generateUsernameSuggestions(fullName));
+  }, [fullName]);
 
   const conditions = useMemo(
     () => ({

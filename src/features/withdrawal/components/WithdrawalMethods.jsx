@@ -43,7 +43,7 @@ export default function WithdrawalMethods() {
     ];
   return (
     <div className="flex flex-col items-center w-full max-w-[624px]">
-      <div className="w-full mt-6"> 
+      <div className="w-full mt-6">  
             <h2 className="text-[20px] leading-[28px] font-bold font-plusJakartaSans text-[#1C1B1B] mb-6">Cash Out to Local Money</h2>
            {localMethods.map((method) => (
                 <div key={method.name} className="flex items-center justify-between w-full bg-[#F8F8F8] rounded-[20px] p-[20px] mb-4 cursor-pointer"

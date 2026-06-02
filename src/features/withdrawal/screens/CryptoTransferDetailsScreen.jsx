@@ -33,7 +33,7 @@ export default function CryptoTransferDetailsScreen() {
     }
 
     return (
-        <div className=" flex flex-col items-center my-10 w-full max-w-[448px] m-auto bg-white md:rounded-[50px]  px-[24px] pt-[98px] pb-[48px]">    
+        <div className=" flex flex-col items-center my-10 w-full md:max-w-[448px] m-auto bg-white rounded-[50px]  px-[24px] pt-[98px] pb-[48px]">    
             <WithdrawalAmountInput 
              isCryto={true} 
              cryptoBalance={800} 
