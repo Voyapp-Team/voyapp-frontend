@@ -1,35 +1,37 @@
 import React from 'react';
 
 import {
+  ArrowRight,
   EqualApproximately,
   EyeOff,
 } from 'lucide-react';
 
+import Button from '@/src/components/ui/Button';
 import { EyeOpenIcon } from '@/src/components/ui/Icons';
 
-import CopyAddressButton from './CopyWalletAddressButton';
-
 const cardClasses =
-  "w-full rounded-2xl px-6 pt-7 text-white " +
+  "w-full rounded-3xl text-white " +
   "border-transparent bg-[linear-gradient(180deg,var(--color-brand-primary-deep)_0%,var(--color-brand-accent)_100%)] " +
   "shadow-[0_4px_6px_rgba(0,107,92,0.1),0_10px_15px_rgba(0,107,92,0.1)]";
 
-export default function WalletBalanceCard({
+export default function CrewBalanceOverview({
   className = "",
   usdBalance,
   ngnBalance,
   loading,
   toggleBalance,
   viewBalance,
-  walletAddress,
+  percent_share,
+  earned,
+  onClick,
 }) {
   return (
     <div
-      className={`${cardClasses} ${className ? className : `flex flex-col gap-4 items-start w-[584px] h-[241px] `}`.trim()}
+      className={`${cardClasses} ${className ? className : `flex flex-col gap-4 items-start w-[608px] h-[340px] sm:h-[306px] p-8`}`.trim()}
     >
       <div className="max-w-50 flex flex-col gap-4">
-        <p className="font-montserrat font-medium text-base leading-5 text-[#FFFFFF]/70">
-          Your Balance
+        <p className="font-manrope font-medium text-base leading-5 text-[#FFFFFF]/70">
+          CREW BALANCE
         </p>
         <div
           className="flex justify-between items-center gap-4 h-[
@@ -52,7 +54,29 @@ export default function WalletBalanceCard({
         <EqualApproximately className="w-5 h-5 text-white" />₦
         {viewBalance ? (loading ? "0.00" : ngnBalance) : " ••••"}
       </div>
-      <CopyAddressButton address={walletAddress} />
+      <div className="flex flex-wrap sm:flex-nowrap justify-between gap-3 items-center w-full">
+        {/* dashboard owner share display */}
+        <div className="p-4 max-h-[84px] max-w-fit bg-[#ffffff]/10 backdrop:blur-md border border-[#FFFFFF]/24 rounded-xl">
+          <p className="font-manrope font-semibold text-xs leading-4">
+            YOUR SHARE ({percent_share}%)
+          </p>
+          <span className="font-plusjakartasans font-bold text-2xl leading-8 text-[#FFFFFF] whitespace-nowrap">
+            {viewBalance ? earned : " ••••"}
+          </span>
+        </div>
+        {/* Button to withdraw shares */}
+        <div className="w-full sm:w-1/2">
+          {" "}
+          <Button
+            variant="secondary"
+            onClick={onClick}
+            endIcon={<ArrowRight className="w-4 h-4 text-" />}
+            className="flex items-center gap-2 max-h-[52px] w-full whitespace-nowrap"
+          >
+            Withdraw My Share{" "}
+          </Button>{" "}
+        </div>
+      </div>
     </div>
   );
 }

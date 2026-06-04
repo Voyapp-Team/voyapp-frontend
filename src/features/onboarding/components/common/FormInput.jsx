@@ -7,6 +7,7 @@ export const FormInput = ({
   placeholder,
   inputClassName = "",
   inputType = "text",
+  inputName,
   inputValue,
   onChange,
 }) => {
@@ -21,6 +22,7 @@ export const FormInput = ({
       <input
         type={inputType}
         value={inputValue}
+        name={inputName}
         onChange={onChange}
         placeholder={placeholder}
         className={`w-full rounded-xl px-3 text-sm text-[#2c2c2c] outline-none placeholder:text-[#c1c1c1] ${inputClassName}`.trim()}
@@ -38,6 +40,7 @@ FormInput.propTypes = {
   inputWrapperClassName: PropTypes.string,
   inputClassName: PropTypes.string,
   inputType: PropTypes.string,
+  inputName: PropTypes.string,
   inputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), // Can be string or number
   onChange: PropTypes.func,
 };

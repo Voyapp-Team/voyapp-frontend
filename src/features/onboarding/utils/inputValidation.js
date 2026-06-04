@@ -1,73 +1,78 @@
-
-
 const inputValidation = (formData) => {
+  const newErrors = {};
 
-    const newErrors = {};
-
-    // NAME
-    if("name" in formData){
-        if (!formData.name || !formData.name.trim()) {
-        newErrors.name = "Name is required";
-        } else if (formData.name.trim().length < 2) {
-        newErrors.name = "Name must be at least 2 characters";
-        }
+  // FIRSTNAME
+  if ("first_name" in formData) {
+    if (!formData.first_name || !formData.first_name.trim()) {
+      newErrors.first_name = "First name is required";
+    } else if (formData.first_name.trim().length < 2) {
+      newErrors.first_name = "First name must be at least 2 characters";
     }
-
-    // EMAIL
-    if("email" in formData){
-        const email = formData.email?.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!email) {
-        newErrors.email = "Email is required";
-        } else if (!emailRegex.test(email)) {
-        newErrors.email = "Enter a valid email";
-        }
+  }
+  // LASTNAME
+  if ("last_name" in formData) {
+    if (!formData.last_name || !formData.last_name.trim()) {
+      newErrors.last_name = "Last name is required";
+    } else if (formData.last_name.trim().length < 2) {
+      newErrors.last_name = "Last name must be at least 2 characters";
     }
+  }
 
-    // PASSWORD
-    if("password" in formData){
-        const password = formData.password;
+  // EMAIL
+  if ("email" in formData) {
+    const email = formData.email?.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!password) {
-        newErrors.password = "Password is required";
-        } else if (password.length < 8) {
-        newErrors.password = "Password must be at least 8 characters";
-        } else if (!/[A-Z]/.test(password)) {
-        newErrors.password = "Must include at least one uppercase letter";
-        } else if (!/[a-z]/.test(password)) {
-        newErrors.password = "Must include at least one lowercase letter";
-        } else if (!/[0-9]/.test(password)) {
-        newErrors.password = "Must include at least one number";
-        }
+    if (!email) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Enter a valid email";
     }
+  }
 
-    if("confirmPassword" in formData){   
-        const confirmPassword = formData.confirmPassword;
+  // PASSWORD
+  if ("password" in formData) {
+    const password = formData.password;
 
-        if (!confirmPassword) {
-        newErrors.confirmPassword = "Password is required";
-        } else if (confirmPassword.length < 8) {
-        newErrors.confirmPassword = "Password must be at least 8 characters";
-        } else if (!/[A-Z]/.test(confirmPassword)) {
-        newErrors.confirmPassword= "Must include at least one uppercase letter";
-        } else if (!/[a-z]/.test(confirmPassword)) {
-        newErrors.confirmPassword = "Must include at least one lowercase letter";
-        } else if (!/[0-9]/.test(confirmPassword)) {
-        newErrors.confirmPassword = "Must include at least one number";
-        }
+    if (!password) {
+      newErrors.password = "Password is required";
+    } else if (password.length < 8) {
+      newErrors.password = "Password must be at least 8 characters";
+    } else if (!/[A-Z]/.test(password)) {
+      newErrors.password = "Must include at least one uppercase letter";
+    } else if (!/[a-z]/.test(password)) {
+      newErrors.password = "Must include at least one lowercase letter";
+    } else if (!/[0-9]/.test(password)) {
+      newErrors.password = "Must include at least one number";
     }
+  }
 
-    if("password" in formData && "confirmPassword" in formData ){
-        const password = formData.password;
-        const confirmPassword = formData.confirmPassword;
+  if ("confirmPassword" in formData) {
+    const confirmPassword = formData.confirmPassword;
 
-        if(!(password === confirmPassword)) newErrors.matchPassword = "Passwords do not match";
-
+    if (!confirmPassword) {
+      newErrors.confirmPassword = "Password is required";
+    } else if (confirmPassword.length < 8) {
+      newErrors.confirmPassword = "Password must be at least 8 characters";
+    } else if (!/[A-Z]/.test(confirmPassword)) {
+      newErrors.confirmPassword = "Must include at least one uppercase letter";
+    } else if (!/[a-z]/.test(confirmPassword)) {
+      newErrors.confirmPassword = "Must include at least one lowercase letter";
+    } else if (!/[0-9]/.test(confirmPassword)) {
+      newErrors.confirmPassword = "Must include at least one number";
     }
+  }
 
-    // ACCOUNT IDENTIFIER
-   if ("accountIdentifier" in formData) {
+  if ("password" in formData && "confirmPassword" in formData) {
+    const password = formData.password;
+    const confirmPassword = formData.confirmPassword;
+
+    if (!(password === confirmPassword))
+      newErrors.matchPassword = "Passwords do not match";
+  }
+
+  // ACCOUNT IDENTIFIER
+  if ("accountIdentifier" in formData) {
     const identifier = formData.accountIdentifier?.trim();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -76,16 +81,12 @@ const inputValidation = (formData) => {
     const phoneRegex = /^[+]?[0-9]{10,15}$/;
 
     if (!identifier) {
-        newErrors.accountIdentifier = "Phone number or email is required";
-    } else if (
-        !emailRegex.test(identifier) &&
-        !phoneRegex.test(identifier)
-    ) {
-        newErrors.accountIdentifier = "Enter a valid phone number or email";
+      newErrors.accountIdentifier = "Phone number or email is required";
+    } else if (!emailRegex.test(identifier) && !phoneRegex.test(identifier)) {
+      newErrors.accountIdentifier = "Enter a valid phone number or email";
     }
-}
-    return newErrors;
-    
-}
+  }
+  return newErrors;
+};
 
 export default inputValidation;
