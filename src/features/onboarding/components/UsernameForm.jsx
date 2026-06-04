@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/src/components/ui/Button";
-import { CheckedCircleIcon } from "@/src/components/ui/Icons";
+import { CheckedCircleIcon, ArrowRightIcon } from "@/src/components/ui/Icons";
 
 import InputError from "../../../components/ui/InputError";
 
@@ -17,11 +17,27 @@ export default function UsernameForm({
 }) {
   return (
     <form className="w-full" onSubmit={onSubmit}>
+      <div
+        className="
+        absolute
+        left-0
+        top-[20%]
+        -translate-y-1/2
+        w-[150px]
+        h-[200px]
+        bg-gradient-to-r
+        from-[#65FADE66]
+        to-transparent
+        blur-3xl
+        pointer-events-none
+        md:hidden
+        "
+      />
       <div>
-        <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
+        <h1 className="font-montserrat text-[28px] font-extrabold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
           Choose your <span className="block text-[#006B5C]">username</span>
         </h1>
-        <p className="mt-4 max-w-[310px] font-manrope text-[15px] leading-6 text-[#3C4A46]">
+        <p className="mt-4 max-w-[306px] font-montserrat text-[16px] font-500 leading-6 text-[#3C4A46]">
           This is how your friends and networks will find you on Voya.
         </p>
       </div>
@@ -52,11 +68,11 @@ export default function UsernameForm({
             <span
               className={`absolute right-4 flex h-5 w-5 items-center justify-center rounded-full border-2 text-[10px] font-bold ${
                 conditions.characterCount && !usernameError
-                  ? "border-[#006B5C] bg-[#006B5C] text-white"
+                  ? "border-[#006B5C] bg-[#ffffff] text-[#006B5C]"
                   : "border-[#BA1A1A] text-[#BA1A1A]"
               }`.trim()}
             >
-              {conditions.characterCount && !usernameError ? "" : "!"}
+              {conditions.characterCount && !usernameError ? "✔" : "!"}
             </span>
           ) : null}
         </div>
@@ -106,7 +122,11 @@ export default function UsernameForm({
         })}
       </div>
 
-      <Button className="mt-10 h-[52px] rounded-2xl font-plusJakartaSans text-[15px] font-bold" disabled={!conditions.characterCount} type="submit">
+      <Button className="mt-10 h-[52px] rounded-2xl font-plusJakartaSans text-[15px] font-bold" 
+        disabled={!conditions.characterCount} 
+        type="submit"
+        endIcon={<ArrowRightIcon className="h-5 w-5" />}
+        >
         Done
       </Button>
 

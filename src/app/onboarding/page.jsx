@@ -1,5 +1,5 @@
-import ContactSetupScreen from "@/src/features/onboarding/screens/ContactSetupScreen";
+import SignUpRoleScreen from "@/src/features/onboarding/screens/SignUpRoleScreen";
 
 export default function OnboardingPage() {
-  return <ContactSetupScreen />;
+  return <SignUpRoleScreen />;
 }

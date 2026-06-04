@@ -17,7 +17,7 @@ import {
 export default function DashboardScreen() {
   return (
     <div className="min-w-0 flex-1 lg:max-w-[1014px]">
-      <h1 className="hidden text-2xl font-extrabold text-[#006b5c] lg:mb-[32px] lg:block">
+      <h1 className="text-2xl font-extrabold text-[#006b5c] mb-[32px] lg:block">
         Hello, {dashboardUser.name}!
       </h1>
 
