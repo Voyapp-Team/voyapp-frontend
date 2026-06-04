@@ -67,7 +67,7 @@ export default function BankTransferDetailsScreen() {
                 Confirm Withdrawal
             </Button>
             {isModalOpen && (
-                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} className= "bg-[#FFFFFF1A] border border-[#E8E8E8]" overlayClassName='bg-[#000000]' buttonClassName='bg-[#FFFFFF1A]'>
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)]"  buttonClassName='bg-[#FFFFFF1A]'>
                     <TransactionOtpVerification setOtp={setOtp} inputError={otpInputError} /> 
                 </Modal>
             )}

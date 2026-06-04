@@ -3,13 +3,42 @@
 const inputValidation = (formData) => {
 
     const newErrors = {};
+    
+    // BUSINESS NAME
+    if("businessName" in formData){
+        const businessName = formData.businessName?.trim();
+        const businessNameRegex = /^[A-Za-z0-9\s&'.-]{2,}$/;
+        if (!businessName) {
+            newErrors.businessName = "Business Name is required";
+            } else if (!businessNameRegex.test(businessName)) {
+            newErrors.businessName = "Enter a Business Name";
+        }
+    }
+
+     
+    // COUNTRY NAME
+    if("country" in formData){
+        if (!formData.country || !formData.country.trim()) {
+            newErrors.country = "Country must be selected";  
+        }
+    }
+
+    if("terms" in formData){
+        if(!formData.terms){
+            newErrors.terms = "Accept the Terms and Policy"
+        }
+    }
 
     // NAME
     if("name" in formData){
-        if (!formData.name || !formData.name.trim()) {
+        const name = formData.name?.trim();
+        const fullNameRegex = /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/;
+        if (!name) {
         newErrors.name = "Name is required";
-        } else if (formData.name.trim().length < 2) {
+        } else if (name.length < 2) {
         newErrors.name = "Name must be at least 2 characters";
+        } else if(!fullNameRegex.test(name)){
+            newErrors.name = "Enter a valid name"
         }
     }
 

@@ -15,11 +15,12 @@ export default function Modal({ children, onClose, className, overlayClassName, 
 
   return (
     <div
-      className={`fixed inset-0 z-1000 flex items-center justify-center  ${overlayClassName || "bg-[#0000067c]"} `}
+      className={`fixed inset-0 z-1000 flex items-center justify-center   ${overlayClassName || " bg-[#0000068c]"} `}
       onClick={onClose}
     >
+      
       <div
-        className={`relative rounded-[50px] shadow-lg p-6  w-[90%] max-w-md ${className || "bg-[#FFFFFF]"}`}
+        className={`relative rounded-[50px] shadow-lg p-6 backdrop-blur-xl w-[90%] max-w-md ${className || "bg-[#FFFFFF]"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -33,6 +34,7 @@ export default function Modal({ children, onClose, className, overlayClassName, 
 
         {children}
       </div>
+      
     </div>
   );
 }
