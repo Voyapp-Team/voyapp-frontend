@@ -51,7 +51,7 @@ export const quickActions = [
     label: "Crew",
     description: "Group recipients",
     icon: CrewIcon,
-    href: "/dashboard#profile",
+    href: "/onboarding/login/crew",
   },
   {
     label: "Convert",

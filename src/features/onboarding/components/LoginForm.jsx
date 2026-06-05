@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 import { VoyaMark } from "@/src/components/brand/VoyaLogo";
 import Button from "@/src/components/ui/Button";
 import {
@@ -18,11 +18,19 @@ import InputError from "@/src/components/ui/InputError";
 import OtpVerification from "./common/OtpVerification";
 import inputValidation from "../utils/inputValidation";
 
-export default function LoginForm() {
+export default function LoginForm( { accountType }) {
   const [accountIdentifier, setAccountIdentifier] = useState("");
   const [inputError, setInputError] = useState("");
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
+
+
+ const signupHref = accountType === "crew"
+  ? "/onboarding/business-signup"
+  : "/onboarding/freelancer-signup";
+
+  console.log("accountType:", accountType);
+  console.log("signupHref:", signupHref);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -94,9 +102,9 @@ export default function LoginForm() {
 
         <p className="mt-6 text-center font-manrope text-[16px] font-medium leading-6 text-[#3C4A46]">
           Don&apos;t have an account?{" "}
-          <a href="/onboarding" className="font-semibold text-[#006B5C]">
+          <Link href={signupHref} className="font-semibold text-[#006B5C]">
             Sign up
-          </a>
+          </Link>
         </p>
 
         <div className="mt-14 sm:hidden">

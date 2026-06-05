@@ -5,7 +5,12 @@ import { ArrowRightIcon } from "@/src/components/ui/Icons";
 import { useState } from "react";
 import inputValidation from "../utils/inputValidation";
 import InputError from "@/src/components/ui/InputError";
-export default function BusinessSignUpForm() {
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
+
+export default function BusinessSignUpForm({ setIsModalOpen }) {
+    const router = useRouter();
 
     const [formData, setFormData] = useState({
         businessName: "",
@@ -36,7 +41,12 @@ export default function BusinessSignUpForm() {
             return;
         }
         // Proceed with form submission (e.g., API call)
-        console.log("Form submitted successfully", formData);
+        setIsModalOpen(true);
+
+        setTimeout(() => {
+            router.push("/onboarding/create-crew");
+        }, 3000);
+        
     }
 
 
@@ -91,7 +101,7 @@ export default function BusinessSignUpForm() {
                 </BUTTON>
             </form>
             <p className="text-[#3C4A46] mt-6 mb-10 text-[14px] text-center leading-5">
-                Already have an account? <a href="#" className="text-[#006B5C] font-semibold">Log in</a>
+                Already have an account? <Link href="/onboarding/login/crew" className="text-[#006B5C] font-semibold">Log in</Link>
             </p>
             <a href="#" className="text-[#006B5C] text-center font-manrope font-medium text-[14px] leading-5">Help Center</a>
         </div>

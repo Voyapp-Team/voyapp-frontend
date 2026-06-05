@@ -20,7 +20,7 @@ export default function Modal({ children, onClose, className, overlayClassName, 
     >
       
       <div
-        className={`relative rounded-[50px] shadow-lg p-6 backdrop-blur-xl w-[90%] max-w-md ${className || "bg-[#FFFFFF]"}`}
+        className={`relative rounded-[50px] shadow-lg p-6 backdrop-blur-xl w-[90%]  ${className || "bg-[#FFFFFF]  max-w-md" }`}
         onClick={(e) => e.stopPropagation()}
       >
         <button
