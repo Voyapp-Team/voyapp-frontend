@@ -123,8 +123,6 @@ export const ConvertTokenScreen = () => {
     setLoading(true);
     setModalOpen(true);
     setTimeout(() => {
-      setModalOpen(false);
-
       setLoading(false);
     }, 2000);
   };
@@ -318,8 +316,7 @@ export const ConvertTokenScreen = () => {
       {modalOpen && (
         <Modal
           onClose={() => setModalOpen(false)}
-          overlayClassName={`bg-[#000000]`}
-          className={`bg-[#ffffff]/10`}
+          className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
         >
           <div className="flex flex-col items-center gap-4 p-6">
             <div className="flex gap-2 items-center  font-montserrat font-bold text-xl leading-5">

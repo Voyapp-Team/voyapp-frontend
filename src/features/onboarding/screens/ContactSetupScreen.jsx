@@ -8,6 +8,7 @@ import { ArrowRightIcon } from "../../../components/ui/Icons";
 import SegmentedControl from "../../../components/ui/SegmentedControl";
 import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
 import PhoneNumberField from "../components/common/PhoneNumberField";
+import Link from "next/link";
 
 const AUTH_TABS = [
   { label: "Phone", value: "phone" },
@@ -82,16 +83,12 @@ export default function ContactSetupScreen() {
 
       <p className="mt-6 text-center font-manrope text-sm text-[#7A7A7A]">
         Already have an account?{" "}
-        <a
-          href="/onboarding/login"
+        <Link
+          href="/onboarding/login/freelancer"
           className="font-semibold text-[#006B5C]"
-          onClick={(event) => {
-            event.preventDefault();
-            router.push("/onboarding/login");
-          }}
         >
           Log in
-        </a>
+        </Link>
       </p>
     </OnboardingSplitShell>
   );

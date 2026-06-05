@@ -51,13 +51,13 @@ export const quickActions = [
     label: "Crew",
     description: "Group recipients",
     icon: CrewIcon,
-    href: "/dashboard/crew",
+    href: "/onboarding/login/crew",
   },
   {
     label: "Convert",
     description: "Swap currencies",
     icon: ConvertIcon,
-    href: "/dashboard/wallet",
+    href: "/dashboard/wallet/convertToken",
   },
 ];
 

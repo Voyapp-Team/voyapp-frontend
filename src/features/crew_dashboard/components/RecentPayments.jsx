@@ -18,7 +18,7 @@ export default function RecentPayment({
           >
             <div className="flex justify-between">
               <div className="flex gap-2 ">
-                <div classsName="">
+                <div >
                   <div className="flex items-center justify-center font-manrope font-bold text-lg text-[#3B6D62] w-[40px] h-[40px] rounded-full bg-[#E5E2E1]">
                     <Logo className="text-[#3C4A46] w-[20px] h-[18px]" />
                   </div>
