@@ -12,7 +12,7 @@ import {
   SubscriptionIcon,
   UserIcon,
   WalletIcon,
-} from "../components/DashboardIcons";
+} from '../components/DashboardIcons';
 
 export const dashboardUser = {
   name: "Soma",

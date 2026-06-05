@@ -1,15 +1,47 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
 
-import Button from "@/src/components/ui/Button";
-import { ArrowRightIcon, ShieldIcon } from "@/src/components/ui/Icons";
+import { useRouter } from 'next/navigation';
 
-import { FormInput } from "../components/common/FormInput";
-import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
+import Button from '@/src/components/ui/Button';
+import {
+  ArrowRightIcon,
+  ShieldIcon,
+} from '@/src/components/ui/Icons';
+
+import InputError from '../../../components/ui/InputError';
+import { FormInput } from '../components/common/FormInput';
+import OnboardingSplitShell from '../components/common/OnboardingSplitShell';
+import inputValidation from '../utils/inputValidation';
 
 export const ProfileSetupScreen = () => {
   const router = useRouter();
+
+  const [userNames, setUserNames] = useState({
+    first_name: "",
+    last_name: "",
+  });
+
+  const [inputError, setInputError] = useState({});
+  const handleChange = (e) => {
+    setUserNames((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleClick = () => {
+    const errors = inputValidation(userNames);
+
+    const inValid = Object.keys(errors).length > 0;
+    if (inValid) {
+      setInputError(errors);
+      return;
+    }
+    setInputError({});
+    router.push("/onboarding/category");
+  };
 
   return (
     <OnboardingSplitShell
@@ -35,32 +67,45 @@ export const ProfileSetupScreen = () => {
         <FormInput
           label="First Name"
           placeholder="e.g Julian"
+          inputValue={userNames.first_name}
+          inputName="first_name"
+          onChange={handleChange}
           labelClassName="font-plusJakartaSans text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
           inputClassName="h-14 bg-[#F6F3F2] px-5 font-manrope text-[15px]"
         />
+        <InputError message={inputError.first_name} />
         <FormInput
           label="Last Name"
           placeholder="e.g Thorne"
+          inputValue={userNames.last_name}
+          inputName="last_name"
+          onChange={handleChange}
           labelClassName="font-plusJakartaSans text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
           inputClassName="h-14 bg-[#F6F3F2] px-5 font-manrope text-[15px]"
         />
+        <InputError message={inputError.last_name} />
       </div>
 
       <div className="mt-10 flex min-h-[125px] items-center gap-4 rounded-[24px] border border-[#E2E2E2] bg-[#F3F3F3]/50 p-6">
-        <ShieldIcon className="h-12 w-12 shrink-0" rect="#00C2A833" fill="#009B87" />
+        <ShieldIcon
+          className="h-12 w-12 shrink-0"
+          rect="#00C2A833"
+          fill="#009B87"
+        />
         <div>
           <p className="font-manrope text-[12px] font-extrabold uppercase tracking-[0.08em] text-[#3C4A46]/70">
             Secure identity
           </p>
           <p className="mt-1 font-manrope text-sm leading-5 text-[#3C4A46]/70">
-            Your legal name is required for regulatory compliance secure banking.
+            Your legal name is required for regulatory compliance secure
+            banking.
           </p>
         </div>
       </div>
 
       <Button
         className="mt-6 h-14 rounded-2xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={() => router.push("/onboarding/category")}
+        onClick={handleClick}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
       >
         Continue
@@ -68,7 +113,9 @@ export const ProfileSetupScreen = () => {
 
       <p className="mx-auto mt-6 max-w-[320px] text-center font-manrope text-sm leading-6 text-[#6F7A76]">
         By continuing, you agree to our{" "}
-        <span className="font-bold text-[#006B5C]">Identity Verification Policy</span>
+        <span className="font-bold text-[#006B5C]">
+          Identity Verification Policy
+        </span>
       </p>
     </OnboardingSplitShell>
   );
