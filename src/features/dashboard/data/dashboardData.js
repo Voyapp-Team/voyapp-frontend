@@ -12,7 +12,7 @@ import {
   SubscriptionIcon,
   UserIcon,
   WalletIcon,
-} from "../components/DashboardIcons";
+} from '../components/DashboardIcons';
 
 export const dashboardUser = {
   name: "Soma",
@@ -51,7 +51,7 @@ export const quickActions = [
     label: "Crew",
     description: "Group recipients",
     icon: CrewIcon,
-    href: "/dashboard#profile",
+    href: "/dashboard/crew",
   },
   {
     label: "Convert",

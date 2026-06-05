@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
 
-import Button from "@/src/components/ui/Button";
+import { useRouter } from 'next/navigation';
+
+import Button from '@/src/components/ui/Button';
 import {
   ArrowRightIcon,
   Camera,
@@ -12,9 +13,9 @@ import {
   Palette,
   Sparkles,
   TextIcon,
-} from "@/src/components/ui/Icons";
+} from '@/src/components/ui/Icons';
 
-import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
+import OnboardingSplitShell from '../components/common/OnboardingSplitShell';
 
 const CATEGORIES = [
   { id: "Designer", label: "Designer", icon: Palette },
@@ -45,7 +46,8 @@ export const CategorySelectionScreen = () => {
           Select your category
         </h1>
         <p className="mt-4 font-manrope text-[15px] leading-6 text-[#3C4A46]">
-          Choose the path that best defines your creative or professional journey.
+          Choose the path that best defines your creative or professional
+          journey.
         </p>
       </div>
 
@@ -60,7 +62,9 @@ export const CategorySelectionScreen = () => {
               type="button"
               onClick={() => setSelected(category.id)}
               className={`flex min-h-[132px] flex-col items-start gap-5 rounded-2xl p-5 text-left font-manrope text-sm font-bold text-[#363434] transition hover:-translate-y-0.5 ${
-                isSelected ? "border-2 border-[#00C2A8]/40 bg-white" : "border-2 border-transparent bg-white"
+                isSelected
+                  ? "border-2 border-[#00C2A8]/40 bg-white"
+                  : "border-2 border-transparent bg-[#F6F3F2]"
               }`.trim()}
               aria-pressed={isSelected}
             >
