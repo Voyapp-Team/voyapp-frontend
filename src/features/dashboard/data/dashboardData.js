@@ -57,7 +57,7 @@ export const quickActions = [
     label: "Convert",
     description: "Swap currencies",
     icon: ConvertIcon,
-    href: "/dashboard/wallet",
+    href: "/dashboard/wallet/convertToken",
   },
 ];
 

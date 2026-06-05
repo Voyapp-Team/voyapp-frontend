@@ -45,6 +45,15 @@ export default function LoginForm( { accountType }) {
     setShowModal(true);
   };
 
+  const handleLoginSuccess = () => {
+    setShowModal(false);
+    if (accountType === "crew") {
+      router.push("/dashboard/crew");
+    }else if(accountType === "freelancer") {
+      router.push("/dashboard");
+    }
+  };
+
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-[#F8F8F8] px-8 py-[26px] sm:min-h-[698px] sm:max-w-[530px] sm:rounded-[50px] sm:px-[74px]">
       <button
@@ -129,10 +138,7 @@ export default function LoginForm( { accountType }) {
             className="mx-auto max-w-[382px]"
             showSecurityFooter={false}
             buttonLabel="Verify and Continue"
-            handleClick={() => {
-              setShowModal(false);
-              router.push("/dashboard");
-            }}
+            handleClick={handleLoginSuccess}
           />
         </Modal>
       ) : null}

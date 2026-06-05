@@ -123,8 +123,6 @@ export const ConvertTokenScreen = () => {
     setLoading(true);
     setModalOpen(true);
     setTimeout(() => {
-      setModalOpen(false);
-
       setLoading(false);
     }, 2000);
   };
