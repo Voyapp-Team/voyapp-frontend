@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Button from "../../../components/ui/Button";
+import InputError from "../../../components/ui/InputError";
 import { ArrowRightIcon } from "../../../components/ui/Icons";
 import SegmentedControl from "../../../components/ui/SegmentedControl";
 import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
@@ -15,15 +16,50 @@ const AUTH_TABS = [
   { label: "Email", value: "email" },
 ];
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^[0-9]{10,15}$/;
+
 export default function ContactSetupScreen() {
   const router = useRouter();
   const [authMethod, setAuthMethod] = useState("phone");
+  const [region, setRegion] = useState("+234");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [fieldError, setFieldError] = useState("");
+
+  function handleContinue() {
+    setFieldError("");
+
+    if (authMethod === "phone") {
+      const trimmedPhone = phone.trim();
+      if (!trimmedPhone) {
+        setFieldError("Phone number is required");
+        return;
+      }
+      if (!phoneRegex.test(trimmedPhone)) {
+        setFieldError("Enter a valid phone number");
+        return;
+      }
+    } else {
+      const trimmedEmail = email.trim();
+      if (!trimmedEmail) {
+        setFieldError("Email address is required");
+        return;
+      }
+      if (!emailRegex.test(trimmedEmail)) {
+        setFieldError("Enter a valid email address");
+        return;
+      }
+    }
+
+    router.push("/onboarding/verify");
+  }
 
   return (
-    <OnboardingSplitShell currentStep={0} totalSteps={5}>
+    <OnboardingSplitShell backHref="/onboarding" currentStep={0} totalSteps={5}>
       <div>
         <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
-        Let's get you set up
+          Let's get you set up
         </h1>
         <p className="mt-4 font-manrope text-[15px] leading-6 text-[#3C4A46]">
           Start your journey to financial clarity in seconds.
@@ -36,28 +72,45 @@ export default function ContactSetupScreen() {
         options={AUTH_TABS}
         value={authMethod}
         name="auth-method"
-        onSelect={setAuthMethod}
+        onSelect={(value) => {
+          setAuthMethod(value);
+          setFieldError("");
+        }}
       />
 
       <div className="mt-8">
         {authMethod === "phone" ? (
-          <PhoneNumberField
-            label="Phone Number"
-            labelClassName="text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
-            inputWrapperClassName="mt-3 min-h-14 rounded-xl border-[#E1E1E1]"
-            inputClassName="text-[15px]"
-          />
-        ) : (
-          <label className="block">
-            <span className="font-plusJakartaSans text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#6C7A76]">
-              Email address
-            </span>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="mt-3 h-14 w-full rounded-xl border border-[#E1E1E1] bg-white px-5 font-manrope text-[15px] text-[#1C1B1B] outline-none transition placeholder:text-[#9C9C9C] focus:border-[#006B5C] focus:ring-4 focus:ring-[#006B5C]/10"
+          <>
+            <PhoneNumberField
+              label="Phone Number"
+              labelClassName="text-[12px] font-extrabold tracking-[0.14em] text-[#6C7A76]"
+              inputWrapperClassName="mt-3"
+              inputClassName="text-[15px]"
+              region={region}
+              onRegionChange={(event) => setRegion(event.target.value)}
+              value={phone}
+              onChange={(event) => setPhone(event.target.value.replace(/\D/g, ""))}
+              error={fieldError}
             />
-          </label>
+            <InputError message={fieldError} />
+          </>
+        ) : (
+          <>
+            <label className="block">
+              <span className="font-plusJakartaSans text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#6C7A76]">
+                Email address
+              </span>
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                className={`mt-3 h-14 w-full rounded-xl border ${fieldError ? "border-[#BA1A1A]" : "border-[#E1E1E1]"} bg-white px-5 font-manrope text-[15px] text-[#1C1B1B] outline-none transition placeholder:text-[#9C9C9C] focus:border-[#006B5C] focus:ring-4 focus:ring-[#006B5C]/10`}
+                aria-invalid={fieldError ? "true" : "false"}
+              />
+            </label>
+            <InputError message={fieldError} />
+          </>
         )}
       </div>
 
@@ -75,7 +128,7 @@ export default function ContactSetupScreen() {
 
       <Button
         className="mt-8 h-14 rounded-xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={() => router.push("/onboarding/verify")}
+        onClick={handleContinue}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
       >
         Continue

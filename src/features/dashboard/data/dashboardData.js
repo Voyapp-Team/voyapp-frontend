@@ -38,7 +38,7 @@ export const quickActions = [
     label: "Request a Payment",
     description: "Share a payment link",
     icon: BanknoteIcon,
-    href: "/dashboard/recurring-payment",
+    href: "/dashboard/request-payment",
     featured: true,
   },
   {

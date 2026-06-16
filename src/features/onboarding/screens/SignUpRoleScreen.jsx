@@ -19,7 +19,7 @@ export default function SignUpRoleScreen() {
         <button
           type="button"
           aria-label="Go back"
-          onClick={() => router.back()}
+          onClick={() => router.push("/")}
           className="absolute left-5 top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-white text-[var(--color-brand-primary-deep)] transition hover:bg-[var(--color-brand-soft)]"
         >
           <ArrowLeftIcon className="h-4 w-4" />

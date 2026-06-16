@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function QuickActions({ actions }) {
   return (
     <section
-      className="mx-auto grid w-full grid-cols-3 gap-x-[9px] gap-y-[25px] sm:max-w-[754px] sm:gap-x-4 sm:gap-y-[25px]"
+      className="mx-auto grid w-full grid-cols-3 gap-2 sm:max-w-[754px]"
       id="crew"
     >
       {actions.map((action) => {
@@ -12,26 +12,36 @@ export default function QuickActions({ actions }) {
           <Link
             key={action.label}
             href={action.href}
-            className={`group flex items-center rounded-[30px] border border-[#006b5c] bg-[#f8f8f8] px-3 transition hover:bg-white sm:px-6 ${
+            className={`group rounded-[28px] border border-[#006b5c] bg-white/95 p-2 shadow-sm transition duration-200 hover:bg-[#f8f8f8] ${
               action.featured
-                ? "col-span-3 mx-auto min-h-[81px] w-[311px] sm:min-h-[104px] sm:w-full"
-                : "min-h-[76px] sm:min-h-[104px]"
+                ? "col-span-3 sm:p-3"
+                : "flex flex-col items-center justify-center gap-2 text-center"
             }`}
           >
             <div
-              className={`flex items-center ${
-                action.featured
-                  ? "ml-[39px] gap-5 sm:ml-[31px] sm:gap-6"
-                  : "mx-auto flex-col gap-2"
+              className={`flex shrink-0 items-center justify-center rounded-2xl bg-[#f6f3f2] text-[#006b5c] ${
+                action.featured ? "h-14 w-14" : "h-12 w-12"
               }`}
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#f6f3f2] text-[#006b5c] group-hover:bg-[#e6f8f4] sm:h-14 sm:w-14">
-                <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
-              </span>
-              <span className="text-center text-[11px] font-extrabold uppercase leading-tight text-[#006b5c] sm:text-base">
+              <Icon className="h-6 w-6" />
+            </div>
+
+            {action.featured ? (
+              <div className="min-w-0 md:flex md:items-center md:justify-between md:gap-5">
+                <div className="min-w-0">
+                  <p className="text-sm font-bold text-[#006b5c]">
+                    {action.label}
+                  </p>
+                  <p className="mt-2 text-sm font-medium text-[#4b5b56]">
+                    {action.description}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <span className="text-[11px] font-bold uppercase leading-tight text-[#006b5c] sm:text-sm">
                 {action.label}
               </span>
-            </div>
+            )}
           </Link>
         );
       })}

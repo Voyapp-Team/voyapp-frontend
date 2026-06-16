@@ -15,7 +15,7 @@ export default function VerifyRegistrationScreen() {
       shellClassName="lg:min-h-[685px]"
       progressClassName="lg:mt-[54px]"
       contentClassName="mt-14 max-w-[382px]"
-      backHref="/onboarding/contact"
+      backHref="/onboarding/freelancer-signup"
     >
       <OtpVerification 
        handleClick={() => router.push("/onboarding/profileSetUp")}
