@@ -39,7 +39,7 @@ export default function UsernameScreen() {
       setUsernameError("This username is already taken");
       return;
     }
-    router.push("/onboarding/login");
+    router.push("/onboarding/login/freelancer");
   };
 
   return (

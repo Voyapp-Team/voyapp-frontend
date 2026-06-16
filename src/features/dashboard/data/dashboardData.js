@@ -12,7 +12,7 @@ import {
   SubscriptionIcon,
   UserIcon,
   WalletIcon,
-} from "../components/DashboardIcons";
+} from '../components/DashboardIcons';
 
 export const dashboardUser = {
   name: "Soma",
@@ -38,7 +38,7 @@ export const quickActions = [
     label: "Request a Payment",
     description: "Share a payment link",
     icon: BanknoteIcon,
-    href: "/dashboard/recurring-payment",
+    href: "/dashboard/request-payment",
     featured: true,
   },
   {
@@ -51,13 +51,13 @@ export const quickActions = [
     label: "Crew",
     description: "Group recipients",
     icon: CrewIcon,
-    href: "/dashboard#profile",
+    href: "/onboarding/login/crew",
   },
   {
     label: "Convert",
     description: "Swap currencies",
     icon: ConvertIcon,
-    href: "/dashboard/wallet",
+    href: "/dashboard/wallet/convertToken",
   },
 ];
 

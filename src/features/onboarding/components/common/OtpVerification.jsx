@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Button from "@/src/components/ui/Button";
+import InputError from "@/src/components/ui/InputError";
 import { ArrowRightIcon, ClockIcon, LockIcon } from "@/src/components/ui/Icons";
 
 import OtpInput from "../../../../components/ui/OtpInput";
@@ -16,10 +17,12 @@ const OtpVerification = ({
   showSecurityFooter = true,
   buttonLabel = "Verify and Continue",
   handleClick,
+  length = 6,
 }) => {
   const router = useRouter();
   const [otp, setOtp] = useState("");
   const [seconds, setSeconds] = useState(RESEND_SECONDS);
+  const [otpError, setOtpError] = useState("");
 
   useEffect(() => {
     if (seconds <= 0) return undefined;
@@ -34,7 +37,20 @@ const OtpVerification = ({
 
   function handleResend() {
     setSeconds(RESEND_SECONDS);
+    setOtpError("");
   }
+
+  function handleSubmit() {
+    if (otp.length !== length) {
+      setOtpError("Enter the full 6-digit verification code.");
+      return;
+    }
+
+    setOtpError("");
+    handleClick?.();
+  }
+
+  const isSubmitDisabled = otp.length !== length;
 
   return (
     <div className={`w-full ${className}`.trim()}>
@@ -49,8 +65,13 @@ const OtpVerification = ({
       </div>
 
       <div className="mt-12">
-        <OtpInput length={6} onChange={setOtp} />
+        <OtpInput length={length} onChange={(value) => {
+          setOtp(value);
+          if (otpError) setOtpError("");
+        }} />
       </div>
+
+      <InputError message={otpError} />
 
       <div className="mt-10 flex flex-col items-center gap-3">
         <span className="inline-flex h-9 items-center gap-1.5 rounded-full bg-[#B8EDDF]/30 px-4 font-manrope text-sm font-semibold text-[#006B5C]">
@@ -69,9 +90,9 @@ const OtpVerification = ({
 
       <Button
         className="mt-12 h-[52px] rounded-xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={handleClick}
+        onClick={handleSubmit}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
-        disabled={otp.length > 0 && otp.length < 6}
+        disabled={isSubmitDisabled}
       >
         {buttonLabel}
       </Button>

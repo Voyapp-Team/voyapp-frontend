@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function MobileDashboardNav({ items }) {
   return (
-    <nav className="fixed left-5 right-5 bottom-[max(1.75rem,env(safe-area-inset-bottom))] z-50 grid h-20 grid-cols-4 justify-items-center rounded-[30px] border border-[#e1e1e1] bg-white/95 p-[10px] shadow-[0_18px_42px_rgba(0,0,0,0.14)] backdrop-blur lg:hidden">
+    <nav className="fixed left-4 right-4 bottom-[max(1.5rem,env(safe-area-inset-bottom))] z-50 grid h-20 grid-cols-4 justify-items-center rounded-[30px] border border-[#c8c8c8] bg-white p-[10px] shadow-[0_20px_40px_rgba(0,0,0,0.12)] backdrop-blur-lg lg:hidden">
       {items.map((item) => {
         const Icon = item.icon;
         return (

@@ -26,28 +26,28 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
   if (showSeeAll) {
     return (
       <section
-        className="mx-2 min-h-[155px] rounded-[23px] border-2 border-[#60d5c6] bg-white px-5 py-5 shadow-sm lg:mx-1 lg:min-h-[151px] lg:rounded-[21px] lg:border-[6px] lg:px-8 lg:py-6"
+        className="mx-2 min-h-[120px] rounded-[23px] border-2 border-[#60d5c6] bg-white px-3 py-3 shadow-sm lg:mx-1 lg:min-h-[120px] lg:rounded-[21px] lg:border-[3px] lg:px-5 lg:py-4"
         id="activity"
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-lg font-extrabold text-[#1c1b1b]">
+            <p className="text-base font-bold text-[#1c1b1b]">
               Recent Activity
             </p>
-            <p className="mt-1 text-sm font-semibold text-[#727272]">
+            <p className="mt-1 text-sm font-medium text-[#727272]">
               Track your money moves
             </p>
           </div>
 
           <Link
             href="/dashboard/recent-activity"
-            className="shrink-0 text-sm font-extrabold text-[#006b5c] transition hover:text-[#00493c]"
+            className="shrink-0 text-sm font-bold text-[#006b5c] transition hover:text-[#00493c]"
           >
             See all
           </Link>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-4 border-t border-[#dff4ef] pt-4 lg:mt-4">
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#dff4ef] pt-3 lg:mt-3">
           <div className="flex min-w-0 items-center gap-3">
             <span
               className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${
@@ -57,16 +57,16 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
               <LatestIcon className="h-5 w-5" />
             </span>
             <div className="min-w-0">
-              <p className="truncate text-sm font-extrabold text-[#1c1b1b] sm:text-base">
+              <p className="truncate text-sm font-bold text-[#1c1b1b] sm:text-base">
                 {latest.title}
               </p>
-              <p className="mt-1 text-xs font-semibold text-[#727272] sm:text-sm">
+              <p className="mt-1 text-xs font-medium text-[#727272] sm:text-sm">
                 {latest.meta}
               </p>
             </div>
           </div>
 
-          <p className="shrink-0 text-sm font-extrabold text-[#006b5c] sm:text-base">
+          <p className="shrink-0 text-sm font-bold text-[#006b5c] sm:text-base">
             {latest.amount}
           </p>
         </div>
@@ -93,7 +93,7 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
               </span>
 
               <div className="min-w-0">
-                <p className="truncate text-sm font-extrabold text-[#1c1b1b] sm:text-base">
+                <p className="truncate text-sm font-bold text-[#1c1b1b] sm:text-base">
                   {item.title}
                 </p>
                 <p className="mt-1 text-xs font-semibold text-[#727272] sm:text-sm">
@@ -103,7 +103,7 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
 
               <div className="col-span-2 flex items-center justify-between gap-3 sm:col-span-1 sm:justify-end">
                 <p
-                  className={`text-sm font-extrabold ${
+                  className={`text-sm font-bold ${
                     item.tone === "credit" ? "text-[#006b5c]" : "text-[#3f4a47]"
                   }`}
                 >

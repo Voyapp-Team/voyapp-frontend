@@ -1,6 +1,7 @@
 "use client";
 
 import { BeneficiaryIcon } from "@/src/components/ui/Icons";
+import BalanceVisibilityToggle from "@/src/components/ui/BalanceVisibilityToggle";
 import { formattedCurrency } from "../utils/formattedCurrency";
 
 export default function BalanceCard({ balance, onToggleBalanceVisibility, viewBalance }) {
@@ -10,13 +11,10 @@ export default function BalanceCard({ balance, onToggleBalanceVisibility, viewBa
        <div>
             <div className="flex gap-10 max-w-[324px] md:justify-between items-start">
                 <p className="text-[24px] md:text-[48px] leading-[48px] tracking-[-1.2px] font-extrabold font-montserrat text-white mt-1 mb-6">{viewBalance ? formattedCurrency(balance, "en-US", "USD") : "••••"}</p>
-                <button className=" object-cover object-center cursor-pointer mt-3">
-                    <img className=" object-cover object-center "
-                    src={viewBalance?"/withdrawal/icons8-hide-35.png":" /withdrawal/mdi_eye.svg"} 
-                    alt="Balance Card Background"
-                    onClick={onToggleBalanceVisibility}
-                    />
-                </button>
+                <BalanceVisibilityToggle
+                  isHidden={!viewBalance}
+                  onToggle={onToggleBalanceVisibility}
+                />
             </div>
             <p className="text-[12px] md:text-[20px] text-white font-bold leading-[24px] font-montserrat">{viewBalance ? `≈  ${formattedCurrency(balance * 1500, "en-NG", "NGN")}` : "••••"}</p>
             

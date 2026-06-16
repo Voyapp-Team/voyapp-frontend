@@ -6,8 +6,8 @@ import RoleOptionButton from "../components/common/RoleOptionButton";
 import { ArrowLeftIcon } from "../../../components/ui/Icons";
 
 const signUpOptions = [
-  { id: "business-owner", label: "As Business Owner", variant: "primary" },
-  { id: "freelancer", label: "As Freelancer", variant: "secondary" },
+  { id: "business-owner", label: "As Business Owner", variant: "primary", path: "/onboarding/business-signup" },
+  { id: "freelancer", label: "As Freelancer", variant: "secondary", path: "/onboarding/freelancer-signup" },
 ];
 
 export default function SignUpRoleScreen() {
@@ -19,7 +19,7 @@ export default function SignUpRoleScreen() {
         <button
           type="button"
           aria-label="Go back"
-          onClick={() => router.back()}
+          onClick={() => router.push("/")}
           className="absolute left-5 top-5 inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-white text-[var(--color-brand-primary-deep)] transition hover:bg-[var(--color-brand-soft)]"
         >
           <ArrowLeftIcon className="h-4 w-4" />
@@ -37,7 +37,7 @@ export default function SignUpRoleScreen() {
             <RoleOptionButton
               key={option.id}
               variant={option.variant}
-              onClick={() => router.push("/onboarding/contact")}
+              onClick={() => router.push(option.path)}
             >
               {option.label}
             </RoleOptionButton>
