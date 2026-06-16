@@ -7,16 +7,17 @@ import { ArrowRightIcon } from "@/src/components/ui/Icons";
 import Modal from "@/src/components/ui/Modal";
 import { useState, useEffect } from "react";
 import TransactionOtpVerification from "@/src/components/ui/TransactionOtpVerification";
-import { useRouter } from "next/navigation";
+import TransactionSuccessSummaryScreen from "./TransactionSuccessSummaryScreen";
 import withdrawalInputValidation from "../utils/withdrawalInputValidation";
 
 export default function BankTransferDetailsScreen() {
     const [amount, setAmount] = useState("");
     const [amountInputError, setAmountInputError] = useState("");
     const [otpInputError, setOtpInputError] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isPinModalOpen, setIsPinModalOpen] = useState(false);
+    const [isTransSuccess, setIsTransSuccess] = useState(false);
     const [otp, setOtp] = useState("");
-    const router = useRouter();
+    
   
 
     useEffect(() => {
@@ -27,14 +28,15 @@ export default function BankTransferDetailsScreen() {
                 return;
             }
             const timer=  setTimeout(() => {
-                setIsModalOpen(false);
-                router.push("/success");
+                setIsPinModalOpen(false);
+                setIsTransSuccess(true);
+                
             }, 2000);
 
             return () => clearTimeout(timer);
        }
 
-    }, [otp, router]);
+    }, [otp]);
 
     const handleContinueWithdrawal = () => {
         setAmountInputError("")
@@ -46,7 +48,7 @@ export default function BankTransferDetailsScreen() {
             return;
         }
 
-        setIsModalOpen(true)
+        setIsPinModalOpen(true)
 
     }
 
@@ -66,12 +68,17 @@ export default function BankTransferDetailsScreen() {
             >
                 Confirm Withdrawal
             </Button>
-            {isModalOpen && (
-                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} className= "bg-[#FFFFFF1A] border border-[#E8E8E8]" overlayClassName='bg-[#000000]' buttonClassName='bg-[#FFFFFF1A]'>
+            {isPinModalOpen && (
+                <Modal isOpen={isPinModalOpen} onClose={() => setIsPinModalOpen(false)} className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)] max-w-md"  buttonClassName='bg-[#FFFFFF1A]'>
                     <TransactionOtpVerification setOtp={setOtp} inputError={otpInputError} /> 
                 </Modal>
             )}
 
+            {isTransSuccess && (
+                <Modal isOpen={isTransSuccess} onClose={() => setIsTransSuccess(false)} className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)]"  buttonClassName='hidden'>
+                    <TransactionSuccessSummaryScreen />
+                </Modal>
+            )}
            
         </div>
     )
