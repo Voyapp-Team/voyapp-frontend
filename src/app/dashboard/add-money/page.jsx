@@ -1,6 +1,6 @@
-import AddMoneyScreen from "@/src/features/add_money/screens/AddMoneyScreen"
+import AddMoneyScreen from "@/src/features/addMoney/screens/AddMoneyScreen"
 
-export default function AddMoneyPage (){
+export default function AddMoneyPage(){
     return(
         <div>
             <AddMoneyScreen/>
