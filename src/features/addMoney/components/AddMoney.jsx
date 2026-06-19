@@ -1,19 +1,10 @@
 "use client"
 import Button from "@/src/components/ui/Button"
-import { useState } from "react";
+import useHandleCopy from "@/src/hooks/useHandleCopy";
 
 export default function AddMoney () {
-    const [copied, setCopied] = useState(false);
-
-    const handleCopy = async (value) => {
-        await navigator.clipboard.writeText(value);
-
-        setCopied(true);
-
-        setTimeout(() => {
-            setCopied(false);
-        }, 2000);
-    };
+   const {handleCopy, copied} = useHandleCopy();
+   
     return(
         <section className="max-w-[563px]  m-auto h-[466px] rounded-[50px] bg-[#ffffff] pt-6 px-10 p6 mb-20">
             <div className="flex items-enter gap-2  border-b border-[#E7E7E7] mb-6">

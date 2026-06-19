@@ -1,6 +1,9 @@
+"use client"
+
 import Link from "next/link";
 
 import { activityItems } from "../data/dashboardData";
+import { useRouter } from "next/navigation";
 
 const statusStyles = {
   credit: "bg-[#e8f8f4] text-[#006b5c]",
@@ -17,9 +20,12 @@ const iconToneStyles = {
 };
 
 export default function RecentActivity({ showSeeAll = true, limit }) {
+  const router = useRouter()
+
   const items = showSeeAll
     ? activityItems.slice(0, 3)
     : activityItems.slice(0, limit ?? activityItems.length);
+
   const latest = activityItems[0];
   const LatestIcon = latest.icon;
 
@@ -82,7 +88,8 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
           return (
             <div
               key={item.id}
-              className="grid min-h-20 grid-cols-[auto_1fr] gap-4 rounded-[16px] bg-white px-4 py-4 sm:grid-cols-[auto_1fr_auto] sm:items-center"
+              className="grid min-h-20 grid-cols-[auto_1fr] gap-4 cursor-pointer rounded-[16px] bg-white px-4 py-4 sm:grid-cols-[auto_1fr_auto] sm:items-center"
+              onClick={()=>router.push("/activity-details")}
             >
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-2xl ${

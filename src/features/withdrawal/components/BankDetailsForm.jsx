@@ -102,7 +102,12 @@ export default function BankDetailsForm() {
         {inputError && <InputError message={inputError.bankNameInputError} />}
         
         {isModalOpen && 
-          <Modal onClose={() => setIsModalOpen(false)} className="max-w-267 bg-[#ffffff] max-[768px]:min-h-screen max-[768px]:rounded-[0px] max-[768px]:w-full pl-0">
+          <Modal 
+           onClose={() => setIsModalOpen(false)} 
+           overlayClassName="min-[768px]:p-4"
+           className="w-full max-w-267 bg-[#ffffff] max-[768px]:min-h-screen max-[768px]:rounded-[0px] max-[768px]:w-full pr-6"
+           
+          >
             <BankList
               onClickBankName ={handleBankClick}
             />
