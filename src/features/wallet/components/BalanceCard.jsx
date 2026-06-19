@@ -35,7 +35,7 @@ export default function WalletBalanceCard({
           className="flex justify-between items-center gap-4 h-[
 48px] mb-2"
         >
-          <p className="font-montserrat font-extrabold text-5xl  text-[#FFFFFF] leading-12 tracking-tight">
+          <p className="font-montserrat font-extrabold text-base sm:text-5xl  text-[#FFFFFF] leading-12 tracking-tight">
             {viewBalance ? (loading ? "0.00" : usdBalance) : "••••"}
           </p>
           {/* Toggle between EyeOpen and EyeOff icon */}
@@ -48,7 +48,7 @@ export default function WalletBalanceCard({
           </button>
         </div>
       </div>
-      <div className="flex items-center gap-2 h-[24px] font-montserrat font-bold text-xl leading-6 text-[#FFFFFF]">
+      <div className="flex items-center gap-2 h-[24px] font-montserrat font-bold text-base sm:text-xl leading-6 text-[#FFFFFF]">
         <EqualApproximately className="w-5 h-5 text-white" />₦
         {viewBalance ? (loading ? "0.00" : ngnBalance) : " ••••"}
       </div>
