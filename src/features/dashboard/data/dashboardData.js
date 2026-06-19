@@ -45,7 +45,7 @@ export const quickActions = [
     label: "Recurring",
     description: "Repeat a payment",
     icon: RepeatIcon,
-    href: "/wallet/wallet",
+    href: "/dashboard/setup-automatic-payment",
   },
   {
     label: "Crew",
