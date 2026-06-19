@@ -53,9 +53,7 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
           </Link>
         </div>
 
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#dff4ef] pt-3 lg:mt-3"
-          onClick={()=>router.push("/activity-details")}
-        >
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#dff4ef] pt-3 lg:mt-3">
           <div className="flex min-w-0 items-center gap-3">
             <span
               className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${
@@ -90,7 +88,8 @@ export default function RecentActivity({ showSeeAll = true, limit }) {
           return (
             <div
               key={item.id}
-              className="grid min-h-20 grid-cols-[auto_1fr] gap-4 rounded-[16px] bg-white px-4 py-4 sm:grid-cols-[auto_1fr_auto] sm:items-center"
+              className="grid min-h-20 grid-cols-[auto_1fr] gap-4 cursor-pointer rounded-[16px] bg-white px-4 py-4 sm:grid-cols-[auto_1fr_auto] sm:items-center"
+              onClick={()=>router.push("/activity-details")}
             >
               <span
                 className={`flex h-12 w-12 items-center justify-center rounded-2xl ${
