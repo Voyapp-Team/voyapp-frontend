@@ -75,7 +75,13 @@ export default function BankTransferDetailsScreen() {
             )}
 
             {isTransSuccess && (
-                <Modal isOpen={isTransSuccess} onClose={() => setIsTransSuccess(false)} className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)]"  buttonClassName='hidden'>
+                <Modal 
+                 isOpen={isTransSuccess} 
+                 onClose={() => setIsTransSuccess(false)} 
+                 className= "bg-[#FFFFFF1A] border border-white/20 w-full  max-w-[448px]  border-l-white border-b-white shadow-[0_8px_32px_rgba(0,0,0,0.12)]"  
+                 buttonClassName='hidden'
+                 
+                >
                     <TransactionSuccessSummaryScreen />
                 </Modal>
             )}
