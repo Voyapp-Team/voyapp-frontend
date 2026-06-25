@@ -317,6 +317,7 @@ export const ConvertTokenScreen = () => {
         <Modal
           onClose={() => setModalOpen(false)}
           className= "bg-[#FFFFFF1A] border border-white/20  border-l-white border-b-white  shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+          buttonClassName='hidden'
         >
           <div className="flex flex-col items-center gap-4 p-6">
             <div className="flex gap-2 items-center  font-montserrat font-bold text-xl leading-5">
@@ -332,7 +333,7 @@ export const ConvertTokenScreen = () => {
             <Button
               onClick={() => router.push(`/dashboard`)}
               variant="transparent"
-              className={`font-montserrat font-bold text-lg leading-7 text-[#006B5C]  mt-2`}
+              className={`font-montserrat font-bold border border-[#006B5C] text-lg leading-7 text-[#006B5C]  mt-2`}
             >
               Go to Dashboard
             </Button>

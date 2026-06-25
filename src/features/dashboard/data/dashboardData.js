@@ -28,7 +28,7 @@ export const balances = [
     tone: "primary",
     actions: [
       { label: "Withdraw", href: "/dashboard/withdrawal", variant: "solid" },
-      { label: "Add Money", href: "/dashbord/add-money", variant: "ghost" },
+      { label: "Add Money", href: "/dashboard/add-money", variant: "ghost" },
     ],
   },
 ];
@@ -45,7 +45,7 @@ export const quickActions = [
     label: "Recurring",
     description: "Repeat a payment",
     icon: RepeatIcon,
-    href: "/wallet/wallet",
+    href: "/dashboard/setup-automatic-payment",
   },
   {
     label: "Crew",

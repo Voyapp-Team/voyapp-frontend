@@ -53,7 +53,7 @@ const OtpVerification = ({
   const isSubmitDisabled = otp.length !== length;
 
   return (
-    <div className={`w-full ${className}`.trim()}>
+    <div className={`w-full p-6 ${className}`.trim()}>
       <div>
         <h1 className="font-montserrat text-[30px] font-semibold leading-[1.16] text-[#1C1B1B] sm:text-[34px]">
           Verify it&apos;s <span className="text-[#00A991]">you.</span>

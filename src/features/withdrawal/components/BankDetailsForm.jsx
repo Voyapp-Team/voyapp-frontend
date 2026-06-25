@@ -3,7 +3,8 @@ import Button from "@/src/components/ui/Button";
 import withdrawalInputValidation from "../utils/withdrawalInputValidation";
 import InputError from "../../../components/ui/InputError";
 import { ArrowRightIcon  } from "@/src/components/ui/Icons";
-
+import Modal from "@/src/components/ui/Modal";
+import BankList from "./BankList";
 import { useState } from "react"
 import { useRouter } from "next/navigation";
 
@@ -11,18 +12,19 @@ export default function BankDetailsForm() {
     const [accountNumber, setAccountNumber] = useState("");
     const [bankName, setBankName] = useState("");
     const [saveDetails, setSaveDetails] = useState(false);
+    const [isModalOpen, setIsModalOpen] =useState(false);
     const router = useRouter();
     const [inputError, setInputError] = useState({
         bankNameInputError: "",
         accountNumInputError: "",
     });
 
-    const handleBankChange = (e) => {
-        const selectedBank = e.target.value;
-        setBankName(selectedBank);
-        if (selectedBank) {
-            setInputError(prev => ({ ...prev, bankNameInputError: "" }));
-        }
+    const handleBankClick = (selectedBank) => {
+      setBankName(selectedBank);
+      setIsModalOpen(false);
+      if (selectedBank) {
+        setInputError(prev => ({ ...prev, bankNameInputError: "" }));
+      };
     };
 
     const handleAccountNumberChange = (e) => {
@@ -56,7 +58,7 @@ export default function BankDetailsForm() {
     };
 
     const accountName = "John Doe";
-    const bankOptions = ["Choose a bank","GTBank", "Access Bank", "Zenith Bank", "First Bank", "UBA"];  
+      
   return (
     <form className="flex flex-col w-full  bg-white md:rounded-[50px]" onSubmit={handleSubmit}>
       <h2 className="text-[30px] font-extrabold font-plusJakartaSans leading-[37.5px] text-[#1C1B1B] tracking-[-0.75px]">Transfer Details</h2>
@@ -91,16 +93,26 @@ export default function BankDetailsForm() {
 
         <div className="w-full max-w-[400px] mt-6">
             <label className="block text-[14px] font-semibold font-manrope leading-5 text-[#3C4A46] mb-2" htmlFor="bankName">Select Bank</label>
-            <select id="bankName" name="bankName" className="w-full text-[#1C1B1B] border-0 bg-[#F6F3F2] px-[16px]  py-[8px] pr-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#00C2A8]"
-            value={bankName}
-            onChange={handleBankChange}
+            <p role="button"  className=" text-center w-full text-[#1C1B1B] border-0 bg-[#F6F3F2] px-[16px]  py-[8px] pr-10 rounded-xl hover:outline-none hover:ring-2 hover:ring-[#00C2A8] cursor-pointer"
+             onClick={() => setIsModalOpen(prev => !prev)}
             >
-                {bankOptions.map((option, index) => (
-                    <option key={index} value={index===0 ? "" : option} className="text-[18px] font-bold leading-[100%] font-montserrat " >{option}</option>
-                ))}
-            </select>
+              {`${bankName? bankName : "Choose a bank"}`}
+            </p>
        </div>
         {inputError && <InputError message={inputError.bankNameInputError} />}
+        
+        {isModalOpen && 
+          <Modal 
+           onClose={() => setIsModalOpen(false)} 
+           overlayClassName="min-[768px]:p-4"
+           className="w-full max-w-267 bg-[#ffffff] max-[768px]:min-h-screen max-[768px]:rounded-[0px] max-[768px]:w-full pr-6"
+           
+          >
+            <BankList
+              onClickBankName ={handleBankClick}
+            />
+          </Modal>
+        }
 
 
       {bankName && isValidAccount && (

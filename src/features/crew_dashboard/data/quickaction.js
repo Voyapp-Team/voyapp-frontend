@@ -13,7 +13,7 @@ export const QuickActions = [
   {
     label: "Add Member",
     icon: UserPlus,
-    href: "/onboarding/add-crew",
+    href: "/add-crew-member",
   },
   {
     label: "Edit Splits",

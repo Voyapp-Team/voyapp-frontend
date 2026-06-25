@@ -25,8 +25,8 @@ export default function RequestPaymentScreen() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF8F8] py-8 px-4">
-      <div className="flex flex-col items-center w-full max-w-[720px] m-auto bg-white rounded-[50px] shadow-[0_30px_60px_rgba(0,0,0,0.08)] overflow-hidden">
+    <div className="min-h-screen bg-[#FDF8F8] py-12 px-4">
+      <div className="flex flex-col items-center w-full max-w-[600px] m-auto bg-white rounded-[48px] overflow-hidden">
         <RequestPaymentForm onSubmit={handleSubmit} isLoading={isSubmitting} />
       </div>
     </div>
