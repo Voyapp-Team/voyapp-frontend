@@ -43,7 +43,7 @@ export default function Profile (){
             <div>
                 {otherLinks && otherLinks.map((link) => (
                     <div key={link} className="relative w-full max-w-85 m-auto flex gap-2 items-center mb-6 ">
-                        <p className="w-full max-w-74 bg-[#FFFFFF] rounded-[10px] p-2 font-bold font-montserrat text-[14px] text-[#006B5C] leading-7 text-center">{link}</p>
+                       <p className="w-full max-w-74 truncate bg-[#FFFFFF] rounded-[10px] p-2 font-bold font-montserrat text-[clamp(12px,3.3vw,14px)] text-[#006B5C] leading-7 text-center">{link}</p>
                         <button 
                           className="w-10 h-10 rounded-xl bg-[#F6F3F2] flex justify-center items-center cursor-pointer "
                           onClick={() => {
@@ -58,10 +58,7 @@ export default function Profile (){
                 ))}
 
             </div>
-
             <p className="font-medium font-monserrat text-[11px] leading-4.25 tracking-[1.1px] text-[#006B5C] text-center mt-20 mb-10">POWERED BY <span className="font-bold">VOYA.COM</span></p>
-
-
 
         </section>
     )
