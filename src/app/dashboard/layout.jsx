@@ -8,7 +8,14 @@ import { sidebarItems } from '@/src/features/dashboard/data/dashboardData';
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
-  const hideSidebar = pathname === "/dashboard/recurring-payment" || pathname === "/dashboard/recurring-payment/";
+  const hideSidebar = 
+    pathname === "/dashboard/recurring-payment" || 
+    pathname === "/dashboard/recurring-payment/" || 
+    pathname === "/dashboard/request-payment" || 
+    pathname === "/dashboard/request-payment/" ||
+    pathname === "/dashboard/setup-automatic-payment" || 
+    pathname === "/dashboard/setup-automatic-payment/";
+
 
   return (
     <div className="min-h-screen bg-[#f8f8f8] font-manrope text-[#1c1b1b] px-5 pb-[112px] pt-[86px] lg:px-10 lg:pb-8">
