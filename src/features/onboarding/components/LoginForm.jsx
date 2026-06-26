@@ -133,9 +133,9 @@ export default function LoginForm( { accountType }) {
       </div>
 
       {showModal ? (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} className= {'bg-[#FFFFFF] w-full max-w-[500px]'}>
           <OtpVerification
-            className="mx-auto max-w-[382px]"
+            className="mx-auto max-w-[382px] py-15"
             showSecurityFooter={false}
             buttonLabel="Verify and Continue"
             handleClick={handleLoginSuccess}
