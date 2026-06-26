@@ -86,7 +86,7 @@ export const AddCrewScreen = () => {
           data={addedMembers}
           currentUser={1}
           onRemoveMember={handleRemoveMember}
-          // btnClick={router.push("/onboarding/set-crew-split")}
+          btnClick={() => router.push("/onboarding/set-split")}
         />
       </section>
     </div>
