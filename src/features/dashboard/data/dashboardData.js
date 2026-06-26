@@ -158,5 +158,5 @@ export const sidebarItems = [
   { label: "Home", icon: DashboardGridIcon, href: "/dashboard", active: true },
   { label: "Activity", icon: WalletIcon, href: "/dashboard/recent-activity" },
   { label: "Crew", icon: SidebarCrewIcon, href: "/dashboard#crew" },
-  { label: "Profile", icon: UserIcon, href: "/dashboard#profile" },
+  { label: "Profile", icon: UserIcon, href: "/dashboard/profile" },
 ];
