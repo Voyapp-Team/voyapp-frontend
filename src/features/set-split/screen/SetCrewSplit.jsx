@@ -121,45 +121,6 @@ export const SetSplitScreen = () => {
     router.push("/dashboard/crew");
   };
 
-  // const [searchTerm, setSearchTerm] = useState("");
-
-  // const [availableMemeber, setAvailableMember] = useState(VoyaMembers);
-
-  // const [addedMembers, setAddedMembers] = useState(CrewMember);
-
-  // function to search voya member
-
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-
-  //   setSearchTerm(value);
-
-  //   if (!value.trim()) {
-  //     setAvailableMember(VoyaMembers);
-  //     return;
-  //   }
-  //   const matchSearch = VoyaMembers.filter((user) =>
-  //     user.userName.toLowerCase().includes(value.toLowerCase()),
-  //   );
-
-  //   setAvailableMember(matchSearch);
-  // };
-
-  // fuction to handle Add button
-  // const handleAddMember = (user) => {
-  //   if (addedMembers.some((member) => member.id === user.id)) {
-  //     return;
-  //   }
-  //   setAddedMembers((prevData) => [...prevData, user]);
-  // };
-
-  // // function to remove member
-
-  // const handleRemoveMember = (userId) => {
-  //   const updatedMember = addedMembers.filter((user) => user.id !== userId);
-  //   setAddedMembers(updatedMember);
-  // };
-
   return (
     <div className="flex flex-col w-full items-center min-h-screen sm:px-6 py-6 overflow-hidden bg-[#f8f8f8]">
       {/* header */}
