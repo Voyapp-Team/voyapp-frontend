@@ -45,8 +45,8 @@ export default function CreateCrewForm({
 
                     <div className="bg-white  p-6 flex flex-col items-center gap-3 ">
                         <div 
-                        className=" w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer bg-[#F6F3F2]"
-                        onClick={() => fileInputRef.current.click()}
+                            className=" w-[80px] h-[80px] rounded-full flex items-center justify-center cursor-pointer bg-[#F6F3F2]"
+                            onClick={() => fileInputRef.current.click()}
                         
                         >
                             {/* Profile Image */}
