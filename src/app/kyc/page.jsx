@@ -1,5 +1,5 @@
-import { KYCScreen } from '@/src/features/kyc/screen/kyc_screen';
+import { KYCScreen } from '@/src/features/kyc/screen/KycScreen';
 
 export default function KYC(params) {
-    return <KYCScreen/>
+  return <KYCScreen />;
 }
