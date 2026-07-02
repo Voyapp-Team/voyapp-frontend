@@ -8,7 +8,7 @@ import Button from '@/src/components/ui/Button';
 import InputError from '@/src/components/ui/InputError';
 
 import FormInput from '../components/FormInput';
-import { Checked } from '../components/KycIcon';
+import { Checked } from '../components/kyc-icon';
 import KycPersonalData from '../components/KycPeronalData';
 import PageHeader from '../components/PageHeader';
 import ValidateInput from '../utils/kycInputValidation';
