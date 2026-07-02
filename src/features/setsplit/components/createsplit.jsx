@@ -7,9 +7,9 @@ import Button from '@/src/components/ui/Button';
 import { ArrowRightIcon } from '@/src/components/ui/Icons';
 import InputError from '@/src/components/ui/InputError';
 
-import { Error } from './error_message';
-import { LiveDemo } from './live_demo';
-import { Success } from './success_message';
+import { Error } from './errorMessage';
+import { LiveDemo } from './liveDemo';
+import { Success } from './successMessage';
 
 export const CreateSplit = ({
   data,

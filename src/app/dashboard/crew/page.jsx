@@ -1,6 +1,6 @@
 import {
   CrewDashboardScreen,
-} from '@/src/features/crew_dashboard/screen/CrewDashboard';
+} from '@/src/features/crewDashboard/screen/CrewDashboard';
 
 export default function CrewPage() {
   return <CrewDashboardScreen />;

@@ -8,9 +8,9 @@ import { useRouter } from 'next/navigation';
 
 import { ArrowLeftIcon } from '@/src/components/ui/Icons';
 
-import { Crew } from '../../set-split/data/crew';
 import { CreateSplit } from '../components/createsplit';
 import NameSplit from '../components/namesplit';
+import { Crew } from '../data/crew';
 
 export const SetSplitScreen = () => {
   const router = useRouter();
