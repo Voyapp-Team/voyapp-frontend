@@ -101,11 +101,6 @@ export const CreateSplit = ({
                     value={item.percentShare === 0 ? "" : item.percentShare}
                     placeholder="0"
                     onChange={(e) => handleOnchange(item.id, e.target.value)}
-                    // onBlur={
-                    //   parseInt(item.percentShare) === ""
-                    //     ? 0
-                    //     : parseInt(item.percentShare)
-                    // }
                     min={1}
                     max={100}
                     className={`border-transparent text-right items-right m-0 h-6 w-9 placeholder:text-center font-plusJakartaSans font-bold text-lg leading-7 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none outline-none py-3 ${item.percentShare >= 60 ? " text-[#006B5C]" : ""}`}
