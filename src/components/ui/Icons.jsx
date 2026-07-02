@@ -337,6 +337,7 @@ export function Sparkles({
     </svg>
   );
 }
+
 export function ShieldIcon({
   fill = "currentColor",
   className = "",

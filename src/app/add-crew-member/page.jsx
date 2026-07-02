@@ -1,9 +1,9 @@
-import { AddCrewScreen } from "@/src/features/add_crew/screen/AddCrewMember";
+import { AddCrewScreen } from '@/src/features/addCrew/screen/AddCrewMember';
 
-export default function AddCrewMemberPage (){
-    return(
-        <div>
-            <AddCrewScreen/>
-        </div>
-    )
+export default function AddCrewMemberPage() {
+  return (
+    <div>
+      <AddCrewScreen />
+    </div>
+  );
 }
