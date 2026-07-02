@@ -11,7 +11,7 @@ import {
   Dot,
   Star,
   Voya,
-} from '../components/KycIcon';
+} from '../components/kyc-icon';
 import PageHeader from '../components/PageHeader';
 
 const tierBenefits = [
