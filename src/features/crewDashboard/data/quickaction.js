@@ -18,6 +18,6 @@ export const QuickActions = [
   {
     label: "Edit Splits",
     icon: Scissors,
-    href: "/set-crew-split",
+    href: "/set-split",
   },
 ];
