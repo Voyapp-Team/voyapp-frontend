@@ -2,8 +2,6 @@ import Tier2VerificationScreen from "@/src/features/settingsDemo/screens/Tier2Ve
 
 export default function Tier2VerificationPage() {
   return (
-    <main className="bg-[#FCF8F8] min-h-screen">
-        <Tier2VerificationScreen />
-    </main>
+    <Tier2VerificationScreen />
   );
 }
