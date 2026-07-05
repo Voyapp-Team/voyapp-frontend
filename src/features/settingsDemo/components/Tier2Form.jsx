@@ -13,7 +13,7 @@ export default function Tier2Form(){
     }
 
     return(
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full w-full ">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full  ">
            <KYCInput
                 label="BVN"
                 name="bvn"
