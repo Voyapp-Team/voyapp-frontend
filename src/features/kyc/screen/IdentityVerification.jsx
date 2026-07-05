@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import Button from '@/src/components/ui/Button';
 import InputError from '@/src/components/ui/InputError';
+import Modal from '@/src/components/ui/Modal';
 
 import FormInput from '../components/FormInput';
 import { Checked } from '../components/kyc-icon';
@@ -18,6 +19,7 @@ export const IdentityVerification = () => {
 
   const [kycData, setKycData] = useState({});
   const [inputErrors, setInputErrors] = useState({});
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -39,10 +41,11 @@ export const IdentityVerification = () => {
     }
 
     setInputErrors({});
-    router.push("/kyc/bank-verification");
+    setIsSuccess(true);
+    console.log("click");
   };
   return (
-    <div className="flex flex-col items-center w-full h-screen sm:top-25.5 sm:left-100 px-10 bg-[#f8f8f8] overflow-x-hidden">
+    <div className="flex flex-col items-center w-full h-screen sm:top-25.5 sm:left-100 px-10 bg-[#f8f8f8] overflow-x-hidden pb-6">
       {/* header */}
       <div className="flex flex-col items-center w-122.5 mb-5">
         <PageHeader accountLevel="kyc-1" />
@@ -84,11 +87,46 @@ export const IdentityVerification = () => {
           />
           <InputError message={inputErrors.date_of_birth} />
 
-          <Button type="submit" className="mt-10">
-            Done
-          </Button>
+          <div className="w-[390px] sm:w-full mb-10">
+            <Button type="submit" className="w-full">
+              Done
+            </Button>
+          </div>
         </KycPersonalData>
       </section>
+      {isSuccess && (
+        <Modal
+          buttonClassName={`bg-transparent z-40`}
+          onClose={() => setIsSuccess(false)}
+          // overlayClassName={`bg-transparent`}
+          className="bg-transparent"
+        >
+          <div className="flex flex-col gap-5 w-[390px] sm:w-full">
+            <div className="flex flex-col items-center bg-[#FFFFFF1A] brightness-[1.03] h-[331px] sm:w-[511px] rounded-[50px] border border-white/20 backdrop-blur-md">
+              <div className="h-[250px] w-[250px]"></div>
+              <p className="text-center font-montserrat font-bold text-[24px] leading-7 text-[#FFFFFF] ">
+                Successfully Verified
+              </p>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Button onClick={() => router.push("/kyc/bank-verification")}>
+                <p className="text-[#FFFFFF] font-montserrat font-bold text-lg leading-7">
+                  Upgrade to Tier 2
+                </p>
+              </Button>
+
+              <Button
+                variant="transparent"
+                onClick={() => router.push("/dashboard")}
+              >
+                <p className="text-[#FFFFFF] font-montserrat font-bold text-lg leading-7">
+                  Go to Dashboard
+                </p>
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };
