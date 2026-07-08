@@ -1,11 +1,11 @@
 
 
 export default function withdrawalInputValidation(details){
-    const errors = {};
+   const errors = {};
 
-    const numRegex = /^[0-9]{10}$/
+   const numRegex = /^[0-9]{10}$/
 
-    if("input" in details){
+   if("input" in details){
       const input = details.input.trim();
 
       if(!input){

@@ -14,7 +14,7 @@ export default function Header() {
           <h1 className="text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">KYC</h1>
         </div>
         <Link href="/notifications" label="Notifications">
-          <NotificationIcon className="h-[37px] w-[28px]" fill ="#000000" />
+          <NotificationIcon className="h-9.25 w-7" fill ="#000000" />
         </Link>
       </nav>
     </header>

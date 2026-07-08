@@ -1,4 +1,4 @@
-import Tier2VerificationScreen from "@/src/features/settingsDemo/screens/Tier2VerificationScreen";  
+import Tier2VerificationScreen from "@/src/features/settings/screens/Tier2VerificationScreen";  
 
 export default function Tier2VerificationPage() {
   return (
