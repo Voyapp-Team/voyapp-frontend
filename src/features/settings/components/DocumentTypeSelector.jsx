@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@/src/components/ui/Icons';
 
 export const DocumentTypeSelector = ({ handleClick, ...props }) => {
   return (
-    <div className="flex flex-col gap-4 w-full sm:w-120">
+    <div className="flex flex-col gap-4 w-full ">
       <div className="relative w-full h-15 border border-gray-200 rounded-2xl bg-[#FFFFFF] px-4 flex items-center">
         <select
           {...props}

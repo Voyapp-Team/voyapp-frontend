@@ -56,7 +56,6 @@ export default function Profile (){
                         {copied && copiedLink === link && <p className="text-green-600 text-[10px] absolute right-0 top-[-30%]">copied!</p>}
                     </div>
                 ))}
-
             </div>
             <p className="font-medium font-monserrat text-[11px] leading-4.25 tracking-[1.1px] text-[#006B5C] text-center mt-20 mb-10">POWERED BY <span className="font-bold">VOYA.COM</span></p>
 
