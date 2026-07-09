@@ -2,9 +2,10 @@
 import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
-
+import KycTitle from '../components/common/KycTitle';
 import { ShieldIcon } from '@/src/components/ui/Icons';
 import InputError from '@/src/components/ui/InputError';
+import Header from '../components/common/Header';
 
 import { DocumentTypeSelector } from '../components/DocumentTypeSelector';
 import {
@@ -12,7 +13,7 @@ import {
   Star,
   Voya,
 } from '../components/kyc-icon';
-import PageHeader from '../components/PageHeader';
+
 
 const tierBenefits = [
   {
@@ -28,7 +29,7 @@ const tierBenefits = [
     description: "Access to low-tier yield generation on stable assets.",
   },
 ];
-export const KYCScreen = () => {
+export const Tier1VerificationFirstStep = () => {
   const router = useRouter();
 
   const [documentType, setDocumentType] = useState("");
@@ -45,14 +46,20 @@ export const KYCScreen = () => {
       return;
     }
     // router.push(`/kyc/identity-verification?documentType=${documentType}`);
-    router.push(`/kyc/identity-verification`);
+    router.push(`/settings/tier-1/identity-verification`);
   };
 
   return (
-    <div className="relative flex flex-col gap-10 w-full items-center min-h-screen sm:px-6 py-6 overflow-hidden bg-[#f8f8f8]">
+    <div className="relative flex flex-col gap-10 w-full items-center min-h-screen px-6 py-15  pt-25 overflow-hidden bg-[#f8f8f8]">
       {/* header */}
-      <div className="flex flex-col items-center w-122.5">
-        <PageHeader accountLevel="kyc-1" icon={ShieldIcon} />
+      <Header />
+
+      <div className="flex flex-col items-center w-full max-w-122.5"> 
+        <KycTitle
+          accountLevel="1"
+          subtitle="Personal Identity Verification"
+          Icon={ShieldIcon}
+        />
         {inputError && <InputError message="Please select a document type." />}
         <DocumentTypeSelector
           value={documentType}
@@ -65,7 +72,7 @@ export const KYCScreen = () => {
         <Voya />
       </div>
       {/*Main section*/}
-      <section className="flex flex-col w-122.5 h-fit rounded-4xl gap-6 bg-[#FFFFFF] p-6 mt-15">
+      <section className="flex flex-col w-full max-w-122.5 h-fit rounded-4xl gap-6 bg-[#FFFFFF] p-6 mt-15">
         <div className="flex items-center gap-2 text-[#006B5C99]">
           <Star className="w-4 h-4" />
           <p className="font-montserrat font-bold text-lg leading-7">
