@@ -1,5 +1,5 @@
 import EditProfileScreen
-  from '@/src/features/profile/screens/EditProfileScreen';
+  from '@/src/features/settings/screens/EditProfileScreen';
 
 export default function ProfilePage() {
   return (

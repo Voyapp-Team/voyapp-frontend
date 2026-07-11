@@ -1,12 +1,12 @@
 "use client";
-import { useState } from 'react';
+import { useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import useHandleCopy from '@/src/hooks/useHandleCopy';
+import useHandleCopy from "@/src/hooks/useHandleCopy";
 
-import { User } from '../data/ProfileData';
-import UploadProfilePic from './common/UploadProfilePic';
+import { User } from "../data/ProfileData";
+import UploadProfilePic from "./common/UploadProfilePic";
 
 export default function Profile() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function Profile() {
   return (
     <section className="relative">
       <button
-        onClick={() => router.push("/dashboard/profile/edit")}
+        onClick={() => router.push("/settings/edit-profile")}
         className=" absolute -top-6.25 -right-2 flex justify-center items-center bg-[#FFFFFF] w-10 h-10 rounded-xl"
       >
         <img src="/edit-pen-icon.svg" alt="Edit Profile Illustration" />
