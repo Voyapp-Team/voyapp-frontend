@@ -60,7 +60,7 @@ export const Tier1VerificationSecondStep = () => {
             onChange={handleChange}
             type="text"
             label="Legal Name"
-            error={inputErrors.legal_name}
+            error={inputErrors.legal_name || ""}
           />
 
           <KycInput
@@ -69,7 +69,7 @@ export const Tier1VerificationSecondStep = () => {
             onChange={handleChange}
             type="tel"
             label="Phone Number"
-            error={inputErrors.phone_number}
+            error={inputErrors.phone_number || ""}
           />
 
           <KycInput
@@ -78,7 +78,7 @@ export const Tier1VerificationSecondStep = () => {
             onChange={handleChange}
             type="date"
             label="Date of Birth"
-            error={inputErrors.date_of_birth}
+            error={inputErrors.date_of_birth || ""}
           />
 
           <div className="w-[390px] sm:w-full mb-10">
