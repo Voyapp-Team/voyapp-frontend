@@ -36,14 +36,14 @@ export const Tier1VerificationSecondStep = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setInputErrors({});
+
     const errors = kycInputValidation(kycData);
-    const InValide = Object.keys(errors).length > 0;
-    if (InValide) {
+    const InValid = Object.keys(errors).length > 0;
+    if (InValid) {
       setInputErrors(errors);
       return;
     }
-
+    setInputErrors({});
     setIsSuccess(true);
   };
   return (
