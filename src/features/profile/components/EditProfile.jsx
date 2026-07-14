@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import { ShareDashboardIcon } from '../../dashboard/components/DashboardIcons';
-import UploadProfileImage from '../components/UploadProfileImage';
-import { User } from '../data/ProfileInfo';
-import Header from './common/Header';
-import {
-  InputField,
-  InputTextArea,
-} from './ui/InputField';
+import { ShareDashboardIcon } from "../../dashboard/components/DashboardIcons";
+import Header from "../../settings/components/common/Header";
+import UploadProfilePic from "../components/common/UploadProfilePic";
+import { User } from "../data/ProfileData";
+import { InputField, InputTextArea } from "./ui/InputField";
 
 export default function EditProfile({ profilePictureEdit }) {
   const router = useRouter();
@@ -130,7 +127,7 @@ export default function EditProfile({ profilePictureEdit }) {
         {/* header */}
 
         {/*Upload Profile Pucture Component */}
-        <UploadProfileImage
+        <UploadProfilePic
           handleChange={handleProfilePictureEdit}
           editProfile={profilePictureEdit}
           imageSrc={userData.profile_image || "/profile-pic.svg"}

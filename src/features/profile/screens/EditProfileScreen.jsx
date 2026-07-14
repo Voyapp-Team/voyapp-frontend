@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import EditProfile from '../components/EditProfile';
+import EditProfile from "../components/EditProfile";
 
 export default function ProfileScreen() {
   const [editProfile, setEditProfile] = useState(true);
