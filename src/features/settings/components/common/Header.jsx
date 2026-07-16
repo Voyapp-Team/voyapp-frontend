@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { ArrowLeftIcon } from '@/src/components/ui/Icons';
+import { ArrowLeftIcon } from "@/src/components/ui/Icons";
 
 // pageDesc = page description e.g KYC, Edit Profile..
 // btnDesc = button description h-16
@@ -21,7 +21,7 @@ export default function Header({ icon, pageDesc, btnDesc, onClick }) {
           </h1>
         </div>
         <div className="flex items-center gap-2 sm:gap-5">
-          {btnDesc.length > 0 && (
+          {btnDesc && (
             <div>
               <button
                 onClick={onClick}
