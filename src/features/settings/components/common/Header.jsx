@@ -1,22 +1,41 @@
-import { NotificationIcon } from "@/src/components/ui/Icons";
 import Link from "next/link";
 
+import { ArrowLeftIcon } from "@/src/components/ui/Icons";
 
-
-export default function Header() {
+// pageDesc = page description e.g KYC, Edit Profile..
+// btnDesc = button description h-16
+export default function Header({ icon, pageDesc, btnDesc, onClick }) {
+  const Icon = icon;
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#8e8e8e]/20 bg-white/90 backdrop-blur px-6 md:px-12">
-      <nav className="mx-auto flex h-16 w-full  items-center justify-between  ">
-        <div className="flex items-center gap-14">
+      <nav className="mx-auto flex  h-[78px]  w-full  items-center justify-between">
+        <div className="flex items-center gap-1.5 sm:gap-5">
           <Link href="/settings" label="Settings">
-            <img className="" src="/header-back-icon.svg" />
+            <ArrowLeftIcon
+              className="w-5 h-5 sm:w-6 sm:h-6 md:h-9.25 md:w-7 text-[#1C1B1B]"
+              fill="#000000"
+            />
           </Link>
-          <h1 className="text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">KYC</h1>
+          <h1 className="text-xs sm:text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">
+            {pageDesc}
+          </h1>
         </div>
-        <Link href="/notifications" label="Notifications">
-          <NotificationIcon className="h-9.25 w-7" fill ="#000000" />
-        </Link>
+        <div className="flex items-center gap-2 sm:gap-5">
+          {btnDesc && (
+            <div>
+              <button
+                onClick={onClick}
+                className=" font-manrope font-semibold sm:text-sm whitespace-nowrap text-center flex justify-center items-center leading-5.5 text-[#FFFFFF] cursor-pointer bg-[#006B5C] py-[10px] px-[50px] gap-[10px] text-xs w-20 h-9 sm:w-[202px] sm:h-[43px] rounded-[10px]"
+              >
+                {btnDesc}
+              </button>
+            </div>
+          )}
+          <Link href="/notifications" label="Notifications">
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:h-9.25 md:w-7 text-[#1C1B1B]" />
+          </Link>
+        </div>
       </nav>
     </header>
   );
-}  
+}
