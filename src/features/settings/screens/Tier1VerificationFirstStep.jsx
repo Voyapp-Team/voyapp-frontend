@@ -2,18 +2,21 @@
 import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
-import KycTitle from '../components/common/KycTitle';
-import { ShieldIcon } from '@/src/components/ui/Icons';
-import InputError from '@/src/components/ui/InputError';
-import Header from '../components/common/Header';
 
+import {
+  NotificationIcon,
+  ShieldIcon,
+} from '@/src/components/ui/Icons';
+import InputError from '@/src/components/ui/InputError';
+
+import Header from '../components/common/Header';
+import KycTitle from '../components/common/KycTitle';
 import { DocumentTypeSelector } from '../components/DocumentTypeSelector';
 import {
   Dot,
   Star,
   Voya,
 } from '../components/kyc-icon';
-
 
 const tierBenefits = [
   {
@@ -52,9 +55,9 @@ export const Tier1VerificationFirstStep = () => {
   return (
     <div className="relative flex flex-col gap-10 w-full items-center min-h-screen px-6 py-15  pt-25 overflow-hidden bg-[#f8f8f8]">
       {/* header */}
-      <Header />
+      <Header pageDesc={"KYC"} icon={NotificationIcon} />
 
-      <div className="flex flex-col items-center w-full max-w-122.5"> 
+      <div className="flex flex-col items-center w-full max-w-122.5">
         <KycTitle
           accountLevel="1"
           subtitle="Personal Identity Verification"
@@ -68,7 +71,7 @@ export const Tier1VerificationFirstStep = () => {
         />
       </div>
       {/* top-[396px] */}
-      <div className="absolute hidden md:block top-75 left-5 lg:left-33.5">
+      <div className="absolute hidden md:block top-92.5 left-5 lg:left-33.5">
         <Voya />
       </div>
       {/*Main section*/}

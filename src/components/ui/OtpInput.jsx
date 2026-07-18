@@ -1,8 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+} from 'react';
 
-export default function OtpInput({ length = 6, onChange , className}) {
+export default function OtpInput({ length = 6, onChange, className }) {
   const [values, setValues] = useState(Array(length).fill(""));
   const inputs = useRef([]);
 
@@ -26,7 +29,10 @@ export default function OtpInput({ length = 6, onChange , className}) {
 
   function handlePaste(event) {
     event.preventDefault();
-    const pasted = event.clipboardData.getData("text").replace(/\D/g, "").slice(0, length);
+    const pasted = event.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, length);
     const next = Array(length).fill("");
     pasted.split("").forEach((char, index) => {
       next[index] = char;
@@ -37,7 +43,11 @@ export default function OtpInput({ length = 6, onChange , className}) {
   }
 
   return (
-    <div className="flex justify-between gap-2.5" role="group" aria-label="One-time password input">
+    <div
+      className="flex justify-between gap-2.5"
+      role="group"
+      aria-label="One-time password input"
+    >
       {values.map((val, index) => (
         <input
           key={index}
