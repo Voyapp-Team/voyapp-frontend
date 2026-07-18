@@ -1,20 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import { ShareDashboardIcon } from "../../dashboard/components/DashboardIcons";
-import Header from "../../settings/components/common/Header";
-import UploadProfilePic from "../components/common/UploadProfilePic";
-import { User } from "../data/ProfileData";
-import { InputField, InputTextArea } from "./ui/InputField";
+import Modal from '@/src/components/ui/Modal';
+
+import { ShareDashboardIcon } from '../../dashboard/components/DashboardIcons';
+import Header from '../../settings/components/common/Header';
+import UploadProfilePic from '../components/common/UploadProfilePic';
+import { User } from '../data/ProfileData';
+import {
+  InputField,
+  InputTextArea,
+} from './ui/InputField';
 
 export default function EditProfile({ profilePictureEdit }) {
   const router = useRouter();
   const initialData = User[0];
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [modal, setModal] = useState(false);
 
   const [userData, setUserData] = useState({
     user_name: initialData.user_name,
@@ -104,10 +111,10 @@ export default function EditProfile({ profilePictureEdit }) {
         ...userData,
       };
 
-      console.log("Mock data saved successfully:", User[0]);
+      setModal(true);
 
-      alert("Profile saved successfully!");
-      router.push("/dashboard/profile");
+      // alert("Profile saved successfully!");
+      // router.push("/dashboard/profile");
     } catch (error) {
       console.error("Save failed:", error);
       alert("Something went wrong while saving your changes.");
@@ -181,6 +188,28 @@ export default function EditProfile({ profilePictureEdit }) {
           POWERED BY <span className="font-bold">VOYA.COM</span>
         </p>
       </section>
+      {modal && (
+        <Modal
+          buttonClassName={`hidden`}
+          className={`bg-transparent border border-[#E8E8E8] flex flex-col items-center gap-5 max-w-[511px] p-6 backdrop-blur-md`}
+        >
+          <div className="flex flex-col items-center h-[203px] sm:w-[261px] rounded-[50px]">
+            <div className="h-[250px] w-[250px]"></div>
+            <p className="text-center font-montserrat font-bold text-lg leading-7 text-[#FFFFFF] ">
+              Successfully Completed
+            </p>
+          </div>
+          <button
+            onClick={() => {
+              router.push("/dashboard/profile");
+              setModal(false);
+            }}
+            className="bg-[#006B5C] w-[238px] text-center py-3 px-6 rounded-[20px] text-[#FFFFFF] font-manrope font-semibold text-[15px] leading-[22px]"
+          >
+            Done
+          </button>
+        </Modal>
+      )}
     </>
   );
 }
