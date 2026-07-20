@@ -18,7 +18,7 @@ import SecurityCard from './editprofilecomponents/SecurityCard';
 import SupportCard from './editprofilecomponents/SupportCard';
 import UserAccount from './editprofilecomponents/UserAccount';
 
-export default function ProfileSetting() {
+export default function UserAccountSetting() {
   const router = useRouter();
 
   const [userData, setUserData] = useState(User);
