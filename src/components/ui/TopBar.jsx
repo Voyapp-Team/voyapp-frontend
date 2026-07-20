@@ -7,7 +7,7 @@ import {
   SettingIcon,
 } from '@/src/components/ui/Icons';
 
-function HeaderButton({ children, label, props }) {
+function HeaderButton({ children, label, ...props }) {
   return (
     <button
       {...props}
@@ -31,14 +31,14 @@ export default function TopBar() {
           <HeaderButton label="Notifications">
             <NotificationIcon className="h-[37px] w-[28px]" />
           </HeaderButton>
-          <HeaderButton label="Settings">
-            <SettingIcon
-              onClick={() => {
-                router.push("settings/profile");
-                console.log("click");
-              }}
-              className="h-[35px] w-[33px]"
-            />
+          <HeaderButton
+            label="Settings"
+            onClick={() => {
+              router.push("/settings");
+              console.log("click");
+            }}
+          >
+            <SettingIcon className="h-[35px] w-[33px]" />
           </HeaderButton>
         </div>
       </div>
