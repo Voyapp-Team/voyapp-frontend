@@ -130,7 +130,7 @@ export default function EditProfile({ profilePictureEdit }) {
         icon={ShareDashboardIcon}
         onClick={handleSubmit}
       ></Header>
-      <section className="relative flex flex-col items-center mt-20">
+      <section className="relative flex flex-col items-center mt-5">
         {/* header */}
 
         {/*Upload Profile Pucture Component */}

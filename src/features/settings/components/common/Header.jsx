@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { ArrowLeftIcon } from "@/src/components/ui/Icons";
+import { ArrowLeftIcon } from '@/src/components/ui/Icons';
 
 // pageDesc = page description e.g KYC, Edit Profile..
 // btnDesc = button description h-16
@@ -16,7 +16,7 @@ export default function Header({ icon, pageDesc, btnDesc, onClick }) {
               fill="#000000"
             />
           </Link>
-          <h1 className="text-xs sm:text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">
+          <h1 className="text-sm sm:text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">
             {pageDesc}
           </h1>
         </div>
