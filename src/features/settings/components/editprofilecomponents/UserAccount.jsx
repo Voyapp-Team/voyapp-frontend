@@ -99,7 +99,7 @@ export default function SecurityCard({ onClick }) {
                   </button>
                 ) : (
                   <button
-                    onClick={() => router.push("/settings/edit-profile")}
+                    onClick={() => router.push("/settings/edit")}
                     className="font-manrope font-bold text-sm leading-5 text-[#006B5C]"
                   >
                     Edit

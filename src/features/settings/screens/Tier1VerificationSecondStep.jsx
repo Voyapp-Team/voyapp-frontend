@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import Button from "@/src/components/ui/Button";
-import { NotificationIcon } from "@/src/components/ui/Icons";
-import Modal from "@/src/components/ui/Modal";
+import Button from '@/src/components/ui/Button';
+import { NotificationIcon } from '@/src/components/ui/Icons';
+import Modal from '@/src/components/ui/Modal';
 
-import Header from "../components/common/Header";
-import KycForm from "../components/common/KycForm";
-import KycInput from "../components/common/KycInput";
-import KycSuccess from "../components/common/KycSuccess";
-import KycTitle from "../components/common/KycTitle";
-import kycInputValidation from "../utils/kycInputValidation";
+import Header from '../components/common/Header';
+import KycForm from '../components/common/KycForm';
+import KycInput from '../components/common/KycInput';
+import KycSuccess from '../components/common/KycSuccess';
+import KycTitle from '../components/common/KycTitle';
+import kycInputValidation from '../utils/kycInputValidation';
 
 export const Tier1VerificationSecondStep = () => {
   const router = useRouter();
@@ -34,8 +34,8 @@ export const Tier1VerificationSecondStep = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     const errors = kycInputValidation(kycData);
     const InValid = Object.keys(errors).length > 0;

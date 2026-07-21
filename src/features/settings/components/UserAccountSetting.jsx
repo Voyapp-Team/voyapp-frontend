@@ -40,7 +40,7 @@ export default function UserAccountSetting() {
             {userData[0].job_role}
           </div>
           <button
-            onClick={() => router.push("/settings/edit-profile")}
+            onClick={() => router.push("/settings/edit")}
             className="cursor-pointer whitespace-nowrap mt-4 bg-[#006B5C] py-[15px] px-[100px] rounded-[20px] max-w-[275px] max-h-[50px]"
           >
             Edit Profile

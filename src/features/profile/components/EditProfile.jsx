@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import Modal from '@/src/components/ui/Modal';
 
-import { ShareDashboardIcon } from '../../dashboard/components/DashboardIcons';
+import { ShareIcon } from '../../dashboard/components/DashboardIcons';
 import Header from '../../settings/components/common/Header';
 import UploadProfilePic from '../components/common/UploadProfilePic';
 import { User } from '../data/ProfileData';
@@ -127,7 +127,7 @@ export default function EditProfile({ profilePictureEdit }) {
       <Header
         pageDesc={"Edit Profile"}
         btnDesc={isLoading ? "....." : "Save Changes"}
-        icon={ShareDashboardIcon}
+        icon={ShareIcon}
         onClick={handleSubmit}
       ></Header>
       <section className="relative flex flex-col items-center mt-5">

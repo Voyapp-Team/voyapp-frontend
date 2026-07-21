@@ -4,6 +4,7 @@ export default function kycInputValidation(data) {
   const accountNumRegex = /^[0-9]{10}$/;
   const bvnRegex = /^[0-9]{11}$/;
   const phoneRegex = /^\+?[0-9]\d{1,14}$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$/;
 
   if ("legal_name" in data) {
     if (!data.legal_name || data.legal_name.trim() === "") {
@@ -42,6 +43,14 @@ export default function kycInputValidation(data) {
       newErrors.bvnInputError = "Enter a bvn number";
     } else if (!bvnRegex.test(bvn)) {
       newErrors.bvnInputError = "Invalid bvn number";
+    }
+  }
+
+  if ("user_email" in data) {
+    if (!data.user_email || !data.user_email.trim() === "") {
+      newErrors.user_email = "Email is Required";
+    } else if (emailRegex.test(data.user_email)) {
+      newErrors.user_email = "Invalid Email";
     }
   }
 
