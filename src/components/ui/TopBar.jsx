@@ -1,16 +1,17 @@
-"use client";
-import { useRouter } from 'next/navigation';
 
-import { VoyaMark } from '@/src/components/brand/VoyaLogo';
+"use client";
+
+import Link from "next/link";
+
+import { VoyaMark } from "@/src/components/brand/VoyaLogo";
 import {
   NotificationIcon,
   SettingIcon,
-} from '@/src/components/ui/Icons';
+} from "@/src/components/ui/Icons";
 
-function HeaderButton({ children, label, props }) {
+function HeaderButton({ children, label }) {
   return (
     <button
-      {...props}
       type="button"
       aria-label={label}
       className="flex h-9 w-9 items-center justify-center rounded-full text-[#1c1b1b] transition hover:bg-[#f6f3f2] cursor-pointer"
@@ -21,7 +22,6 @@ function HeaderButton({ children, label, props }) {
 }
 
 export default function TopBar() {
-  const router = useRouter();
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#8e8e8e]/20 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-[64px] w-full max-w-[1024px] items-center justify-between px-4 lg:px-6">
@@ -31,17 +31,17 @@ export default function TopBar() {
           <HeaderButton label="Notifications">
             <NotificationIcon className="h-[37px] w-[28px]" />
           </HeaderButton>
-          <HeaderButton label="Settings">
-            <SettingIcon
-              onClick={() => {
-                router.push("settings/profile");
-                console.log("click");
-              }}
-              className="h-[35px] w-[33px]"
-            />
-          </HeaderButton>
+
+          <Link
+            href="/settings"
+            aria-label="Settings"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-[#1c1b1b] transition hover:bg-[#f6f3f2]"
+          >
+            <SettingIcon className="h-[35px] w-[33px]" />
+          </Link>
         </div>
       </div>
     </header>
   );
 }
+

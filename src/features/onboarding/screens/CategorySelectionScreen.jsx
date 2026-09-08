@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
-
+import useSaveUserType from '../hooks/useSaveUserType';
 import Button from '@/src/components/ui/Button';
 import {
   ArrowRightIcon,
@@ -29,6 +29,16 @@ const CATEGORIES = [
 export const CategorySelectionScreen = () => {
   const router = useRouter();
   const [selected, setSelected] = useState("Designer");
+  const {loading, saveUserType, error} = useSaveUserType();
+
+
+  const handleSubmit = async () => {
+    console.log("category:  ", selected)
+    
+      await saveUserType("freelancer")
+    
+
+  }
 
   return (
     <OnboardingSplitShell
@@ -81,10 +91,10 @@ export const CategorySelectionScreen = () => {
 
       <Button
         className="mt-11 h-14 rounded-2xl font-plusJakartaSans text-[15px] font-bold"
-        onClick={() => router.push("/onboarding/username")}
+        onClick={handleSubmit}
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
       >
-        Continue
+        {loading? "Loading" : "Continue"}
       </Button>
     </OnboardingSplitShell>
   );

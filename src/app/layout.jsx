@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono, Montserrat, Manrope, Plus_Jakarta_Sans} from "next/font/google";
 import "../globals.css";
+import StoreProvider from "@/src/providers/StoreProvider";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -37,7 +38,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${manrope.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <StoreProvider>
+          {children}
+        </StoreProvider>
+      </body>
     </html>
   );
 }

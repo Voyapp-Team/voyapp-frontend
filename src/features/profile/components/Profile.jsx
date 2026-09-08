@@ -28,7 +28,7 @@ export default function Profile() {
   return (
     <section className="relative">
       <button
-        onClick={() => router.push("/dashboard/profile/edit-profile")}
+        onClick={() => router.push("/settings/edit-profile")}
         className=" absolute -top-6.25 -right-2 flex justify-center items-center bg-[#FFFFFF] w-10 h-10 rounded-xl"
       >
         <img src="/edit-pen-icon.svg" alt="Edit Profile Illustration" />

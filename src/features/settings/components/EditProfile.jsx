@@ -7,13 +7,13 @@ import { useRouter } from 'next/navigation';
 import Modal from '@/src/components/ui/Modal';
 
 import { ShareDashboardIcon } from '../../dashboard/components/DashboardIcons';
-import Header from '../../settings/components/common/Header';
-import UploadProfilePic from '../components/common/UploadProfilePic';
-import { User } from '../data/ProfileData';
+import Header from './common/Header';
+import UploadProfilePic from '../../profile/components/common/UploadProfilePic';
+import { User } from '../../profile/data/ProfileData';
 import {
   InputField,
   InputTextArea,
-} from './ui/InputField';
+} from '../../profile/components/ui/InputField';
 
 export default function EditProfile({ profilePictureEdit }) {
   const router = useRouter();

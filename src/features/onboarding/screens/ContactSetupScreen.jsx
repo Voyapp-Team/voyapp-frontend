@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import Button from "../../../components/ui/Button";
 import InputError from "../../../components/ui/InputError";
 import { ArrowRightIcon } from "../../../components/ui/Icons";
@@ -10,6 +9,8 @@ import SegmentedControl from "../../../components/ui/SegmentedControl";
 import OnboardingSplitShell from "../components/common/OnboardingSplitShell";
 import PhoneNumberField from "../components/common/PhoneNumberField";
 import Link from "next/link";
+import useSignup from "../hooks/useSignup";
+
 
 const AUTH_TABS = [
   { label: "Phone", value: "phone" },
@@ -20,14 +21,19 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9]{10,15}$/;
 
 export default function ContactSetupScreen() {
+  const { requestOtp } = useSignup();
   const router = useRouter();
   const [authMethod, setAuthMethod] = useState("phone");
   const [region, setRegion] = useState("+234");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [fieldError, setFieldError] = useState("");
+  
+ 
+ 
 
-  function handleContinue() {
+  async function handleContinue() {
+    
     setFieldError("");
 
     if (authMethod === "phone") {
@@ -52,7 +58,8 @@ export default function ContactSetupScreen() {
       }
     }
 
-    router.push("/onboarding/verify");
+    await requestOtp(authMethod === "phone" ? `${region}${phone}` : email);
+    
   }
 
   return (
@@ -143,6 +150,7 @@ export default function ContactSetupScreen() {
           Log in
         </Link>
       </p>
+      <div id="recaptcha-container"></div>
     </OnboardingSplitShell>
   );
 }
