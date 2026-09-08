@@ -1,21 +1,27 @@
 import Link from "next/link";
 
 import { ArrowLeftIcon } from "@/src/components/ui/Icons";
+import {useRouter} from "next/navigation";
 
 // pageDesc = page description e.g KYC, Edit Profile..
 // btnDesc = button description h-16
 export default function Header({ icon, pageDesc, btnDesc, onClick }) {
+  const router = useRouter();
   const Icon = icon;
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#8e8e8e]/20 bg-white/90 backdrop-blur px-6 md:px-12">
       <nav className="mx-auto flex  h-[78px]  w-full  items-center justify-between">
         <div className="flex items-center gap-1.5 sm:gap-5">
-          <Link href="/settings" label="Settings">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            aria-label="Go back"
+          >
             <ArrowLeftIcon
               className="w-5 h-5 sm:w-6 sm:h-6 md:h-9.25 md:w-7 text-[#1C1B1B]"
               fill="#000000"
             />
-          </Link>
+          </button>
           <h1 className="text-xs sm:text-[24px] font-bold leading-8 tracking-[-0.6px] text-[#115E59]">
             {pageDesc}
           </h1>

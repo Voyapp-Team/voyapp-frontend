@@ -6,23 +6,30 @@ import { useRouter } from "next/navigation";
 import Button from "@/src/components/ui/Button";
 import InputError from "@/src/components/ui/InputError";
 import { ArrowRightIcon, ClockIcon, LockIcon } from "@/src/components/ui/Icons";
-
+import useOnboarding from "../../hooks/useOnboarding";
 import OtpInput from "../../../../components/ui/OtpInput";
+import useVerifyOtp from "../../hooks/useVerifyOtp";
 
 const RESEND_SECONDS = 24;
 
 const OtpVerification = ({
+ 
   maskedPhone = "+234 *** *** 4290",
   className = "",
   showSecurityFooter = true,
   buttonLabel = "Verify and Continue",
-  handleClick,
+ 
   length = 6,
 }) => {
   const router = useRouter();
   const [otp, setOtp] = useState("");
   const [seconds, setSeconds] = useState(RESEND_SECONDS);
   const [otpError, setOtpError] = useState("");
+  const { loading, error, verifyCode } = useVerifyOtp();
+  const { onboardingData } = useOnboarding();
+
+ 
+
 
   useEffect(() => {
     if (seconds <= 0) return undefined;
@@ -40,14 +47,17 @@ const OtpVerification = ({
     setOtpError("");
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    console.log("handleSubmit called with otp:", otp);
     if (otp.length !== length) {
       setOtpError("Enter the full 6-digit verification code.");
       return;
     }
 
     setOtpError("");
-    handleClick?.();
+    console.log("Calling verifyCode with otp:", otp);
+    console.log(onboardingData);
+    await verifyCode(otp);
   }
 
   const isSubmitDisabled = otp.length !== length;
@@ -94,7 +104,8 @@ const OtpVerification = ({
         endIcon={<ArrowRightIcon className="h-5 w-5" />}
         disabled={isSubmitDisabled}
       >
-        {buttonLabel}
+        {loading ? "Loading..." : buttonLabel}
+       
       </Button>
 
       {showSecurityFooter ? (
