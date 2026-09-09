@@ -12,33 +12,25 @@ const initialState = {
   personalInfo: null,
 
   userType: "",
-
+  category: "",
   username: "",
 };
 
 export function OnboardingProvider({ children }) {
     
-    const [onboardingData, setOnboardingData] = useState(initialState);
+  const [onboardingData, setOnboardingData] = useState(initialState);
 
-   
+  const updateOnboarding = (updater) => {
+    setOnboardingData((prev) => {
+      const updates = typeof updater === "function" ? updater(prev): updater;
 
-    const updateOnboarding = (updater) => {
-        setOnboardingData((prev) => {
-            const updates =
-            typeof updater === "function"
-                ? updater(prev)
-                : updater;
+      return { ...prev, ...updates,};
+    });
+  };
 
-            return {
-            ...prev,
-            ...updates,
-            };
-        });
-    };
-
-    const clearOnboarding = () => {
-        setOnboardingData(initialState);
-    };
+  const clearOnboarding = () => {
+    setOnboardingData(initialState);
+  };
 
   return (
     <OnboardingContext.Provider

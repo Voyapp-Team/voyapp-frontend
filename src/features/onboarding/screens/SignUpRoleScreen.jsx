@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import VoyaLogo from "../../../components/brand/VoyaLogo";
 import RoleOptionButton from "../components/common/RoleOptionButton";
 import { ArrowLeftIcon } from "../../../components/ui/Icons";
-import { auth } from "@/src/firebase/config";
 
 const signUpOptions = [
   { id: "business-owner", label: "As Business Owner", variant: "primary", path: "/onboarding/business-signup" },
@@ -13,8 +12,6 @@ const signUpOptions = [
 
 export default function SignUpRoleScreen() {
   const router = useRouter();
-
-  console.log("Auth object:", auth); // Log the auth object to verify it's imported correctly
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-white px-6 py-10">

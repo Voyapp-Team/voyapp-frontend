@@ -1,3 +1,5 @@
+"use client";
+
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -10,10 +12,17 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-console.log("Firebase Project ID:", process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID);
+const getFirebaseAuth = () => {
+  // Firebase Auth should only be initialized in the browser
+  if (typeof window === "undefined") {
+    return null;
+  }
 
-// Prevent re-initialization during hot reloads
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+  const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-export const auth = getAuth(app);
-export default app;
+  return getAuth(app);
+};
+
+export { getFirebaseAuth };
+
+export default getFirebaseAuth;

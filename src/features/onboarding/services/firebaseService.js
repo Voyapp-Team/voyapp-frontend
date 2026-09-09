@@ -1,15 +1,22 @@
+"use client";
+
 import {
   RecaptchaVerifier,
   signInWithPhoneNumber,
 } from "firebase/auth";
 
-import { auth } from "@/src/firebase/config";
+import { getFirebaseAuth } from "@/src/firebase/config";
 
 let recaptchaVerifier = null;
 
 export const sendOtp = async (phoneNumber) => {
   try {
-    // Create the reCAPTCHA verifier only once
+    const auth = getFirebaseAuth();
+
+    if (!auth) {
+      throw new Error("Firebase Auth is only available in the browser.");
+    }
+
     if (!recaptchaVerifier) {
       recaptchaVerifier = new RecaptchaVerifier(
         auth,
@@ -19,7 +26,6 @@ export const sendOtp = async (phoneNumber) => {
         }
       );
 
-      // Render the invisible reCAPTCHA
       await recaptchaVerifier.render();
     }
 
@@ -34,20 +40,23 @@ export const sendOtp = async (phoneNumber) => {
   }
 };
 
+export const verifyOtp = async (confirmationResult, otp) => {
+  try {
+    const result = await confirmationResult.confirm(otp);
 
-
-
-
-
-export const verifyOtp = async (
-  confirmationResult,
-  otp
-) => {
-  const result = await confirmationResult.confirm(otp);
-
-  return result.user;
+    return result.user;
+  } catch (error) {
+    console.error("Firebase verifyOtp error:", error);
+    throw error;
+  }
 };
 
 export const getIdToken = async (firebaseUser) => {
-  return firebaseUser.getIdToken();
+  try {
+    return await firebaseUser.getIdToken();
+  } catch (error) {
+    console.error("Firebase getIdToken error:", error);
+    throw error;
+  }
 };
+
