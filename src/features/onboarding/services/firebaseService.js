@@ -59,3 +59,4 @@ export const getIdToken = async (firebaseUser) => {
     throw error;
   }
 };
+
