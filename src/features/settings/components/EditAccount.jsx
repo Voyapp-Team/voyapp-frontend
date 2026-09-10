@@ -1,22 +1,18 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import Button from '@/src/components/ui/Button';
-import { NotificationIcon } from '@/src/components/ui/Icons';
-import InputError from '@/src/components/ui/InputError';
-import Modal from '@/src/components/ui/Modal';
-import OtpInput from '@/src/components/ui/OtpInput';
+import Button from "@/src/components/ui/Button";
+import { NotificationIcon } from "@/src/components/ui/Icons";
+import InputError from "@/src/components/ui/InputError";
+import Modal from "@/src/components/ui/Modal";
+import OtpInput from "@/src/components/ui/OtpInput";
 
-import { InputField } from '../../profile/components/ui/InputField';
-import Header from './common/Header';
-import {
-  EmailIcon,
-  PhoneIcon,
-  PinIcon,
-} from './common/SettingIcons';
+import { InputField } from "../../profile/components/ui/InputField";
+import Header from "./common/Header";
+import { EmailIcon, PhoneIcon, PinIcon } from "./common/SettingIcons";
 
 export default function EditAccount() {
   const router = useRouter();
@@ -30,6 +26,8 @@ export default function EditAccount() {
   const [isLoading, setIsLoading] = useState(false);
   const [inputError, setInputError] = useState("");
   const [pinError, setPinError] = useState("");
+  const [pinValue, setPinValue] = useState("");
+  const [confirmPinValue, setConfirmPinValue] = useState(false);
 
   //   const handleSubmit = () => {
   //     const error = kycInputValidation(userData);
@@ -39,8 +37,34 @@ export default function EditAccount() {
   //     }
   //   };
   const handleSubmit = () => {
-    router.push("/settings");
+    setIsLoading(true);
+    setConfirmPinValue(true);
   };
+
+  const verifyPin = (currentPin) => {
+    if (currentPin.length < 4) {
+      setPinError("");
+      return;
+    }
+
+    const isCorrectPin = currentPin === "1234" || true;
+
+    if (isCorrectPin) {
+      setPinError("");
+      setConfirmPinValue(false);
+      router.push("/settings");
+      console.log("verified");
+    } else {
+      // 🟢 The error is ONLY set here once a full 4-digit attempt fails
+      setPinError("Incorrect PIN. Please try again.");
+    }
+  };
+
+  useEffect(() => {
+    if (pinValue.length === 4) {
+      verifyPin(pinValue);
+    }
+  }, [pinValue]);
   return (
     <>
       <Header
@@ -163,6 +187,28 @@ export default function EditAccount() {
             >
               Yes
             </Button>
+          </div>
+        </Modal>
+      )}
+      {confirmPinValue && (
+        <Modal
+          className={`flex flex-col gap-5 h-fit bg-transparent border border-[#FCF8F81A] max-w-[510px] p-6`}
+          buttonClassName={"hidden"}
+          onClose={() => setConfirmPinValue(false)}
+        >
+          <div className="flex flex-col gap-2 font-montserrat font-semibold text-2xl leading-9 text-center text-[#FFFFFF]">
+            <p>Input your 4 digits pin</p>
+          </div>
+          <div className="flex flex-col gap-5">
+            <OtpInput
+              length={4}
+              className={`bg-[#006B5C33] h-[102px] w-95px rounded-xl text-2xl`}
+              onChange={(value) => {
+                setPinValue(value);
+                if (pinError) setPinError("");
+              }}
+            />
+            <InputError message={pinError} />
           </div>
         </Modal>
       )}
