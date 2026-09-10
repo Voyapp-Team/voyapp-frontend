@@ -1,23 +1,19 @@
 "use client";
 
 import { useState } from 'react';
-
 import { useRouter } from 'next/navigation';
-
 import Button from '@/src/components/ui/Button';
-import {
-  ArrowRightIcon,
-  ShieldIcon,
-} from '@/src/components/ui/Icons';
-
+import { ArrowRightIcon, ShieldIcon} from '@/src/components/ui/Icons';
 import InputError from '../../../components/ui/InputError';
 import { FormInput } from '../components/common/FormInput';
 import OnboardingSplitShell from '../components/common/OnboardingSplitShell';
 import inputValidation from '../utils/inputValidation';
+import usePersonalInfo from '../hooks/usePersonalInfo';
+
 
 export const ProfileSetupScreen = () => {
   const router = useRouter();
-
+  const {loading, savePersonalInfo, error} = usePersonalInfo();
   const [userNames, setUserNames] = useState({
     first_name: "",
     last_name: "",
@@ -31,7 +27,7 @@ export const ProfileSetupScreen = () => {
     }));
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
     const errors = inputValidation(userNames);
 
     const inValid = Object.keys(errors).length > 0;
@@ -40,7 +36,7 @@ export const ProfileSetupScreen = () => {
       return;
     }
     setInputError({});
-    router.push("/onboarding/category");
+    await savePersonalInfo(userNames)
   };
 
   return (

@@ -2,8 +2,10 @@
 
 import Button from "@/src/components/ui/Button";
 import { CheckedCircleIcon, ArrowRightIcon } from "@/src/components/ui/Icons";
-
+import useDebounce from "@/src/hooks/useDebounce";
 import InputError from "../../../components/ui/InputError";
+import { useEffect } from "react";
+import useUsernameAvailability from "../hooks/useUsernameAvailability";
 
 export default function UsernameForm({
   username,
@@ -15,6 +17,25 @@ export default function UsernameForm({
   usernameError,
   setUsernameError,
 }) {
+  
+  const {checkAvailability, loading, error, suggestions} = useUsernameAvailability();
+ 
+  const debouncedValue = useDebounce(username, 3000);
+
+    useEffect(() => {
+  if (debouncedValue.length < 4) return;
+
+  const check = async () => {
+    try {
+      const res = await checkAvailability(debouncedValue);
+      console.log("Success:", res);
+    } catch (err) {
+      console.log("Backend Error:", err.response?.data);
+    }
+  };
+
+  check();
+}, [debouncedValue]);
   return (
     <form className="w-full" onSubmit={onSubmit}>
       <div
@@ -84,7 +105,7 @@ export default function UsernameForm({
           Suggested for you
         </p>
         <div className="mt-2 space-y-2">
-          {usernameSuggestions.map((suggestion) => (
+          {suggestions?.map((suggestion) => (
             <button
               key={suggestion}
               type="button"
