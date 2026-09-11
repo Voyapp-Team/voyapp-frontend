@@ -28,29 +28,17 @@ export default function Profile() {
   //   "https:/voya.me/",
   // ];
   return (
-<<<<<<< HEAD
     <>
       <Header pageDesc={"Edit Profile"} icon={ShareIcon}></Header>
       <section className="relative">
         <button
-          onClick={() => router.push("/dashboard/profile/edit")}
+          onClick={() => router.push("/settings/edit-profile")}
           className=" absolute -top-6.25 -right-2 flex justify-center items-center bg-[#FFFFFF] w-10 h-10 rounded-xl"
         >
           <img src="/edit-pen-icon.svg" alt="Edit Profile Illustration" />
         </button>
-        {/*Upload Profile Pucture Component */}
+        {/*Upload Profile Picture Component */}
         <UploadProfilePic />
-=======
-    <section className="relative">
-      <button
-        onClick={() => router.push("/settings/edit-profile")}
-        className=" absolute -top-6.25 -right-2 flex justify-center items-center bg-[#FFFFFF] w-10 h-10 rounded-xl"
-      >
-        <img src="/edit-pen-icon.svg" alt="Edit Profile Illustration" />
-      </button>
-      {/*Upload Profile Pucture Component */}
-      <UploadProfilePic />
->>>>>>> dev
 
         <div className="max-w-[356.7px]">
           <p className="font-extrabold font-plusJakartaSans text-[36px] leading-10 tracking-[-0.9px] text-[#1C1B1B] text-center">

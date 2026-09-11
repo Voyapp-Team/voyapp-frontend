@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState } from 'react';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import Button from "@/src/components/ui/Button";
-import { NotificationIcon } from "@/src/components/ui/Icons";
-import Modal from "@/src/components/ui/Modal";
+import Button from '@/src/components/ui/Button';
+import { NotificationIcon } from '@/src/components/ui/Icons';
+import Modal from '@/src/components/ui/Modal';
 
-import UploadProfilePic from "../../profile/components/common/UploadProfilePic";
-import { User } from "../data/ProfileInfo";
-import Header from "./common/Header";
-import { ArrowSquareRightIcon } from "./common/SettingIcons";
-import LegalSupport from "./editprofilecomponents/LegalSupport";
-import PaymentCard from "./editprofilecomponents/PaymentCard";
-import SecurityCard from "./editprofilecomponents/SecurityCard";
-import SupportCard from "./editprofilecomponents/SupportCard";
-import UserAccount from "./editprofilecomponents/UserAccount";
+import UploadProfilePic from '../../profile/components/common/UploadProfilePic';
+import { User } from '../data/ProfileInfo';
+import Header from './common/Header';
+import { ArrowSquareRightIcon } from './common/SettingIcons';
+import LegalSupport from './editprofilecomponents/LegalSupport';
+import PaymentCard from './editprofilecomponents/PaymentCard';
+import SecurityCard from './editprofilecomponents/SecurityCard';
+import SupportCard from './editprofilecomponents/SupportCard';
+import UserAccount from './editprofilecomponents/UserAccount';
 
 export default function UserAccountSetting() {
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function UserAccountSetting() {
             {userData[0].job_role}
           </div>
           <button
-            onClick={() => router.push("/dashboard/profile/edit")}
+            onClick={() => router.push("/settings/edit-profile")}
             className="cursor-pointer whitespace-nowrap mt-4 bg-[#006B5C] py-[15px] px-[100px] rounded-[20px] max-w-[275px] max-h-[50px]"
           >
             Edit Profile

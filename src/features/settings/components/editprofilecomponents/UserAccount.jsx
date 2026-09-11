@@ -1,20 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from 'react';
 
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
 
-import InputError from "@/src/components/ui/InputError";
-import Modal from "@/src/components/ui/Modal";
-import OtpInput from "@/src/components/ui/OtpInput";
+import InputError from '@/src/components/ui/InputError';
+import Modal from '@/src/components/ui/Modal';
+import OtpInput from '@/src/components/ui/OtpInput';
 
-import { DetailsCard, DetailsHeader } from "../common/DetailsCard";
+import {
+  DetailsCard,
+  DetailsHeader,
+} from '../common/DetailsCard';
 import {
   ArrowRightIcon,
   EmailIcon,
   PhoneIcon,
   PinIcon,
-} from "../common/SettingIcons";
+} from '../common/SettingIcons';
 
 const accountInfo = [
   {
@@ -49,7 +55,7 @@ export default function SecurityCard({ onClick }) {
     if (isCorrectPin) {
       setPinError("");
       setModal(false);
-      router.push("/settings/edit");
+      router.push("/settings/edit-account");
       console.log("verified");
     } else {
       // 🟢 The error is ONLY set here once a full 4-digit attempt fails
