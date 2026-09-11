@@ -1,13 +1,9 @@
-
 "use client";
 
 import Link from "next/link";
 
 import { VoyaMark } from "@/src/components/brand/VoyaLogo";
-import {
-  NotificationIcon,
-  SettingIcon,
-} from "@/src/components/ui/Icons";
+import { NotificationIcon, SettingIcon } from "@/src/components/ui/Icons";
 
 function HeaderButton({ children, label }) {
   return (
@@ -44,4 +40,3 @@ export default function TopBar() {
     </header>
   );
 }
-

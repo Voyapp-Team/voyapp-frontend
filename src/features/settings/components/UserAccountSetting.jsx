@@ -18,7 +18,7 @@ import SecurityCard from './editprofilecomponents/SecurityCard';
 import SupportCard from './editprofilecomponents/SupportCard';
 import UserAccount from './editprofilecomponents/UserAccount';
 
-export default function ProfileSetting() {
+export default function UserAccountSetting() {
   const router = useRouter();
 
   const [userData, setUserData] = useState(User);
@@ -77,7 +77,7 @@ export default function ProfileSetting() {
             <Button
               variant="transparent"
               onClick={() => {
-                router.push("/onboarding");
+                router.push("/dashboard");
                 setModal(false);
               }}
               className="border border-[#00C2A8] text-[#00C2A8]"

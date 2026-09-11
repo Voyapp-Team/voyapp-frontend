@@ -1,13 +1,13 @@
 "use client";
 
-import ProfileSetting from '../components/ProfileSetting';
+import UserAccountSetting from '../components/UserAccountSetting';
 
-export default function ProfileSettingScreen() {
+export default function AccountSettingScreen() {
   // const [editProfile, setEditProfile] = useState(true);
   return (
     <div className="flex items-center justify-center bg-[#fcf8f8] min-h-screen">
       {/* <EditProfile profilePictureEdit={editProfile} /> */}
-      <ProfileSetting />
+      <UserAccountSetting />
     </div>
   );
 }

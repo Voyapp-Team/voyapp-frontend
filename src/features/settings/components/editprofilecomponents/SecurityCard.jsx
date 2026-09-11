@@ -1,17 +1,15 @@
 "use client";
+import { useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import {
-  DetailsCard,
-  DetailsHeader,
-} from '../common/DetailsCard';
+import { DetailsCard, DetailsHeader } from "../common/DetailsCard";
 import {
   ArrowRightIcon,
   ComputersIcon,
   DownloadIcon,
   ShieldCheckedIcon,
-} from '../common/SettingIcons';
+} from "../common/SettingIcons";
 
 const paymentOptions = [
   {
@@ -30,10 +28,11 @@ const paymentOptions = [
 
 export default function SecurityCard() {
   const router = useRouter();
+  const [currentTier, setCurrentTier] = useState(1);
 
   const handleClick = (index) => {
     if (index === 0) {
-      router.push("/settings/bank-accounts");
+      router.push(`/settings/tier-${currentTier}`);
     } else {
       router.push("/settings/crypto-wallets");
     }
@@ -61,8 +60,11 @@ export default function SecurityCard() {
               </div>
 
               {index === 0 && (
-                <div className="py-1 px-3 bg-[#006B5C1A] rounded-[2px] font-manrope font-extrabold text-xs text-[#006B5C] ">
-                  <p>Tier 2</p>
+                <div
+                  onClick={() => handleClick(index)}
+                  className="py-1 px-3 bg-[#006B5C1A] rounded-[2px] font-manrope font-extrabold text-xs text-[#006B5C] "
+                >
+                  <p>Tier {currentTier}</p>
                 </div>
               )}
 

@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-import Modal from '@/src/components/ui/Modal';
+import Modal from "@/src/components/ui/Modal";
 
-import { ShareDashboardIcon } from '../../dashboard/components/DashboardIcons';
-import Header from './common/Header';
-import UploadProfilePic from '../../profile/components/common/UploadProfilePic';
-import { User } from '../../profile/data/ProfileData';
+import { ShareDashboardIcon } from "../../dashboard/components/DashboardIcons";
+import UploadProfilePic from "../../profile/components/common/UploadProfilePic";
 import {
   InputField,
   InputTextArea,
-} from '../../profile/components/ui/InputField';
+} from "../../profile/components/ui/InputField";
+import { User } from "../../profile/data/ProfileData";
+import Header from "./common/Header";
 
 export default function EditProfile({ profilePictureEdit }) {
   const router = useRouter();
@@ -130,7 +130,7 @@ export default function EditProfile({ profilePictureEdit }) {
         icon={ShareDashboardIcon}
         onClick={handleSubmit}
       ></Header>
-      <section className="relative flex flex-col items-center mt-20">
+      <section className="relative flex flex-col items-center mt-5">
         {/* header */}
 
         {/*Upload Profile Pucture Component */}
