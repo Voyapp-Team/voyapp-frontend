@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { ArrowLeftIcon } from "@/src/components/ui/Icons";
-import {useRouter} from "next/navigation";
 
 // pageDesc = page description e.g KYC, Edit Profile..
 // btnDesc = button description h-16
@@ -9,7 +9,7 @@ export default function Header({ icon, pageDesc, btnDesc, onClick }) {
   const router = useRouter();
   const Icon = icon;
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-[#8e8e8e]/20 bg-white/90 backdrop-blur px-6 md:px-12">
+    <header className="fixed inset-x-0 top-0 z-50 border border-[#8e8e8e]/20 bg-[#FFFFFF] backdrop-blur px-6 md:px-12">
       <nav className="mx-auto flex  h-[78px]  w-full  items-center justify-between">
         <div className="flex items-center gap-1.5 sm:gap-5">
           <button
@@ -18,7 +18,7 @@ export default function Header({ icon, pageDesc, btnDesc, onClick }) {
             aria-label="Go back"
           >
             <ArrowLeftIcon
-              className="w-5 h-5 sm:w-6 sm:h-6 md:h-9.25 md:w-7 text-[#1C1B1B]"
+              className="w-4 h-4 sm:w-5 sm:h-5 md:h-7 md:w-6 text-[#1C1B1B]"
               fill="#000000"
             />
           </button>
@@ -38,7 +38,7 @@ export default function Header({ icon, pageDesc, btnDesc, onClick }) {
             </div>
           )}
           <Link href="/notifications" label="Notifications">
-            <Icon className="w-5 h-5 sm:w-6 sm:h-6 md:h-9.25 md:w-7 text-[#1C1B1B]" />
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:h-7 md:w-6 text-[#1C1B1B]" />
           </Link>
         </div>
       </nav>

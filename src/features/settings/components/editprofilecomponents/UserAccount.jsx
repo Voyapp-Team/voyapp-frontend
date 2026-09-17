@@ -55,7 +55,7 @@ export default function SecurityCard({ onClick }) {
     if (isCorrectPin) {
       setPinError("");
       setModal(false);
-      router.push("/settings/edit-profile");
+      router.push("/settings/edit-account");
       console.log("verified");
     } else {
       // 🟢 The error is ONLY set here once a full 4-digit attempt fails
@@ -99,7 +99,7 @@ export default function SecurityCard({ onClick }) {
                   </button>
                 ) : (
                   <button
-                    onClick={() => router.push("/settings/edit-profile")}
+                    onClick={() => router.push("/settings/edit")}
                     className="font-manrope font-bold text-sm leading-5 text-[#006B5C]"
                   >
                     Edit
