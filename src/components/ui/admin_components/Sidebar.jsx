@@ -1,17 +1,30 @@
-import { LogOut } from 'lucide-react';
+import {
+  LogOut,
+  SidebarClose,
+} from 'lucide-react';
 import Link from 'next/link';
 
 import VoyaLogo from '../../brand/VoyaLogo';
 
-export default function Sidebar({ dashboard, system, data }) {
+export default function Sidebar({
+  dashboard,
+  closeSidebar,
+  system,
+  data,
+  isOpen,
+  rel,
+}) {
   return (
-    <aside className="flex min-h-[769px] w-[80px] md:w-[280px] flex-col justify-between rounded-tr-[30px] rounded-br-[30px] bg-gradient-to-b from-[#004A3F] to-[#01705F] p-4 md:p-6 text-white transition-all duration-300">
+    <aside
+      ref={rel}
+      className={`${isOpen ? "translate-x-0" : "-translate-x-full md:translate-0"} fixed z-10 md:static min-h-[750px] w-[280px] flex flex-col justify-between rounded-tr-[30px] rounded-br-[30px] bg-gradient-to-b from-[#004A3F] to-[#01705F] p-4 md:p-6 text-white transition-all duration-300`}
+    >
       {/* Top description */}
       <div className="flex items-center gap-2 mb-5">
         <div className="flex items-center pt-5">
-          <VoyaLogo className="w-5 h-5 md:w-9 md:h-9" />
+          <VoyaLogo className="w-9 h-9" />
         </div>
-        <div className="hidden lg:flex flex-col ">
+        <div className="flex flex-col ">
           <p className="font-montserrat font-semibold text-lg leading-6.6 text-[#00C2A8]">
             Voya Admin
           </p>
@@ -19,6 +32,11 @@ export default function Sidebar({ dashboard, system, data }) {
             Fintech Operations
           </span>
         </div>
+
+        <SidebarClose
+          onClick={closeSidebar}
+          className="flex w-5 h-6 md:hidden ml-10"
+        />
       </div>
 
       {/* Navigation Section */}
@@ -43,7 +61,7 @@ export default function Sidebar({ dashboard, system, data }) {
                 }`}
               >
                 <Icon className="h-5 w-5" />
-                <span className="hidden md:inline">{item.label}</span>
+                <span className="inline">{item.label}</span>
               </Link>
             );
           })}
@@ -69,7 +87,7 @@ export default function Sidebar({ dashboard, system, data }) {
                 }`}
               >
                 <Icon className="h-5 w-5" />
-                <span className="hidden md:inline">{item.label}</span>
+                <span className="inline">{item.label}</span>
               </Link>
             );
           })}
@@ -96,9 +114,9 @@ export default function Sidebar({ dashboard, system, data }) {
       </div>
 
       {/* Logout Button */}
-      <button className="flex justify-center gap-1 text-center items-center w-fit  rounded-sm bg-[#00C2A8] hover:bg-(--color-brand-accent) hover:text-white/40 coursor-pointer text-black/79 font-semibold px-4 py-2">
+      <button className="flex justify-center gap-1 text-center items-center w-full  rounded-sm bg-[#00C2A8] hover:bg-(--color-brand-accent) hover:text-white/40 coursor-pointer text-black/79 font-semibold px-4 py-2">
         <LogOut className="h-5 w-5" />
-        <span className="hidden md:inline">Log Out</span>
+        <span className="inline">Log Out</span>
       </button>
     </aside>
   );

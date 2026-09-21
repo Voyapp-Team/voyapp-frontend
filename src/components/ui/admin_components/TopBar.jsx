@@ -1,6 +1,9 @@
 "use client";
 
-import { Plus } from 'lucide-react';
+import {
+  Plus,
+  SidebarOpen,
+} from 'lucide-react';
 
 import {
   NotificationIcon,
@@ -19,12 +22,16 @@ function HeaderButton({ children, label }) {
   );
 }
 
-export default function TopBar({ data }) {
+export default function TopBar({ data, openSideBar }) {
   return (
     <header className="flex w-full items-center justify-between border-b border-[#8e8e8e]/20 bg-white/90 py-3 backdrop-blur lg:py-4 ">
       <div className="flex items-center justify-between w-full max-w-[1024px] mx-auto px-4 lg:px-6">
-        <div className="w-full">
-          <div className="relative flex items-center max-w-[384px] h-[36px] border border-[#E1E1E1] rounded-2xl p-2">
+        <div className="w-full flex items-center gap-2">
+          <SidebarOpen
+            onClick={openSideBar}
+            className="flex w-5 h-6 md:hidden"
+          />
+          <div className="relative flex items-center w-full max-w-[384px] h-[36px] border border-[#E1E1E1] rounded-2xl p-2">
             <SearchIcon className="w-4 h-4 absolute top-2 left-3" />
             <input
               type="text"
