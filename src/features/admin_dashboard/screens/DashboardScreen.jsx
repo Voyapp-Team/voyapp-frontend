@@ -2,14 +2,17 @@
 
 import { DashboardCard } from '../components/DashboardCards';
 import { UsersTable } from '../components/UsersTable';
-import { usersDetails } from '../data/dashboardData';
+import {
+  usersDetails,
+  UsersInformation,
+} from '../data/dashboardData';
 
 export const DashboardScreen = () => {
   return (
     <div>
       <DashboardCard data={usersDetails} />
       <div className="mt-5 w-full">
-        <UsersTable />
+        <UsersTable data={UsersInformation} />
       </div>
     </div>
   );

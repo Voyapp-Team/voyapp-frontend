@@ -1,10 +1,7 @@
-import {
-  LogOut,
-  SidebarClose,
-} from 'lucide-react';
-import Link from 'next/link';
+import { LogOut, SidebarClose } from "lucide-react";
+import Link from "next/link";
 
-import VoyaLogo from '../../brand/VoyaLogo';
+import VoyaLogo from "../../brand/VoyaLogo";
 
 export default function Sidebar({
   dashboard,
@@ -17,10 +14,10 @@ export default function Sidebar({
   return (
     <aside
       ref={rel}
-      className={`${isOpen ? "translate-x-0" : "-translate-x-full md:translate-0"} fixed z-10 md:static min-h-[750px] w-[280px] flex flex-col justify-between rounded-tr-[30px] rounded-br-[30px] bg-gradient-to-b from-[#004A3F] to-[#01705F] p-4 md:p-6 text-white transition-all duration-300`}
+      className={`${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-0"} fixed z-10 lg:static min-h-[750px] w-[280px] flex flex-col justify-between rounded-tr-[30px] rounded-br-[30px] bg-gradient-to-b from-[#004A3F] to-[#01705F] p-4 md:p-6 text-white transition-all duration-300`}
     >
       {/* Top description */}
-      <div className="flex items-center gap-2 mb-5">
+      <div className="flex items-center gap-2 mb-3">
         <div className="flex items-center pt-5">
           <VoyaLogo className="w-9 h-9" />
         </div>
@@ -35,7 +32,7 @@ export default function Sidebar({
 
         <SidebarClose
           onClick={closeSidebar}
-          className="flex w-5 h-6 md:hidden ml-10"
+          className="flex w-5 h-6 lg:hidden ml-10"
         />
       </div>
 

@@ -1,4 +1,4 @@
-import { RepeatIcon } from '../../dashboard/components/DashboardIcons';
+import { RepeatIcon } from "../../dashboard/components/DashboardIcons";
 import {
   BanknoteIcon,
   BlockedIcon,
@@ -12,7 +12,7 @@ import {
   Users,
   Wallet2Icon,
   WalletIcon,
-} from '../components/DashboardIcons';
+} from "../components/DashboardIcons";
 
 export const dashboardUser = {
   name: "James Chanor",
@@ -100,6 +100,7 @@ export const usersDetails = [
 
 export const UsersInformation = [
   {
+    id: 1,
     first_name: "Erik",
     last_name: "Johansson",
     user_name: "erik.j",
@@ -108,10 +109,11 @@ export const UsersInformation = [
     kyc_status: "Verified",
     balance: "12,450.00",
     transactions_count: 154,
-    date_in: "Oct 12, 2023",
+    createdAt: "Oct 12, 2023",
     status: "active",
   },
   {
+    id: 2,
     first_name: "Sarah",
     last_name: "Miller",
     user_name: "sarahm",
@@ -120,10 +122,11 @@ export const UsersInformation = [
     kyc_status: "Pending",
     balance: "45,200.00",
     transactions_count: 892,
-    date_in: "Nov 05, 2023",
+    createdAt: "Nov 05, 2023",
     status: "active",
   },
   {
+    id: 3,
     first_name: "Mark",
     last_name: "Kozlov",
     user_name: "mkozlov",
@@ -132,10 +135,11 @@ export const UsersInformation = [
     kyc_status: "Failed",
     balance: "120.50",
     transactions_count: 12,
-    date_in: "Dec 01, 2023",
-    status: "inActive",
+    createdAt: "Dec 01, 2023",
+    status: "in-active",
   },
   {
+    id: 4,
     first_name: "Lena",
     last_name: "Fischer",
     user_name: "lfisch",
@@ -144,7 +148,7 @@ export const UsersInformation = [
     kyc_status: "Verified",
     balance: "3,150.00",
     transactions_count: 42,
-    date_in: "Nov 28, 2023",
+    createdAt: "Nov 28, 2023",
     status: "active",
   },
 ];

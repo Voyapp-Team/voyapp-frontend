@@ -1,14 +1,8 @@
 "use client";
 
-import {
-  Plus,
-  SidebarOpen,
-} from 'lucide-react';
+import { Plus, SidebarOpen } from "lucide-react";
 
-import {
-  NotificationIcon,
-  SearchIcon,
-} from '@/src/components/ui/Icons';
+import { NotificationIcon, SearchIcon } from "@/src/components/ui/Icons";
 
 function HeaderButton({ children, label }) {
   return (
@@ -29,7 +23,7 @@ export default function TopBar({ data, openSideBar }) {
         <div className="w-full flex items-center gap-2">
           <SidebarOpen
             onClick={openSideBar}
-            className="flex w-5 h-6 md:hidden"
+            className="flex w-5 h-6 lg:hidden"
           />
           <div className="relative flex items-center w-full max-w-[384px] h-[36px] border border-[#E1E1E1] rounded-2xl p-2">
             <SearchIcon className="w-4 h-4 absolute top-2 left-3" />
