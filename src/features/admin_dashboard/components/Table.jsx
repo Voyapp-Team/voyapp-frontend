@@ -1,7 +1,7 @@
 export const TableWrapper = ({ children }) => {
   return (
-    <div className="mt-5 w-full overflow-hidden min-w-0 rounded-lg  bg-white">
-      <div className="w-full overflow-x-auto [webkit-overflow-scrolling:touch]">
+    <div className="mt-5 overflow-hidden w-fit min-w-0 rounded-lg  bg-white shadow-sm">
+      <div className="w-full lg:w-[calc(100vw-21rem)]   overflow-x-auto [webkit-overflow-scrolling:touch]">
         {children}
       </div>
     </div>

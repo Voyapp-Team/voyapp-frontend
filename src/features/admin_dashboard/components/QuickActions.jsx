@@ -38,7 +38,7 @@ export const InputField = ({
   );
 };
 
-export const SelectWrapper = ({ label, children, name }) => {
+export const SelectWrapper = ({ label, children, name, ...props }) => {
   return (
     <label
       htmlFor={name}
@@ -48,6 +48,7 @@ export const SelectWrapper = ({ label, children, name }) => {
       <select
         name={name}
         id={name}
+        {...props}
         className="py-[10px] px-[16px] h-full w-full bg-white border border-[#BBCAC44D]  rounded-md outline-none"
       >
         {children}

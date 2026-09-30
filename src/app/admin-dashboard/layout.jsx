@@ -1,20 +1,16 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useRef, useState } from "react";
 
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
 
-import Sidebar from '@/src/components/ui/admin_components/Sidebar';
-import Topbar from '@/src/components/ui/admin_components/TopBar';
+import Sidebar from "@/src/components/ui/admin_components/Sidebar";
+import Topbar from "@/src/components/ui/admin_components/TopBar";
 import {
   dashboardItems,
   dashboardUser,
   systemItems,
-} from '@/src/features/admin_dashboard/data/dashboardData';
+} from "@/src/features/admin_dashboard/data/dashboardData";
 
 export default function AdminDashboardLayout({ children }) {
   const pathname = usePathname();
@@ -62,7 +58,9 @@ export default function AdminDashboardLayout({ children }) {
         )}
 
         {/* Current Page */}
-        <main className="w-full flex-1 px-2 sm:px-5">{children}</main>
+        <main className="w-full flex-1 px-2 sm:px-5 overflow-hidden">
+          {children}
+        </main>
       </div>
     </div>
   );

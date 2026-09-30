@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  TrendingDownIcon,
-  TrendingUpIcon,
-} from 'lucide-react';
+import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 
 export const DashboardCard = ({ data }) => {
   return (
@@ -17,7 +14,7 @@ export const DashboardCard = ({ data }) => {
           >
             <div className="flex justify-between items-center gap-2">
               <div className="flex flex-col gap-2">
-                <p className="font-montserrat font-semibold text-xs leading-2 text-[#3C4A46]">
+                <p className="font-montserrat font-semibold text-xs leading-4 text-[#3C4A46]">
                   {item.label}
                 </p>
                 <p className="font-montserrat font-semibold text-2xl leading-8 text-[#161D1B]">
